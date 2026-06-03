@@ -1,0 +1,18 @@
+.library-card {
+    max-width: 900px;
+    margin: 32px auto;
+
+
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 32px;
+
+    border: 2px solid #000;
+    border-radius: 16px;
+
+    background-color: #fff;
+}
+
+.library-card__image img {
+    width: 100%;
+}
