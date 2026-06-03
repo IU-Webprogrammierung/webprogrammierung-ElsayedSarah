@@ -1,3 +1,47 @@
+/* Page Layout */
+
+header {
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+}
+
+body {
+    margin: 0;
+}
+
+/* Global Navigation */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #333;
+    padding: 14px 16px;
+}
+
+nav ul {
+    display: flex;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    display: block;
+
+    color: white;
+    text-decoration: none;
+
+    padding: 16px;
+}
+
+
+/* Library Card */
+
 .library-card {
     max-width: 900px;
     margin: 32px auto;
