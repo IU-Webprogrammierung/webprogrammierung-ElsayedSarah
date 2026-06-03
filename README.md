@@ -14,7 +14,7 @@ Die Website wird vollständig englischsprachig umgesetzt.
 
 ## Projektinhalt
 
-- ""Library Card" / About Me Bereich
+- "Library Card" / About Me Bereich
 - Shelf Interface für Bücher und Spiele
 - Detailansichten mit persönlichen Notizen und Informationen
 - Interaktives Recommendation Quiz
