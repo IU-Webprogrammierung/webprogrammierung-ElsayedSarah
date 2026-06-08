@@ -1,18 +1,161 @@
+/* Page Layout */
+
+header {
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+}
+
+body {
+    margin: 0;
+}
+
+/* Global Navigation */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #000000;
+    padding: 14px 16px;
+}
+
+nav ul {
+    display: flex;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    display: block;
+
+    color: white;
+    text-decoration: none;
+
+    padding: 16px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 16px;
+
+    background-color: #333;
+    color: white;
+}
+
+/* Home Page */
+.home-page {
+    padding: 80px 16px;
+    background-color: #ed3b81;
+}
+
+/* Home Page: Library Card */
+
 .library-card {
     max-width: 900px;
-    margin: 32px auto;
+    margin: 60px auto;
+    padding: 16px;
 
+    border: 10px solid #f4c8df;
+    border-radius: 32px;
 
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    gap: 32px;
+    background-image: linear-gradient(45deg, #fedfef, #f9fafd);
+    box-shadow: 0 16px 12px rgba(125, 3, 77, 0.61);
+}
 
-    border: 2px solid #000;
-    border-radius: 16px;
+.library-card:hover {
+    transform: translateY(-1px);
+}
 
-    background-color: #fff;
+.library-card_top {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 14px;
+
+    border-bottom: 3px solid #f4c8df;
+
+}
+
+.library-card_bottom {
+    display: flex;
+    padding: 16px 14px;
+
+}
+
+.barcode {
+    width: 400px;
+    height: 50px;
+
+    /* barcode pattern */
+    background: repeating-linear-gradient(90deg, #a80a5c 0px 2px, transparent 2px 4px, #a80a5c 4px 6px, transparent 6px 8px, #a80a5c 8px 12px, transparent 12px 14px);
+}
+
+.library-card_main{
+    display: flex;
+    gap: 64px;
+    padding: 24px;
 }
 
 .library-card__image img {
-    width: 100%;
+    width: 300px;
+    display: block;
+}
+
+.library-card__image img:hover {
+    transform: translateY(-2px);
+}
+
+.library-card__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+
+    margin-top: 0;
+}
+
+.genre-profile {
+    /* Goes across both columns */
+    grid-column: 1 / 3;
+}
+
+.genre-profile_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 8px;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tag {
+    min-width: 100px;
+    padding: 8px 16px;
+
+    text-align: center;
+    border-radius: 8px; 
+    border: 2px solid #000000;
+    color: black;
+    background-color:#09edfb;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 4px 4px 0 #07165d;
+}
+
+.tag:hover {
+    transform: translateY(-2px);
+}
+
+/* Home Page: Description */
+
+.home-description {
+    margin: 32px auto;
+    padding: 28px;
+
+    color: white;
+    text-align: center;
 }
