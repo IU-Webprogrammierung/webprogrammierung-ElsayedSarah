@@ -38,6 +38,7 @@
          <!-- Shelf Interface -->
         <section class="shelf">
 
+            <!-- Filter Buttons -->
             <div class="filter">
                 <button id="filter-novel">Novel</button>
                 <button id="filter-manga">Manga</button>
@@ -48,6 +49,7 @@
                 <!-- Shelf items will be generated with JS -->
             </div>
 
+            <!-- Show selected book title and button for detail view -->
             <div class="selected-media">
                 <h2 id="selected-book-title">Select a book</h2>
                 <a href="#book-details">More details</a>
@@ -57,19 +59,19 @@
 
         <!-- Detail View -->
         <section class="media-details" id="book-details">
+            
+            <!-- Detail View will be dynamically generated with JS-->
+            <article class="media-details_layout">
+                <div class="media-details_image">
+                    <img id="selected-book-image" src="" alt="">
+                </div>
 
-            <h2>Selected Book</h2>
-
-            <div class="media-details__image">
-                 <!-- placeholder for media cover image -->
-            </div>
-
-            <div class="media-details__content">
-
-                <p>Comments</p>
-                <p>Personal notes about the book</p>
-
-            </div>
+                <div class="media-details_content">
+                    <h2 id="detail-book-title"></h2>
+                    <p id="selected-book-author"></p>
+                    <p id="selected-book-comment"></p>
+                </div>
+            </article>
 
         </section>
 

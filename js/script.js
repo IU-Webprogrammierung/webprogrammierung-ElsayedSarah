@@ -3,59 +3,101 @@
 const books = [
     {
         title: "Book 1",
-        category: "novel"
+        category: "novel",
+        author: "name",
+
+        comment: "Add comment here"
     },
     {
         title: "Book 2",
-        category: "novel"
+        category: "novel",
+        author: "name",
+        
+        comment: "Add comment here"
     },
     {
         title: "Book 3",
-        category: "novel"
+        category: "novel",
+        author: "name",
+        
+        comment: "Add comment here"
     },
     {
         title: "Book 4",
-        category: "novel"
+        category: "novel",
+        author: "name",
+        
+        comment: "Add comment here"
     },
     {
         title: "Book 5",
-        category: "novel"
+        category: "novel",
+        author: "name",
+        
+        comment: "Add comment here"
     },
     {
         title: "Book 6",
-        category: "novel"
+        category: "novel",
+        author: "name",
+        
+        comment: "Add comment here"
     },
     {
         title: "Book 7",
-        category: "novel"
+        category: "novel",
+        author: "name",
+        
+        comment: "Add comment here"
     },
        {
         title: "Book 8",
-        category: "manga"
+        category: "manga",
+        author: "name",
+        
+        comment: "Add comment here"
     },
     {
         title: "Book 9",
-        category: "manga"
+        category: "manga",
+        author: "name",
+        
+        comment: "Add comment here"
     },
     {
         title: "Book 10",
-        category: "manga"
+        category: "manga",
+        author: "name",
+        
+        comment: "Add comment here"
     },
     {
         title: "Book 11",
-        category: "manga"
+        category: "manga",
+        author: "name",
+        
+        comment: "Add comment here"
     },
     {
         title: "Book 12",
-        category: "manga"
+        category: "manga",
+        author: "name",
+        
+        comment: "Add comment here"
     },
     {
         title: "Book 13",
-        category: "manga"
+        category: "manga",
+        author: "name",
+        
+        comment: "Add comment here"
     },
     {
         title: "Book 14",
-        category: "manga"
+        category: "manga",
+        author: "name",
+
+        comment: "Add comment here"
     }
 
 ];
@@ -63,6 +105,10 @@ const books = [
 /* Select DOM-Elements */
 const bookShelf = document.querySelector("#book-shelf");
 const selectedBookTitle = document.querySelector("#selected-book-title");
+const detailBookTitle = document.querySelector("#detail-book-title");
+const selectedBookImage = document.querySelector("#selected-book-image");
+const selectedBookAuthor = document.querySelector("#selected-book-author");
+const selectedBookComment = document.querySelector("#selected-book-comment");
 
 /* Select filter buttons */
 const novelButton = document.querySelector("#filter-novel");
@@ -82,9 +128,12 @@ function createShelfItem(book) {
         <div class="cover"></div>
     `;
 
-    /* Show title of selected book */
+    /* Show information of selected book */
     shelfItem.addEventListener("click", function () {
         selectedBookTitle.textContent = book.title;
+        detailBookTitle.textContent = book.title;
+        selectedBookAuthor.textContent = book.author;
+        selectedBookComment.textContent = book.comment;
     });
 
     return shelfItem;
