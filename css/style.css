@@ -19,7 +19,11 @@ nav {
     align-items: center;
 
     background-color: #000000;
-    padding: 14px 16px;
+    padding: 14px 24px;
+}
+
+.logo img {
+    width: 300px;
 }
 
 nav ul {
@@ -81,6 +85,11 @@ footer {
 
 }
 
+.library-card_top img {
+    width: 150px
+
+}
+
 .library-card_bottom {
     display: flex;
     padding: 16px 14px;
@@ -101,16 +110,16 @@ footer {
     padding: 24px;
 }
 
-.library-card__image img {
+.library-card_image img {
     width: 300px;
     display: block;
 }
 
-.library-card__image img:hover {
+.library-card_image img:hover {
     transform: translateY(-2px);
 }
 
-.library-card__content {
+.library-card_content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 18px;
@@ -165,8 +174,11 @@ footer {
     background-color: #ffde59;
 }
 
+/* Hero section wiht page title and description*/
+
 .page-title {
     min-height: 90vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -176,52 +188,65 @@ footer {
     border-bottom: 3px solid #f4c8df;
 }
 
+/* Shelf Interface */
 .shelf {
-    min-height: 100vh;
+    min-height: 90vh;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    padding: 48px 0 64px;
     gap: 32px;
 
     border-bottom: 3px solid #f4c8df;
 }
 
-.media-details {
-    min-height: 100vh;
-}
-
-
+/* Filter buttons */
 .filter {
     display: flex;
     gap: 16px;
+    margin-bottom: 64px;
 }
+
+.filter button {
+    padding: 10px 20px;
+    color: white;
+    background-color: #000000;
+    border: 2px solid white;
+}
+
+/* Container for dynamically generated shelf items */
 
 .shelf-items {
     display: flex;
-    gap: 24px;
-    max-width: 100%;
-    overflow-x: auto;
-    padding: 24px;
+    gap: 32px;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    padding-bottom: 64px;
 }
+
+/* Individual shelf item */
 
 .shelf-item {
     display: flex;
-    width: 180px;
-    height: 260px;
+    flex: 0 0 auto;
+    width: 145px;
+    height: 405px;
 
     transform: skewY(-1deg);
 
 }
 
 .shelf-item:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
 }
 
 
 .spine {
     display: flex;
-    width: 42px;
+    width: 65px;
     align-items: center;
     justify-content: center;
 
@@ -229,13 +254,54 @@ footer {
 
 }
 
+/* Vertical title on spine */
+.spine p {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
 .cover {
-    flex: 1;
-    
     display: flex;
+    width: 75px;
     align-items: center;
     justify-content: center;
 
     background-color: #a80a5c;
+
+}
+
+/* Display for the currently selected item */
+.selected-media {
+    margin-top: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Detail View */
+
+.media-details {
+    min-height: 90vh;
+
+    padding: 48px 16px;
+}
+
+
+.media-details_layout {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+    margin: 0 auto;
+
+}
+
+.media-details_image img {
+    width: 400px;
+    height: auto;
+    display: block;
+}
+
+.media-details_content {
+    flex: 1;
+    padding: 48px;
 
 }
