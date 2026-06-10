@@ -144,6 +144,20 @@ function createShelfItem(book) {
     return shelfItem;
 }
 
+/* Mark selected shelf item as selected */
+function activeShelfItem() {
+    const shelfItems = document.querySelectorAll(".shelf-item");
+
+    shelfItems.forEach(function(item) {
+        item.addEventListener("click", function() {
+            shelfItems.forEach(function (i) {
+                i.classList.remove("active")
+            });
+            item.classList.add("active");
+        });
+    });
+}
+
 /* Render all (filtered) books in the shelf */
 function renderBooks(filteredBooks) {
     bookShelf.innerHTML = "";
@@ -152,6 +166,8 @@ function renderBooks(filteredBooks) {
         const shelfItem = createShelfItem(book);
         bookShelf.appendChild(shelfItem);
     });
+
+    activeShelfItem();
 }
 
 /* Filter buttons */
@@ -177,3 +193,4 @@ const novels = books.filter(function (book) {
 });
 
 renderBooks(novels);
+activeShelfItem();
