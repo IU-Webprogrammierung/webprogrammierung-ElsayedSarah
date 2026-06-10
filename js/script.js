@@ -6,6 +6,8 @@ const books = [
         category: "novel",
         author: "name",
 
+        cover: "assets/testcover.jpg",
+
         comment: "Add comment here"
     },
     {
@@ -125,7 +127,9 @@ function createShelfItem(book) {
             <p>${book.title}</p>
         </div>
 
-        <div class="cover"></div>
+        <div class="cover">
+            <img src="${book.cover}" alt="${book.title} cover">
+        </div>
     `;
 
     /* Show information of selected book */
@@ -134,6 +138,7 @@ function createShelfItem(book) {
         detailBookTitle.textContent = book.title;
         selectedBookAuthor.textContent = book.author;
         selectedBookComment.textContent = book.comment;
+        selectedBookImage.src = book.cover;
     });
 
     return shelfItem;
