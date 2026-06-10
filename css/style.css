@@ -172,6 +172,7 @@ footer {
 /* Books Page */
 .books-page {
     background-color: #ffde59;
+    overflow-x: hidden;
 }
 
 /* Hero section wiht page title and description*/
@@ -196,7 +197,7 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 48px 0 64px;
+    padding: 48px 16px 64px;
     gap: 32px;
 
     border-bottom: 3px solid #f4c8df;
@@ -221,10 +222,13 @@ footer {
 .shelf-items {
     display: flex;
     gap: 12px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-end;
     width: 100%;
-    padding-bottom: 64px;
+    max-width: 100vw;
+    padding: 32px 64px 64px 150px;
+    overflow-x: auto;
+    overflow-y: visible;
 }
 
 /* Individual shelf item */
@@ -249,6 +253,12 @@ footer {
 
 .shelf-item:hover {
     transform: rotateY(-1deg) translateY(-12px) scale(1.1);
+}
+
+/* Highlights selected item */
+.shelf-item.active {
+    transform: rotateY(0deg) translateY(-12px) scale(1.1);
+    z-index: 10;
 }
 
 
