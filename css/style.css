@@ -221,12 +221,14 @@ footer {
 
 .shelf-items {
     display: flex;
-    gap: 12px;
+    gap: 24px;
     justify-content: flex-start;
     align-items: flex-end;
     width: 100%;
     max-width: 100vw;
-    padding: 32px 64px 64px 150px;
+    padding: 32px 15vw 64px;
+    /* Visually center shelf on large screens */
+    padding-left: max(14vw, calc((100vw - 1300px) /2));
     overflow-x: auto;
     overflow-y: visible;
 }
@@ -237,27 +239,29 @@ footer {
     position: relative;
     flex: 0 0 auto;
     /* shelf item size management*/
-    width: 350px; 
+    width: 305px; 
     height: 405px;
 
     /* 3D-Effect */
     perspective: 700px;
     transform-style: preserve-3d;
-    transform: rotateY(26deg);
+    transform: rotateY(28deg);
     transform-origin: right center;
 
     /* Hover Animation*/
     transition: transform 0.4s ease;
+    box-shadow: -16px 16px 24px rgba(0, 0, 0, 0.35);
 
 }
 
 .shelf-item:hover {
-    transform: rotateY(-1deg) translateY(-12px) scale(1.1);
+    transform: rotateY(24deg) translateY(-12px) translateX(12px) scale(1.05);
 }
 
 /* Highlights selected item */
 .shelf-item.active {
-    transform: rotateY(0deg) translateY(-12px) scale(1.1);
+    transition: transform 0.4s ease;
+    transform: rotateY(-1deg) translateY(-12px) translateX(22px) scale(1.08);
     z-index: 10;
 }
 
@@ -266,13 +270,13 @@ footer {
     position: absolute;
     top: 0;
     left: 0;
-    width: 50px;
+    width: 45px;
     height: 100%;
     
     /* 3D-rotation and placement of spine */
-    transform: translateX(calc(-50px / 2)) 
+    transform: translateX(calc(-45px / 2)) 
                rotateY(-75deg)
-               translateX(calc(-50px/ 2));
+               translateX(calc(-45px/ 2));
     overflow: hidden;
 
     background-color: #000000;
@@ -291,13 +295,11 @@ footer {
     position: absolute;
     top: 0;
     left: 0;
-    width: calc(100% - 50px); /* width of cover: total-width minus spine-width */
+    width: 100%;
     height: 100%;
     overflow: hidden;
 
-    background-color: #a80a5c;
-    box-shadow: 12px 12px 18px rgba(0, 0, 0, 0.35);
-    
+    background-color: #a80a5c; 
 
 }
 
@@ -305,6 +307,7 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
 
 }
