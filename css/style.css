@@ -19,7 +19,11 @@ nav {
     align-items: center;
 
     background-color: #000000;
-    padding: 14px 16px;
+    padding: 14px 24px;
+}
+
+.logo img {
+    width: 300px;
 }
 
 nav ul {
@@ -81,6 +85,11 @@ footer {
 
 }
 
+.library-card_top img {
+    width: 150px
+
+}
+
 .library-card_bottom {
     display: flex;
     padding: 16px 14px;
@@ -101,16 +110,16 @@ footer {
     padding: 24px;
 }
 
-.library-card__image img {
+.library-card_image img {
     width: 300px;
     display: block;
 }
 
-.library-card__image img:hover {
+.library-card_image img:hover {
     transform: translateY(-2px);
 }
 
-.library-card__content {
+.library-card_content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 18px;
@@ -158,4 +167,299 @@ footer {
 
     color: white;
     text-align: center;
+}
+
+/* Books Page */
+.books-page {
+    background-color: #d4d3d3;
+    overflow-x: hidden;
+}
+
+/* Hero section wiht page title and description*/
+
+.page-title {
+    min-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+/* Shelf Interface */
+.shelf {
+    min-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 16px 64px;
+    gap: 32px;
+
+    background-color: #221F30;
+
+}
+
+/* Filter buttons */
+.filter {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 64px;
+}
+
+.filter button {
+    padding: 10px 20px;
+    color: white;
+    background-color: #000000;
+    border: 2px solid white;
+}
+
+/* Container for dynamically generated shelf items */
+
+.shelf-items {
+    display: flex;
+    gap: 24px;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 100vw;
+    padding: 32px 15vw 64px;
+    /* Visually center shelf on large screens */
+    padding-left: max(14vw, calc((100vw - 1300px) /2));
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+/* Individual shelf item */
+
+.shelf-item {
+    position: relative;
+    flex: 0 0 auto;
+    /* shelf item size management*/
+    width: 305px; 
+    height: 410px;
+
+    /* 3D-Effect */
+    perspective: 700px;
+    transform-style: preserve-3d;
+    transform: rotateY(28deg);
+    transform-origin: right center;
+
+    /* Hover Animation*/
+    transition: transform 0.4s ease;
+    box-shadow: -20px 32px 32px rgba(0, 0, 0, 0.35);
+
+}
+
+.shelf-item:hover {
+    transform: rotateY(24deg) translateY(-12px) translateX(12px) scale(1.05);
+}
+
+/* Highlights selected item */
+.shelf-item.active {
+    transition: transform 0.4s ease;
+    transform: rotateY(12deg) translateY(-12px) translateX(22px) scale(1.08);
+    z-index: 10;
+}
+
+
+.spine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45px;
+    height: 100%;
+    
+    /* 3D-rotation and placement of spine */
+    transform: translateX(calc(-45px / 2)) 
+               rotateY(-75deg)
+               translateX(calc(-45px/ 2));
+    overflow: hidden;
+
+    background-color: #959595;
+
+    /* Add depth to the book spine */
+    box-shadow: 3px 0 8px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.445);
+
+}
+
+.spine img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+
+}
+
+/* Simulate reflected light on the book cover */
+.cover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(90deg, rgba(202, 208, 228, 0.266), transparent 40%, rgba(2, 5, 36, 0.31));
+}
+
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+
+}
+
+/* Display for the currently selected item */
+.selected-media {
+    margin-top: 24px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.selected-media a {
+    color: white;
+}
+
+/* Detail View */
+
+.media-details {
+    min-height: 90vh;
+
+    padding: 48px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hide detail view until a book has been selected */
+.media-details.hidden {
+    display: none;
+}
+
+/* Ticket container for selected book details */
+.media-details_layout {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 30% 70%;
+    gap: 64px;
+    
+    width: min(2100px, 90vw);
+    min-height: 650px;
+    margin: 0 auto;
+    padding: 48px 64px;
+
+    background-color: #ed3b81;
+    border: 3px solid black;
+    
+}
+
+/* Vertical decorative line separating cover and content */
+.media-details_layout::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 30%;
+
+    border-left: 3px dotted black;
+}
+
+/* Upper ticket cutout */
+.media-details_layout::after {
+    content: "";
+
+    position: absolute;
+    left: 30%; /*Same as decorative line*/
+    top: -14px;
+    width: 28px;
+    height: 28px;
+
+    background-color: #d4d3d3;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+/* Lower ticket cutout */
+.ticket-cutout {
+    position: absolute;
+    bottom: -14px;
+    left: 30%; /*Same as decorative line*/
+    width: 28px;
+    height: 28px;
+
+    background-color: #d4d3d3;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+/* Cover section inside the ticket */
+.media-details_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Center cover visually within the ticket section */
+    padding-right: 20%;
+
+}
+
+.media-details_image img {
+    width: 360px;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+
+    border: 7px solid #f9fafd;
+    box-shadow: 3px 0 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Text content section of the ticket */
+.media-details_content {
+    display: flex;
+    flex-direction: column;
+    padding: 48px;
+
+}
+
+#detail-book-title {
+    margin-bottom: 4px;
+}
+
+#selected-book-author {
+    margin-bottom: 32px;
+}
+
+#selected-book-comment {
+    line-height: 2.1;
+}
+
+/* Increase cover area and reduce ticket size on smaller desktop screens */
+@media (max-width: 1440px) {
+    .media-details_layout {
+        grid-template-columns: 40% 60%;
+        min-height: 450px;
+        gap: 32px;
+        padding: 55px;
+    }
+
+    .media-details_layout::before,
+    .media-details_layout::after,
+    .ticket-cutout {
+        left: 40%;
+    }
 }
