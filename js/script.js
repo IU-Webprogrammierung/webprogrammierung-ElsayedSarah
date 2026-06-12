@@ -14,13 +14,17 @@ const books = [
         title: "Book 2",
         category: "novel",
         author: "name",
-        
+
+        cover: "assets/testcover.jpg",
+
         comment: "Add comment here"
     },
     {
         title: "Book 3",
         category: "novel",
         author: "name",
+
+        cover: "assets/testcover.jpg",
         
         comment: "Add comment here"
     },
@@ -29,6 +33,8 @@ const books = [
         category: "novel",
         author: "name",
         
+        cover: "assets/testcover.jpg",
+
         comment: "Add comment here"
     },
     {
@@ -36,6 +42,8 @@ const books = [
         category: "novel",
         author: "name",
         
+        cover: "assets/testcover.jpg",
+
         comment: "Add comment here"
     },
     {
@@ -43,6 +51,8 @@ const books = [
         category: "novel",
         author: "name",
         
+        cover: "assets/testcover.jpg",
+
         comment: "Add comment here"
     },
     {
@@ -50,6 +60,8 @@ const books = [
         category: "novel",
         author: "name",
         
+        cover: "assets/testcover.jpg",
+
         comment: "Add comment here"
     },
        {
@@ -57,6 +69,8 @@ const books = [
         category: "manga",
         author: "name",
         
+        cover: "assets/testcover.jpg",
+
         comment: "Add comment here"
     },
     {
@@ -64,6 +78,8 @@ const books = [
         category: "manga",
         author: "name",
         
+        cover: "assets/testcover.jpg",
+
         comment: "Add comment here"
     },
     {
@@ -71,6 +87,8 @@ const books = [
         category: "manga",
         author: "name",
         
+        cover: "assets/testcover.jpg",
+
         comment: "Add comment here"
     },
     {
@@ -78,6 +96,8 @@ const books = [
         category: "manga",
         author: "name",
         
+        cover: "assets/testcover.jpg",
+
         comment: "Add comment here"
     },
     {
@@ -85,6 +105,8 @@ const books = [
         category: "manga",
         author: "name",
         
+        cover: "assets/testcover.jpg",
+
         comment: "Add comment here"
     },
     {
@@ -92,12 +114,16 @@ const books = [
         category: "manga",
         author: "name",
         
+        cover: "assets/testcover.jpg",
+
         comment: "Add comment here"
     },
     {
         title: "Book 14",
         category: "manga",
         author: "name",
+
+        cover: "assets/testcover.jpg",
 
         comment: "Add comment here"
     }
@@ -115,6 +141,9 @@ const selectedBookComment = document.querySelector("#selected-book-comment");
 /* Select filter buttons */
 const novelButton = document.querySelector("#filter-novel");
 const mangaButton = document.querySelector("#filter-manga");
+
+/* Detail view section (hidden until a book is selected) */
+const bookDetails = document.querySelector("#book-details");
 
 /* Create book article elements */
 function createShelfItem(book) {
@@ -134,11 +163,15 @@ function createShelfItem(book) {
 
     /* Show information of selected book */
     shelfItem.addEventListener("click", function () {
+        /* Reveal detail view when a book is selected */
+        bookDetails.classList.remove("hidden");
+
         selectedBookTitle.textContent = book.title;
         detailBookTitle.textContent = book.title;
         selectedBookAuthor.textContent = book.author;
         selectedBookComment.textContent = book.comment;
         selectedBookImage.src = book.cover;
+        selectedBookImage.alt = book.title + "cover";
     });
 
     return shelfItem;

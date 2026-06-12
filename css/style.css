@@ -171,7 +171,7 @@ footer {
 
 /* Books Page */
 .books-page {
-    background-color: #ffde59;
+    background-color: #d4d3d3;
     overflow-x: hidden;
 }
 
@@ -186,7 +186,6 @@ footer {
     align-items: center;
     text-align: center;
 
-    border-bottom: 3px solid #f4c8df;
 }
 
 /* Shelf Interface */
@@ -202,7 +201,6 @@ footer {
 
     background-color: #221F30;
 
-    border-bottom: 3px solid #f4c8df;
 }
 
 /* Filter buttons */
@@ -350,6 +348,11 @@ footer {
     align-items: center;
 }
 
+/* Hide detail view until a book has been selected */
+.media-details.hidden {
+    display: none;
+}
+
 /* Ticket container for selected book details */
 .media-details_layout {
     position: relative;
@@ -366,7 +369,6 @@ footer {
     background-color: #ed3b81;
     border: 3px solid black;
     
-
 }
 
 /* Vertical decorative line separating cover and content */
@@ -390,7 +392,7 @@ footer {
     width: 28px;
     height: 28px;
 
-    background-color: #ffde59;
+    background-color: #d4d3d3;
     border-radius: 50%;
     transform: translateX(-50%);
 }
@@ -403,7 +405,7 @@ footer {
     width: 28px;
     height: 28px;
 
-    background-color: #ffde59;
+    background-color: #d4d3d3;
     border-radius: 50%;
     transform: translateX(-50%);
 }
