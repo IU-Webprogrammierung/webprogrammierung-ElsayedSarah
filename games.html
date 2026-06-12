@@ -13,7 +13,7 @@
         <nav aria-label="Global navigation">
 
              <a href="index.html" class="logo">
-                <img src="assets/logo.png" alt="Digital Media Library Logo">
+                <img src="assets/logo_white.svg" alt="Digital Media Library Logo">
             </a>
 
             <ul>
@@ -25,33 +25,51 @@
         </nav>
     </header>
 
-    <main>
-        <h1>Games</h1>
+    <main class="games-page">
+
+        <section class="page-title">
+
+            <h1>Games</h1>
+            <p>Explore my top 7 favorite games.</p>
+        
+        </section>
 
          <!-- Shelf Interface -->
         <section class="shelf">
 
-            <div class="shelf-item">
-                <p>Game 1</p>
+            <!-- Shelf items -->
+            <div class="shelf-items" id="game-shelf">
+                 <!-- Shelf items will be generated with JS -->
+            </div>
+
+            <!-- Show selected game title and button for detail view -->
+            <div class="selected-media">
+                <h2 id="selected-game-title">Select a game</h2>
+                <a href="#game-details">More details</a>
             </div>
 
         </section>
 
         <!-- Detail View -->
-        <section class="media-details">
+        <!-- Hidden by default and revealed when a book is selected -->
+        <section class="media-details hidden" id="game-details">
 
-            <h2>Selected Game</h2>
+            <!-- Detail View will be dynamically generated with JS-->
+            <article class="media-details_layout">
 
-            <div class="media-details__image">
-                 <!-- placeholder for media cover image -->
-            </div>
+                <!-- Decorative Element Only -->
+                <span class="ticket-cutout" aria-hidden="true"></span>
 
-            <div class="media-details__content">
+                <div class="media-details_image">
+                    <img id="selected-game-image" src="" alt="">
+                </div>
 
-                <p>Comments</p>
-                <p>Personal notes about the game</p>
-
-            </div>
+                <div class="media-details_content">
+                    <h2 id="detail-game-title"></h2>
+                    <p id="selected-game-developer"></p>
+                    <p id="selected-game-comment"></p>
+                </div>
+            </article>
 
         </section>
 
@@ -61,7 +79,7 @@
         <p>Digital Media Library</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js/games.js"></script>
 
 </body>
 </html>

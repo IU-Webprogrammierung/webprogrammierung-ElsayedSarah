@@ -175,6 +175,12 @@ footer {
     overflow-x: hidden;
 }
 
+/* Games Page */
+.games-page {
+    background-color: #d4d3d3;
+    overflow-x: hidden;
+}
+
 /* Hero section wiht page title and description*/
 
 .page-title {
@@ -436,15 +442,18 @@ footer {
 
 }
 
-#detail-book-title {
+#detail-book-title,
+#detail-game-title {
     margin-bottom: 4px;
 }
 
-#selected-book-author {
+#selected-book-author,
+#selected-game-developer {
     margin-bottom: 32px;
 }
 
-#selected-book-comment {
+#selected-book-comment,
+#selected-game-comment {
     line-height: 2.1;
 }
 
