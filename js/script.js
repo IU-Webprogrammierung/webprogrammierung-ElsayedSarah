@@ -171,7 +171,7 @@ function createShelfItem(book) {
         selectedBookAuthor.textContent = book.author;
         selectedBookComment.textContent = book.comment;
         selectedBookImage.src = book.cover;
-        selectedBookImage.alt = book.title + "cover";
+        selectedBookImage.alt = book.title + " cover";
     });
 
     return shelfItem;
