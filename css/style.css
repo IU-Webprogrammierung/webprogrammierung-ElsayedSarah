@@ -449,12 +449,12 @@ footer {
 
 #selected-book-author,
 #selected-game-developer {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
 
 #selected-book-comment,
 #selected-game-comment {
-    line-height: 2.1;
+    line-height: 1.2;
 }
 
 /* Increase cover area and reduce ticket size on smaller desktop screens */
@@ -527,6 +527,60 @@ footer {
         width: 100%;
         max-width: 320px;
     }
+
+    /* Detail view - ticket */
+    /* Convert ticket into a vertical layout */
+    .media-details_layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: 65% 35%;
+        gap: 0;
+
+        width: min(420px, 70vw);
+        min-height: 760px;
+        padding: 40px 32px;
+    }
+
+    /* Move decorative line below the cover */
+    .media-details_layout::before {
+        top: 65%;
+        bottom: auto;
+        left: 0;
+        right: 0;
+
+        border-left: none;
+        border-top: 6px dotted #d4d3d3;
+    }
+
+    /* Reposition ticket cutouts to match the horizontal decorative line */
+    .media-details_layout::after {
+        top: 65%;
+        left: -14px;
+
+        transform: translateY(-50%);
+    }
+
+    .ticket-cutout {
+        top: 65%;
+        bottom: auto;
+        left: auto;
+        right: -14px;
+
+        transform: translateY(-50%);
+    }
+
+    .media-details_image {
+        padding-right: 0;
+        padding-bottom: 32px;
+    }
+
+    .media-details_image img {
+        width: 300px;
+    }
+
+    .media-details_content {
+        padding: 32px 16px 0;
+    }
+
 }
 
 /* Breakpoint 767px for small mobile screens */
@@ -546,4 +600,17 @@ footer {
     .genre-profile {
         grid-column: auto;
     } 
+
+    /* Detail view - ticket */
+    /* Give the "content section" more space on small screens */
+    .media-details_layout {
+        grid-template-rows: 60% 40%;
+    }
+
+     /* Move the perforation line and cutouts accordingly */
+    .media-details_layout::before,
+    .media-details_layout::after,
+    .ticket-cutout {
+        top: 60%;
+    }
 }
