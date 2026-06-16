@@ -9,21 +9,7 @@
 </head>
 <body>
     
-    <header>
-        <nav aria-label="Global navigation">
-
-            <a href="index.html" class="logo">
-                <img src="assets/logo_white.svg" alt="Digital Media Library Logo">
-            </a>
-
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="books.html">Books</a></li>
-                <li><a href="games.html">Games</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header hx-get="components/header.html" hx-trigger="load" hx-swap="innerHTML"></header>
 
     <main class="home-page">
 
@@ -87,9 +73,11 @@
         
     </main>
 
-    <footer>
-        <p>Digital Media Library</p>
-    </footer>
+    <footer hx-get="components/footer.html" hx-trigger="load" hx-swap="innerHTML"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"
+        integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
