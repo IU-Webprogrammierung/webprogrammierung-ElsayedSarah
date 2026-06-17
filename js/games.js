@@ -1,57 +1,57 @@
 const games = [
     {
-        title: "Game 1",
-        developer: "name",
+        title: "Cult of the Lamb",
+        developer: "Massive Monster",
 
-        cover: "assets/testcover.jpg",
-
-        comment: "Add comment here"
-    },
-    {
-        title: "Game 2",
-        developer: "name",
-
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/cultofthelamb.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Game 3",
-        developer: "name",
+        title: "Omori",
+        developer: "OMOCAT",
 
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/omori.webp",
+
+        comment: "Add comment here"
+    },
+    {
+        title: "Undertale",
+        developer: "Toby Fox",
+
+        cover: "assets/covers/undertale.webp",
         
         comment: "Add comment here"
     },
     {
-        title: "Game 4",
-        developer: "name",
+        title: "Persona 5 Royal",
+        developer: "Atlus",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/persona5.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Game 5",
-        developer: "name",
+        title: "Stardew Valley",
+        developer: "ConcernedApe",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/stardewvalley.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Game 6",
-        developer: "name",
+        title: "Sims 3",
+        developer: "Maxis Studio",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/sims3.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Game 7",
-        developer: "name",
+        title: "The Legend of Zelda: Breath of the Wild",
+        developer: "Nintendo",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/tlozb.webp",
 
         comment: "Add comment here"
     }
