@@ -2,128 +2,128 @@
 
 const books = [
     {
-        title: "Book 1",
+        title: "No Longer Human",
         category: "novel",
-        author: "name",
+        author: "Dazai Osamu",
 
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/nolongerhuman.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Book 2",
+        title: "Howl's Moving Castle",
         category: "novel",
-        author: "name",
+        author: "Diana Wynne Jones",
 
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/howlsmovingcastle.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Book 3",
+        title: "Lapvona",
         category: "novel",
-        author: "name",
+        author: "Ottessa Moshfegh",
 
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/lapvona.webp",
         
         comment: "Add comment here"
     },
     {
-        title: "Book 4",
+        title: "The Salt Grows Heavy",
         category: "novel",
-        author: "name",
+        author: "Cassandra Khaw",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/thesaltgrowsheavy.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Book 5",
+        title: "Heaven Official's Blessing",
         category: "novel",
-        author: "name",
+        author: "Moxiangtongxiu",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/heavenofficalsblessing.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Book 6",
+        title: "Butter",
         category: "novel",
-        author: "name",
+        author: "Asako Yuzuki",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/butter.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Book 7",
+        title: "The Secret History",
         category: "novel",
-        author: "name",
+        author: "Donna Tartt",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/thesecrethistory.webp",
 
         comment: "Add comment here"
     },
        {
-        title: "Book 8",
+        title: "Jibaku Shounen Hanako-kun",
         category: "manga",
-        author: "name",
+        author: "AidaIro",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/tbhk.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Book 9",
+        title: "Bungo Stray Dogs",
         category: "manga",
-        author: "name",
+        author: "Kafka Asagiri",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/bungostraydogs.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Book 10",
+        title: "Bungo Stray Dogs: Beast",
         category: "manga",
-        author: "name",
+        author: "Kafka Asagiri",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/bungostraydogsbeast.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Book 11",
+        title: "Black Butler",
         category: "manga",
-        author: "name",
+        author: "Yana Toboso",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/blackbutler.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Book 12",
+        title: "One Piece",
         category: "manga",
-        author: "name",
+        author: "Eiichirō Oda",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/onepiece.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Book 13",
+        title: "Death Note",
         category: "manga",
-        author: "name",
+        author: "Tsugumi Ōba",
         
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/deathnote.webp",
 
         comment: "Add comment here"
     },
     {
-        title: "Book 14",
+        title: "Ouran Highschool Host Club",
         category: "manga",
-        author: "name",
+        author: "Bisco Hatori",
 
-        cover: "assets/testcover.jpg",
+        cover: "assets/covers/ohshc.webp",
 
         comment: "Add comment here"
     }
