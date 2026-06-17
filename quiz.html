@@ -11,24 +11,30 @@
     
     <header hx-get="components/header.html" hx-trigger="load" hx-swap="innerHTML"></header>
 
-    <main>
+    <main class="quiz-page">
 
-        <h1>Recommendation Quiz</h1>
+        <!-- Quiz Section -->
+        <section class="quiz-section">
 
-        <!-- Quiz Screen -->
-        <section class="quiz-screen">
+            <article class="quiz">
 
-            <h2>Quiz Questions</h2>
-            <!-- Questions appear here -->
+                <div class="quiz-screen">
+                    <!-- For decoration and character sprites -->
 
+                </div>
+
+                <div class="quiz-questions" id="quiz-game">
+                    <!-- Quiz will be generated with JS -->
+                </div>
+
+            </article>
         </section>
         
         <!-- Quiz Results -->
-        <section class="quiz-results">
+        <section class="quiz-results hidden" id="quiz-results">
 
-            <h2>Recommended Media</h2>
-            <!-- Recommended media appears here -->
-              
+            <!-- Recommended media will be generated with JS -->
+    
         </section>
 
     </main>
@@ -36,6 +42,7 @@
     <footer hx-get="components/footer.html" hx-trigger="load" hx-swap="innerHTML"></footer>
 
     <script src="js/quiz.js"></script>
+    <script src="js/data.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"
         integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
         crossorigin="anonymous"></script>
