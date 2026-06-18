@@ -5,6 +5,11 @@ const books = [
         category: "novel",
         author: "Dazai Osamu",
 
+        genre: [
+            "dark",
+            "psychological"
+        ],
+
         cover: "assets/covers/nolongerhuman.webp",
 
         comment: "Add comment here"
@@ -13,6 +18,11 @@ const books = [
         title: "Howl's Moving Castle",
         category: "novel",
         author: "Diana Wynne Jones",
+
+        genre: [
+            "fantasy",
+            "romance"
+        ],
 
         cover: "assets/covers/howlsmovingcastle.webp",
 
@@ -23,6 +33,11 @@ const books = [
         category: "novel",
         author: "Ottessa Moshfegh",
 
+        genre: [
+            "dark",
+            "psychological"
+        ],
+
         cover: "assets/covers/lapvona.webp",
         
         comment: "Add comment here"
@@ -31,6 +46,11 @@ const books = [
         title: "The Salt Grows Heavy",
         category: "novel",
         author: "Cassandra Khaw",
+
+        genre: [
+            "dark",
+            "fantasy"
+        ],
         
         cover: "assets/covers/thesaltgrowsheavy.webp",
 
@@ -40,6 +60,11 @@ const books = [
         title: "Heaven Official's Blessing",
         category: "novel",
         author: "Moxiangtongxiu",
+
+        genre: [
+            "fantasy",
+            "romance"
+        ],
         
         cover: "assets/covers/heavenofficalsblessing.webp",
 
@@ -49,6 +74,11 @@ const books = [
         title: "Butter",
         category: "novel",
         author: "Asako Yuzuki",
+
+        genre: [
+            "psychological",
+            "mystery"
+        ],
         
         cover: "assets/covers/butter.webp",
 
@@ -58,6 +88,12 @@ const books = [
         title: "The Secret History",
         category: "novel",
         author: "Donna Tartt",
+
+        genre: [
+            "dark",
+            "psychological",
+            "mystery"
+        ],
         
         cover: "assets/covers/thesecrethistory.webp",
 
@@ -67,6 +103,12 @@ const books = [
         title: "Jibaku Shounen Hanako-kun",
         category: "manga",
         author: "AidaIro",
+
+        genre: [
+            "supernatural",
+            "mystery",
+            "romance"
+        ],
         
         cover: "assets/covers/tbhk.webp",
 
@@ -76,6 +118,12 @@ const books = [
         title: "Bungo Stray Dogs",
         category: "manga",
         author: "Kafka Asagiri",
+
+        genre: [
+            "supernatural",
+            "mystery",
+            "action"
+        ],
         
         cover: "assets/covers/bungostraydogs.webp",
 
@@ -85,6 +133,12 @@ const books = [
         title: "Bungo Stray Dogs: Beast",
         category: "manga",
         author: "Kafka Asagiri",
+
+        genre: [
+            "supernatural",
+            "psychological",
+            "dark"
+        ],
         
         cover: "assets/covers/bungostraydogsbeast.webp",
 
@@ -94,6 +148,12 @@ const books = [
         title: "Black Butler",
         category: "manga",
         author: "Yana Toboso",
+
+        genre: [
+            "dark",
+            "mystery",
+            "supernatural"
+        ],
         
         cover: "assets/covers/blackbutler.webp",
 
@@ -103,6 +163,12 @@ const books = [
         title: "One Piece",
         category: "manga",
         author: "Eiichirō Oda",
+
+        genre: [
+            "fantasy",
+            "adventure",
+            "action"
+        ],
         
         cover: "assets/covers/onepiece.webp",
 
@@ -112,6 +178,13 @@ const books = [
         title: "Death Note",
         category: "manga",
         author: "Tsugumi Ōba",
+
+        genre: [
+            "dark",
+            "mystery",
+            "psychological",
+            "supernatural"
+        ],
         
         cover: "assets/covers/deathnote.webp",
 
@@ -121,6 +194,11 @@ const books = [
         title: "Ouran Highschool Host Club",
         category: "manga",
         author: "Bisco Hatori",
+
+        genre: [
+            "romance",
+            "slice of life"
+        ],
 
         cover: "assets/covers/ohshc.webp",
 
@@ -134,6 +212,12 @@ const games = [
         title: "Cult of the Lamb",
         developer: "Massive Monster",
 
+        genre: [
+            "rpg",
+            "fantasy",
+            "dark"
+        ],
+
         cover: "assets/covers/cultofthelamb.webp",
 
         comment: "Add comment here"
@@ -141,6 +225,12 @@ const games = [
     {
         title: "Omori",
         developer: "OMOCAT",
+
+        genre: [
+            "rpg",
+            "dark",
+            "story-driven"
+        ],
 
         cover: "assets/covers/omori.webp",
 
@@ -150,6 +240,12 @@ const games = [
         title: "Undertale",
         developer: "Toby Fox",
 
+        genre: [
+            "rpg",
+            "story-driven",
+            "fantasy"
+        ],
+
         cover: "assets/covers/undertale.webp",
         
         comment: "Add comment here"
@@ -157,6 +253,12 @@ const games = [
     {
         title: "Persona 5 Royal",
         developer: "Atlus",
+
+        genre: [
+            "rpg",
+            "mystery",
+            "story-driven"
+        ],
         
         cover: "assets/covers/persona5.webp",
 
@@ -165,6 +267,12 @@ const games = [
     {
         title: "Stardew Valley",
         developer: "ConcernedApe",
+
+        genre: [
+            "simulation",
+            "adventure",
+            "romance"
+        ],
         
         cover: "assets/covers/stardewvalley.webp",
 
@@ -173,6 +281,11 @@ const games = [
     {
         title: "Sims 3",
         developer: "Maxis Studio",
+
+        genre: [
+            "simulation",
+            "romance"
+        ],
         
         cover: "assets/covers/sims3.webp",
 
@@ -181,6 +294,12 @@ const games = [
     {
         title: "The Legend of Zelda: Breath of the Wild",
         developer: "Nintendo",
+
+        genre: [
+            "adventure",
+            "fantasy",
+            "action"
+        ],
         
         cover: "assets/covers/tlozb.webp",
 
