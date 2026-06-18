@@ -1,3 +1,10 @@
+/*
+    Note: Quiz answers are based on genre choices instead of yes/no answers.
+
+    This ensures that every answer contributes to the recommendation and
+    prevents empty results when all questions are answered with "no".
+*/
+
 const quizGame = document.querySelector("#quiz-game");
 
 const answers = {
@@ -9,21 +16,54 @@ const answers = {
 /* Data structure for dynamically generated quiz questions */
 const bookQuestions = [
     {
-        text: "Dark?",
-        genre: "dark"
+        text: "Do you want something dark or romantic?",
+        genreA: "dark",
+        genreB: "romance"
     },
 
     {
-        text: "Supernatural?",
-        genre: "supernatural"
+        text: "Do you prefer psychological themes or fantasy elements?",
+        genreA: "psychological",
+        genreB: "fantasy"
+    },
+
+    {
+        text: "Do you want mystery or supernatural elements?",
+        genreA: "supernatural",
+        genreB: "mystery"
+    },
+
+    {
+        text: "Do you prefer adventure/action or slice of life?",
+        genreA: "action",
+        genreB: "slice of life"
     }
     
 ];
 
 const gameQuestions = [
     {
-        text: "RPG?",
-        genre: "rpg"
+        text: "Do you want an RPG or a simulation game?",
+        genreA: "rpg",
+        genreB: "simulation"
+    },
+
+    {
+        text: "Do you want something dark or romantic/cozy?",
+        genreA: "dark",
+        genreB: "romance"
+    },
+
+    {
+        text: "Do you want mystery or exploration?",
+        genreA: "mystery",
+        genreB: "adventure"
+    },
+
+    {
+        text: "Do you prefer fantasy or action?",
+        genreA: "action",
+        genreB: "fantasy"
     }
 ];
 
@@ -101,18 +141,19 @@ function showBookQuestions() {
     quizGame.innerHTML = `
         <p>${question.text}</p>
 
-        <button id="b-yes">Yes</button>
-        <button id="b-no">No</button>
+        <button id="option-a">${question.genreA}</button>
+        <button id="option-b">${question.genreB}</button>
     `;
 
-    document.querySelector("#b-yes").addEventListener("click", function () {
+    document.querySelector("#option-a").addEventListener("click", function () {
         currentQuestion ++;
-        answers.genres.push(question.genre);
+        answers.genres.push(question.genreA);
         showBookQuestions();
     });
 
-    document.querySelector("#b-no").addEventListener("click", function () {
+    document.querySelector("#option-b").addEventListener("click", function () {
         currentQuestion ++;
+        answers.genres.push(question.genreB);
         showBookQuestions();
     });
         
@@ -134,18 +175,19 @@ function showGameQuestions() {
     quizGame.innerHTML = `
         <p>${question.text}</p>
 
-        <button id="b-yes">Yes</button>
-        <button id="b-no">No</button>
+        <button id="option-a">${question.genreA}</button>
+        <button id="option-b">${question.genreB}</button>
     `;
 
-    document.querySelector("#b-yes").addEventListener("click", function () {
+    document.querySelector("#option-a").addEventListener("click", function () {
         currentQuestion ++;
-        answers.genres.push(question.genre);
+        answers.genres.push(question.genreA);
         showGameQuestions();
     });
 
-    document.querySelector("#b-no").addEventListener("click", function () {
+    document.querySelector("#option-b").addEventListener("click", function () {
         currentQuestion ++;
+        answers.genres.push(question.genreB);
         showGameQuestions();
     });
  
@@ -229,6 +271,7 @@ function showQuizResults () {
         answers.mediaType = "";
         answers.includeManga = null;
         answers.genres = [];
+        currentQuestion = 0;
        
         showStartScreen();
     });
