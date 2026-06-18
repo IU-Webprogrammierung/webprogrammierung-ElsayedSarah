@@ -313,7 +313,7 @@ footer {
 
 }
 
-/* Simulate reflected light on the book cover */
+/* Simulate reflected light on the media cover */
 .cover::before {
     content: "";
     position: absolute;
@@ -354,12 +354,12 @@ footer {
     align-items: center;
 }
 
-/* Hide detail view until a book has been selected */
+/* Hide detail view until a media item has been selected */
 .media-details.hidden {
     display: none;
 }
 
-/* Ticket container for selected book details */
+/* Ticket container for selected media details */
 .media-details_layout {
     position: relative;
 
@@ -444,18 +444,15 @@ footer {
 
 }
 
-#detail-book-title,
-#detail-game-title {
+#detail-media-title {
     margin-bottom: 4px;
 }
 
-#selected-book-author,
-#selected-game-developer {
+#selected-media-author {
     margin-bottom: 24px;
 }
 
-#selected-book-comment,
-#selected-game-comment {
+#selected-media-comment {
     line-height: 1.2;
 }
 

@@ -24,21 +24,21 @@
         <section class="shelf">
 
             <!-- Shelf items -->
-            <div class="shelf-items" id="game-shelf">
+            <div class="shelf-items" id="media-shelf">
                  <!-- Shelf items will be generated with JS -->
             </div>
 
             <!-- Show selected game title and button for detail view -->
             <div class="selected-media">
-                <h2 id="selected-game-title">Select a game</h2>
-                <a href="#game-details">More details</a>
+                <h2 id="selected-media-title">Select a game</h2>
+                <a href="#media-details">More details</a>
             </div>
 
         </section>
 
         <!-- Detail View -->
         <!-- Hidden by default and revealed when a book is selected -->
-        <section class="media-details hidden" id="game-details">
+        <section class="media-details hidden" id="media-details">
 
             <!-- Detail View will be dynamically generated with JS-->
             <article class="media-details_layout">
@@ -47,13 +47,13 @@
                 <span class="ticket-cutout" aria-hidden="true"></span>
 
                 <div class="media-details_image">
-                    <img id="selected-game-image" src="" alt="">
+                    <img id="selected-media-image" src="" alt="">
                 </div>
 
                 <div class="media-details_content">
-                    <h2 id="detail-game-title"></h2>
-                    <p id="selected-game-developer"></p>
-                    <p id="selected-game-comment"></p>
+                    <h2 id="detail-media-title"></h2>
+                    <p id="selected-media-author"></p>
+                    <p id="selected-media-comment"></p>
                 </div>
             </article>
 
@@ -63,7 +63,14 @@
 
     <footer hx-get="components/footer.html" hx-trigger="load" hx-swap="innerHTML"></footer>
 
-    <script src="js/games.js"></script>
+    <script src="js/data.js"></script>
+    
+    <script src="js/mediaShelf.js"></script>
+    <script>
+        /* Initialize shelf with all game entries */
+        initializeShelf(games);
+        </script>
+
     <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"
         integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
         crossorigin="anonymous"></script>
