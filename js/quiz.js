@@ -2,8 +2,33 @@ const quizGame = document.querySelector("#quiz-game");
 
 const answers = {
     mediaType: "",
-    includeManga: null
+    includeManga: null,
+    genres: []
 };
+
+/* Data structure for dynamically generated quiz questions */
+const bookQuestions = [
+    {
+        text: "Dark?",
+        genre: "dark"
+    },
+
+    {
+        text: "Supernatural?",
+        genre: "supernatural"
+    }
+    
+];
+
+const gameQuestions = [
+    {
+        text: "RPG?",
+        genre: "rpg"
+    }
+];
+
+/* Variable to keep count of current Question position */
+let currentQuestion = 0;
 
 /* Starting screen for the quiz */
 function showStartScreen () {
@@ -32,6 +57,7 @@ function showMediaTypeQuestions () {
 
     document.querySelector("#game-button").addEventListener("click", function () {
         answers.mediaType = "game";
+        currentQuestion = 0;
         showGameQuestions();
     });
 
@@ -47,31 +73,99 @@ function showMangaInclusionQuestion() {
 
     document.querySelector("#manga-yes").addEventListener("click", function () {
         answers.includeManga = true;
+        currentQuestion = 0;
         showBookQuestions();
     });
 
     document.querySelector("#manga-no").addEventListener("click", function () {
         answers.includeManga = false;
+        currentQuestion = 0;
         showBookQuestions();
     });
 
 }
 
-/* Questions to further specify the recommendation */
+/* Questions to further specify the book recommendation */
 function showBookQuestions() {
-    /* Question 1 */
 
-    showQuizResults();
+    /* Check if all Questions have been asked after each loop */
+    if (currentQuestion >= bookQuestions.length) {
+        showQuizResults();
+        return;
+    }
+
+    /* Keep track of current Question */
+    const question = bookQuestions[currentQuestion];
+
+    /* Show Question */
+    quizGame.innerHTML = `
+        <p>${question.text}</p>
+
+        <button id="b-yes">Yes</button>
+        <button id="b-no">No</button>
+    `;
+
+    document.querySelector("#b-yes").addEventListener("click", function () {
+        currentQuestion ++;
+        answers.genres.push(question.genre);
+        showBookQuestions();
+    });
+
+    document.querySelector("#b-no").addEventListener("click", function () {
+        currentQuestion ++;
+        showBookQuestions();
+    });
+        
 }
 
+/* Questions to further specify the game recommendation */
 function showGameQuestions() {
-    /* Question 1 */
 
-    showQuizResults();
+    /* Check if all Questions have been asked after each loop */
+    if (currentQuestion >= gameQuestions.length) {
+        showQuizResults();
+        return;
+    }
+
+    /* Keep track of current Question */
+    const question = gameQuestions[currentQuestion];
+
+    /* Show Question */
+    quizGame.innerHTML = `
+        <p>${question.text}</p>
+
+        <button id="b-yes">Yes</button>
+        <button id="b-no">No</button>
+    `;
+
+    document.querySelector("#b-yes").addEventListener("click", function () {
+        currentQuestion ++;
+        answers.genres.push(question.genre);
+        showGameQuestions();
+    });
+
+    document.querySelector("#b-no").addEventListener("click", function () {
+        currentQuestion ++;
+        showGameQuestions();
+    });
+ 
 }
 
-/* Filter quiz answers to determine a recommendation */
+/* 
+    Build a list of possible recommendations based on previous quiz answers.
+
+    1. Select the correct data structure (books or games) depending on the chosen media type. 
+    If books are selected and manga should be excluded,
+    the recommendation pool is filtered so only novels remain.
+
+    2. Each remaining media entry is then compared against the genres collected throughout the quiz (answers.genres). 
+    Every matching genre increases the recommendation's score by one point.
+
+    3. All recommendations are sorted by score in descending order and
+    the two highest-ranked results are returned.
+ */
 function getRecommendation () {
+    
     let recommendationList = [];
 
     if (answers.mediaType === "game") {
@@ -88,21 +182,45 @@ function getRecommendation () {
         }
     }
 
-    /* Recommendation logic still needs to be added.
-    For now, a random book or game is selected. */
+    const scoredRecommendations = recommendationList.map(function (media) {
+        let score = 0;
 
-    const randomIndex = Math.floor(Math.random() * recommendationList.length);
-    return recommendationList[randomIndex];
-    
+        answers.genres.forEach(function(answerGenre) {
+
+            if (media.genre.includes(answerGenre)) {
+                score++;
+            }
+        });
+
+        return {
+            media: media,
+            score: score
+        };
+    });
+
+    scoredRecommendations.sort(function (a, b) {
+        return b.score - a.score;
+    });
+
+    return scoredRecommendations.slice(0, 2);
 }
 
-/* Display quiz result and allow restart */
+/* Display quiz recommendation and allow restart */
 function showQuizResults () {
-    const recommendation = getRecommendation();
+    const recommendations = getRecommendation();
 
+    /* Render recommendations dynamically */
     quizGame.innerHTML = `
         <h2>Your Recommendation</h2>
-        <h3>${recommendation.title}</h3> 
+
+        ${recommendations.map(function (recommendation) {
+            return `
+                <div>
+                    <h3>${recommendation.media.title}</h3>
+                </div>
+            `;
+
+        }).join("")}
 
         <button id="quiz-restart">Restart</button>
     `;
@@ -110,6 +228,7 @@ function showQuizResults () {
     document.querySelector("#quiz-restart").addEventListener("click", function (){
         answers.mediaType = "";
         answers.includeManga = null;
+        answers.genres = [];
        
         showStartScreen();
     });
