@@ -262,6 +262,15 @@ function getRecommendation () {
 function showQuizResults () {
     const recommendations = getRecommendation();
 
+    /*Determine which media page should be linked from the recommendation depending on the selected media type.*/
+    let targetPage; 
+
+    if (answers.mediaType === "book") {
+        targetPage = "books.html";
+    } else {
+        targetPage = "games.html";
+    }
+
     document.querySelector(".quiz-section").classList.add("hidden");
     quizResults.classList.remove("hidden");
 
@@ -276,6 +285,7 @@ function showQuizResults () {
                         <div>
                             <h3>${recommendation.media.title}</h3>
                             <p>${recommendation.media.author || recommendation.media.developer}</p>
+                            <a href="${targetPage}?media=${recommendation.media.id}">View Details</a> 
                         </div>
                     </article>
                 `;

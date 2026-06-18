@@ -32,6 +32,8 @@ const mediaDetails = document.querySelector("#media-details");
 function createShelfItem(media) {
     const shelfItem = document.createElement("article");
     shelfItem.classList.add("shelf-item");
+    /* Store media ID for automatic selection via URL parameters */
+    shelfItem.dataset.id = media.id; 
 
     /* Generate HTML structure dynamically */
     shelfItem.innerHTML = `
@@ -84,6 +86,31 @@ function renderShelf(mediaList) {
     });
 
     activeShelfItem();
+
+    /*
+    If a media ID is present in the URL, find the matching shelf item and
+    trigger its click event automatically.
+
+    This is used when navigating from a quiz recommendation to a media page.
+    */
+
+    const params = new URLSearchParams(window.location.search);
+    const selectedMediaId = params.get("media");
+
+    if (!selectedMediaId) {
+        return;
+    }
+
+    const selectedShelfItem = document.querySelector(`[data-id="${selectedMediaId}"]`);
+
+    if (selectedShelfItem) {
+        selectedShelfItem.click();
+        selectedShelfItem.scrollIntoView({
+            behavior: "smooth",
+            inline: "center",
+            block: "nearest"
+        });
+    }
 }
 
 /* Filter buttons (only for book-items) */

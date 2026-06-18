@@ -1,6 +1,8 @@
 /* Data structure for shelf items (books) */
 const books = [
-    {
+    {   
+        id:"nolongerhuman",
+
         title: "No Longer Human",
         category: "novel",
         author: "Dazai Osamu",
@@ -15,6 +17,8 @@ const books = [
         comment: "Add comment here"
     },
     {
+        id:"howlsmovingcastle",
+        
         title: "Howl's Moving Castle",
         category: "novel",
         author: "Diana Wynne Jones",
@@ -29,6 +33,8 @@ const books = [
         comment: "Add comment here"
     },
     {
+        id:"lapvona",
+        
         title: "Lapvona",
         category: "novel",
         author: "Ottessa Moshfegh",
@@ -43,6 +49,8 @@ const books = [
         comment: "Add comment here"
     },
     {
+        id:"thesaltgrowsheavy",
+        
         title: "The Salt Grows Heavy",
         category: "novel",
         author: "Cassandra Khaw",
@@ -57,6 +65,8 @@ const books = [
         comment: "Add comment here"
     },
     {
+        id:"heavenofficialsblessing",
+        
         title: "Heaven Official's Blessing",
         category: "novel",
         author: "Moxiangtongxiu",
@@ -71,6 +81,8 @@ const books = [
         comment: "Add comment here"
     },
     {
+        id:"butter",
+        
         title: "Butter",
         category: "novel",
         author: "Asako Yuzuki",
@@ -85,6 +97,8 @@ const books = [
         comment: "Add comment here"
     },
     {
+        id:"thesecrethistory",
+        
         title: "The Secret History",
         category: "novel",
         author: "Donna Tartt",
@@ -100,6 +114,8 @@ const books = [
         comment: "Add comment here"
     },
        {
+        id:"jibakushounenhanakokun",
+        
         title: "Jibaku Shounen Hanako-kun",
         category: "manga",
         author: "AidaIro",
@@ -115,6 +131,8 @@ const books = [
         comment: "Add comment here"
     },
     {
+        id:"bungostraydogs",
+        
         title: "Bungo Stray Dogs",
         category: "manga",
         author: "Kafka Asagiri",
@@ -130,6 +148,8 @@ const books = [
         comment: "Add comment here"
     },
     {
+        id:"bungostraydogsbeast",
+        
         title: "Bungo Stray Dogs: Beast",
         category: "manga",
         author: "Kafka Asagiri",
@@ -145,6 +165,8 @@ const books = [
         comment: "Add comment here"
     },
     {
+        id:"blackbutler",
+        
         title: "Black Butler",
         category: "manga",
         author: "Yana Toboso",
@@ -160,6 +182,8 @@ const books = [
         comment: "Add comment here"
     },
     {
+        id:"onepiece",
+        
         title: "One Piece",
         category: "manga",
         author: "Eiichirō Oda",
@@ -175,6 +199,8 @@ const books = [
         comment: "Add comment here"
     },
     {
+        id:"deathnote",
+        
         title: "Death Note",
         category: "manga",
         author: "Tsugumi Ōba",
@@ -191,6 +217,8 @@ const books = [
         comment: "Add comment here"
     },
     {
+        id:"ohshc",
+        
         title: "Ouran Highschool Host Club",
         category: "manga",
         author: "Bisco Hatori",
@@ -209,6 +237,8 @@ const books = [
 
 const games = [
     {
+        id:"cultofthelamb",
+        
         title: "Cult of the Lamb",
         developer: "Massive Monster",
 
@@ -223,6 +253,8 @@ const games = [
         comment: "Add comment here"
     },
     {
+        id:"omori",
+        
         title: "Omori",
         developer: "OMOCAT",
 
@@ -237,6 +269,8 @@ const games = [
         comment: "Add comment here"
     },
     {
+        id:"undertale",
+        
         title: "Undertale",
         developer: "Toby Fox",
 
@@ -251,6 +285,8 @@ const games = [
         comment: "Add comment here"
     },
     {
+        id:"persona5r",
+        
         title: "Persona 5 Royal",
         developer: "Atlus",
 
@@ -265,6 +301,8 @@ const games = [
         comment: "Add comment here"
     },
     {
+        id:"stardewvalley",
+        
         title: "Stardew Valley",
         developer: "ConcernedApe",
 
@@ -279,6 +317,8 @@ const games = [
         comment: "Add comment here"
     },
     {
+        id:"sims3",
+        
         title: "Sims 3",
         developer: "Maxis Studio",
 
@@ -292,6 +332,8 @@ const games = [
         comment: "Add comment here"
     },
     {
+        id:"tlozbotw",
+        
         title: "The Legend of Zelda: Breath of the Wild",
         developer: "Nintendo",
 
