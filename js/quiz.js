@@ -6,6 +6,7 @@
 */
 
 const quizGame = document.querySelector("#quiz-game");
+const quizResults = document.querySelector("#quiz-results");
 
 const answers = {
     mediaType: "",
@@ -261,23 +262,35 @@ function getRecommendation () {
 function showQuizResults () {
     const recommendations = getRecommendation();
 
+    document.querySelector(".quiz-section").classList.add("hidden");
+    quizResults.classList.remove("hidden");
+
     /* Render recommendations dynamically */
-    quizGame.innerHTML = `
+    quizResults.innerHTML = `
         <h2>Your Recommendation</h2>
 
-        ${recommendations.map(function (recommendation) {
-            return `
-                <div>
-                    <h3>${recommendation.media.title}</h3>
-                </div>
-            `;
+        <div class="quiz-results_list">
+            ${recommendations.map(function (recommendation) {
+                return `
+                    <article class ="quiz-result-card">
+                        <div>
+                            <h3>${recommendation.media.title}</h3>
+                            <p>${recommendation.media.author || recommendation.media.developer}</p>
+                        </div>
+                    </article>
+                `;
 
-        }).join("")}
+            }).join("")}
+        </div>
 
         <button id="quiz-restart">Restart</button>
     `;
 
     document.querySelector("#quiz-restart").addEventListener("click", function (){
+
+        quizResults.classList.add("hidden");
+        document.querySelector(".quiz-section").classList.remove("hidden");
+
         answers.mediaType = "";
         answers.includeManga = null;
         answers.genres = [];
