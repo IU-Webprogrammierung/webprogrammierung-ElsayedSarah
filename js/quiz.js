@@ -86,8 +86,11 @@ function showStartScreen () {
 function showMediaTypeQuestions () {
     quizGame.innerHTML = `
         <p> Do You Want A Book or Game Recommendation </p>
-        <button id="book-button">Books</button>
-        <button id="game-button">Games</button>
+
+        <div>
+            <button id="book-button">Books</button>
+            <button id="game-button">Games</button>
+        </div>
     `;
 
     document.querySelector("#book-button").addEventListener("click", function () {
@@ -107,8 +110,11 @@ function showMediaTypeQuestions () {
 function showMangaInclusionQuestion() {
     quizGame.innerHTML = `
         <p> Do You Want To Include Manga(s) In Your Book Recommendation? </p>
-        <button id="manga-yes">Yes</button>
-        <button id="manga-no">No</button>
+
+        <div>
+            <button id="manga-yes">Yes</button>
+            <button id="manga-no">No</button>
+        </div>
     `;
 
     document.querySelector("#manga-yes").addEventListener("click", function () {
@@ -141,8 +147,10 @@ function showBookQuestions() {
     quizGame.innerHTML = `
         <p>${question.text}</p>
 
-        <button id="option-a">${question.genreA}</button>
-        <button id="option-b">${question.genreB}</button>
+        <div>
+            <button id="option-a">${question.genreA}</button>
+            <button id="option-b">${question.genreB}</button>
+        </div>
     `;
 
     document.querySelector("#option-a").addEventListener("click", function () {
@@ -175,8 +183,10 @@ function showGameQuestions() {
     quizGame.innerHTML = `
         <p>${question.text}</p>
 
-        <button id="option-a">${question.genreA}</button>
-        <button id="option-b">${question.genreB}</button>
+        <div>
+            <button id="option-a">${question.genreA}</button>
+            <button id="option-b">${question.genreB}</button>
+        </div>
     `;
 
     document.querySelector("#option-a").addEventListener("click", function () {
