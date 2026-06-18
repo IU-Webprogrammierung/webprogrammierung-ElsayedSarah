@@ -74,13 +74,23 @@
 
     <script src="js/mediaShelf.js"></script>
     <script>
-        /* Default view: display novels only */
-        const novels = books.filter(function (book) {
-            return book.category === "novel";
-        });
 
-        /* Initialize shelf and category filters */
-        initializeShelf(novels);
+        /*Check whether the page was opened from a quiz recommendation and render all books */
+        const params = new URLSearchParams(window.location.search);
+        const selectedMediaId = params.get("media");
+
+        if (selectedMediaId) {
+            initializeShelf(books);
+        } else {
+            /* Default view: display novels only */
+            const novels = books.filter(function (book) {
+                return book.category === "novel";
+            });
+        
+            /* Initialize shelf and category filters */
+            initializeShelf(novels);
+        }
+
         initializeBookFilters();
     </script>
 
