@@ -22,6 +22,7 @@ const selectedMediaAuthor = document.querySelector("#selected-media-author");
 const selectedMediaComment = document.querySelector("#selected-media-comment");
 
 /* Select filter buttons (only for book-page) */
+const allButton = document.querySelector("#all-books");
 const novelButton = document.querySelector("#filter-novel");
 const mangaButton = document.querySelector("#filter-manga");
 
@@ -115,9 +116,13 @@ function renderShelf(mediaList) {
 
 /* Filter buttons (only for book-items) */
 function initializeBookFilters() {
-    if(!novelButton || !mangaButton) {
+    if(!novelButton || !mangaButton || !allButton) {
         return;
     }
+
+    allButton.addEventListener("click", function () {
+        renderShelf(books);
+    });
 
     novelButton.addEventListener("click", function () {
         const novels = books.filter(function (book) {
