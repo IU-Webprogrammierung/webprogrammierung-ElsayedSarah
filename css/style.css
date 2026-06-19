@@ -234,6 +234,19 @@ footer {
     background: linear-gradient(to left, #221F30, transparent);
 }
 
+/* Remove overlay on mobile for better visibility*/
+@media (max-width: 767px) {
+    .shelf::before,
+    .shelf::after {
+        display: none;
+    }
+
+     .shelf-items {
+        gap: 32px;
+        padding-inline: 48px;
+    }
+}
+
 /* Filter buttons */
 .filter {
     display: flex;
@@ -252,11 +265,12 @@ footer {
 
 .shelf-items {
     display: flex;
-    gap: 24px;
+    gap: 50px;
+    padding-inline: 100px;
+    box-sizing: border-box;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    max-width: 2128px;
     height: 500px;
     margin: 0;
     
