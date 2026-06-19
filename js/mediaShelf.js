@@ -45,6 +45,11 @@ function createShelfItem(media) {
     /* Store media ID for automatic selection via URL parameters */
     shelfItem.dataset.id = media.id; 
 
+    /* Improve accessibility with keyboard focus and aria-label */
+    shelfItem.tabIndex = 0;
+    shelfItem.setAttribute("role", "button");
+    shelfItem.setAttribute("aria-label", `Select ${media.title}`);
+
     /* Generate HTML structure dynamically */
     shelfItem.innerHTML = `
         <div class="spine" style="background-color: ${media.spine};"></div>
@@ -66,6 +71,14 @@ function createShelfItem(media) {
         selectedMediaComment.textContent = media.comment;
         selectedMediaImage.src = media.cover;
         selectedMediaImage.alt = media.title + " cover";
+    });
+
+    /* Allow shelf items to be selected using the keyboard  */
+    shelfItem.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            shelfItem.click();
+        }
     });
 
     return shelfItem;
