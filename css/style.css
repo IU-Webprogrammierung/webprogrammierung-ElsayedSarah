@@ -86,7 +86,7 @@ footer {
 }
 
 .library-card_top img {
-    width: 150px
+    width: 120px
 
 }
 
@@ -184,7 +184,7 @@ footer {
 /* Hero section wiht page title and description*/
 
 .page-title {
-    min-height: 90vh;
+    min-height: 100vh;
 
     display: flex;
     flex-direction: column;
@@ -192,11 +192,13 @@ footer {
     align-items: center;
     text-align: center;
 
+    padding: 80px 16px;
+
 }
 
 /* Shelf Interface */
 .shelf {
-    min-height: 90vh;
+    min-height: 100vh;
 
     display: flex;
     flex-direction: column;
@@ -251,7 +253,7 @@ footer {
 .filter {
     display: flex;
     gap: 18px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
 }
 
 .filter button {
@@ -389,7 +391,7 @@ footer {
 
 /* Display for the currently selected item */
 .selected-media {
-    margin-top: 0;
+    margin-top: 24px;
     text-align: center;
     font-weight: bold;
     color: white;
@@ -402,7 +404,7 @@ footer {
 /* Detail View */
 
 .media-details {
-    min-height: 90vh;
+    min-height: 100vh;
 
     padding: 48px 16px;
     display: flex;
@@ -652,7 +654,7 @@ footer {
     }
 
     .library-card_top img {
-        width: 120px;
+        width: 100px;
     }
 
     .library-card_main {
@@ -753,6 +755,10 @@ footer {
 
      .library-card_top img {
         width: 80px;
+    }
+
+    .library-card_top h2 {
+        font-size: 20px;
     }
 
      .library-card_content {
