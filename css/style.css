@@ -281,9 +281,18 @@ footer {
     scroll-snap-type: x mandatory;
 }
 
-/* Hide scrollbar */
+/* Customize the appearance of the horizontal scrollbar */
 .shelf-items::-webkit-scrollbar {
-    display: none;
+    height: 8px;
+}
+
+.shelf-items::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.shelf-items::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
 }
 
 /* Individual shelf item */
@@ -765,5 +774,11 @@ footer {
     .media-details_layout::after,
     .ticket-cutout {
         top: 60%;
+    }
+
+    /* Shelf */
+    /* Hide scrollbar */
+    .shelf-items::-webkit-scrollbar {
+        display: none;
     }
 }
