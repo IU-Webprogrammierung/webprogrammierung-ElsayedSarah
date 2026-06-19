@@ -22,11 +22,21 @@ const selectedMediaAuthor = document.querySelector("#selected-media-author");
 const selectedMediaComment = document.querySelector("#selected-media-comment");
 
 /* Select filter buttons (only for book-page) */
+const allButton = document.querySelector("#all-books");
 const novelButton = document.querySelector("#filter-novel");
 const mangaButton = document.querySelector("#filter-manga");
 
 /* Detail view section (hidden until a media is selected) */
 const mediaDetails = document.querySelector("#media-details");
+
+/*Center the selected shelf item inside the shelf */
+function centerShelfItem(shelfItem) {
+    shelfItem.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest"
+    });
+}
 
 /* Create media article elements */
 function createShelfItem(media) {
@@ -37,9 +47,7 @@ function createShelfItem(media) {
 
     /* Generate HTML structure dynamically */
     shelfItem.innerHTML = `
-        <div class="spine">
-            <p>${media.title}</p>
-        </div>
+        <div class="spine" style="background-color: ${media.spine};"></div>
 
         <div class="cover">
             <img src="${media.cover}" alt="${media.title} cover">
@@ -50,6 +58,7 @@ function createShelfItem(media) {
     shelfItem.addEventListener("click", function () {
         /* Reveal detail view when a media is selected */
         mediaDetails.classList.remove("hidden");
+        centerShelfItem(shelfItem);
 
         selectedMediaTitle.textContent = media.title;
         detailMediaTitle.textContent = media.title;
@@ -105,19 +114,19 @@ function renderShelf(mediaList) {
 
     if (selectedShelfItem) {
         selectedShelfItem.click();
-        selectedShelfItem.scrollIntoView({
-            behavior: "smooth",
-            inline: "center",
-            block: "nearest"
-        });
+        centerShelfItem(selectedShelfItem);
     }
 }
 
 /* Filter buttons (only for book-items) */
 function initializeBookFilters() {
-    if(!novelButton || !mangaButton) {
+    if(!novelButton || !mangaButton || !allButton) {
         return;
     }
+
+    allButton.addEventListener("click", function () {
+        renderShelf(books);
+    });
 
     novelButton.addEventListener("click", function () {
         const novels = books.filter(function (book) {

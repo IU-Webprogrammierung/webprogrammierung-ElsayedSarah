@@ -208,7 +208,43 @@ footer {
     background-color: #221F30;
 
     overflow: hidden;
+    position: relative;
 
+}
+
+/* Slightly darken the shelf edges to indicate more scrollable content */
+.shelf::before,
+.shelf::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.shelf::before {
+    left:0;
+    background: linear-gradient(to right, #221F30, transparent);
+}
+
+.shelf::after {
+    right:0;
+    background: linear-gradient(to left, #221F30, transparent);
+}
+
+/* Remove overlay on mobile for better visibility*/
+@media (max-width: 767px) {
+    .shelf::before,
+    .shelf::after {
+        display: none;
+    }
+
+     .shelf-items {
+        gap: 32px;
+        padding-inline: 48px;
+    }
 }
 
 /* Filter buttons */
@@ -229,16 +265,34 @@ footer {
 
 .shelf-items {
     display: flex;
-    gap: 24px;
+    gap: 50px;
+    padding-inline: 100px;
+    box-sizing: border-box;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    max-width: 2128px;
     height: 500px;
     margin: 0;
     
     overflow-x: auto;
     overflow-y: visible;
+
+    /* Make shelf items snap into position when scrolling horizontally */
+    scroll-snap-type: x mandatory;
+}
+
+/* Customize the appearance of the horizontal scrollbar */
+.shelf-items::-webkit-scrollbar {
+    height: 8px;
+}
+
+.shelf-items::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.shelf-items::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
 }
 
 /* Individual shelf item */
@@ -259,6 +313,8 @@ footer {
     /* Hover Animation*/
     transition: transform 0.4s ease;
     box-shadow: -20px 32px 32px rgba(0, 0, 0, 0.35);
+
+    scroll-snap-align: center;
 
 }
 
@@ -718,5 +774,11 @@ footer {
     .media-details_layout::after,
     .ticket-cutout {
         top: 60%;
+    }
+
+    /* Shelf */
+    /* Hide scrollbar */
+    .shelf-items::-webkit-scrollbar {
+        display: none;
     }
 }

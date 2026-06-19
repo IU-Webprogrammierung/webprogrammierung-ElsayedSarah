@@ -26,6 +26,7 @@
 
             <!-- Filter Buttons -->
             <div class="filter">
+                <button id="all-books">All</button>
                 <button id="filter-novel">Novel</button>
                 <button id="filter-manga">Manga</button>
             </div>
@@ -74,23 +75,7 @@
 
     <script src="js/mediaShelf.js"></script>
     <script>
-
-        /*Check whether the page was opened from a quiz recommendation and render all books */
-        const params = new URLSearchParams(window.location.search);
-        const selectedMediaId = params.get("media");
-
-        if (selectedMediaId) {
-            initializeShelf(books);
-        } else {
-            /* Default view: display novels only */
-            const novels = books.filter(function (book) {
-                return book.category === "novel";
-            });
-        
-            /* Initialize shelf and category filters */
-            initializeShelf(novels);
-        }
-
+        initializeShelf(books);
         initializeBookFilters();
     </script>
 

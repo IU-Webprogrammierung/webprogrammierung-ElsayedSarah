@@ -13,6 +13,7 @@ const books = [
         ],
 
         cover: "assets/covers/nolongerhuman.webp",
+        spine: "#DC477B",
 
         comment: "Add comment here"
     },
@@ -29,6 +30,7 @@ const books = [
         ],
 
         cover: "assets/covers/howlsmovingcastle.webp",
+        spine: "#72ACAE",
 
         comment: "Add comment here"
     },
@@ -45,6 +47,7 @@ const books = [
         ],
 
         cover: "assets/covers/lapvona.webp",
+        spine: "#141213",
         
         comment: "Add comment here"
     },
@@ -61,6 +64,7 @@ const books = [
         ],
         
         cover: "assets/covers/thesaltgrowsheavy.webp",
+        spine: "#BC1714",
 
         comment: "Add comment here"
     },
@@ -77,6 +81,7 @@ const books = [
         ],
         
         cover: "assets/covers/heavenofficalsblessing.webp",
+        spine: "#2B4844",
 
         comment: "Add comment here"
     },
@@ -93,6 +98,7 @@ const books = [
         ],
         
         cover: "assets/covers/butter.webp",
+        spine: "#FFCA0A",
 
         comment: "Add comment here"
     },
@@ -110,6 +116,7 @@ const books = [
         ],
         
         cover: "assets/covers/thesecrethistory.webp",
+        spine: "#F3F2ED",
 
         comment: "Add comment here"
     },
@@ -127,6 +134,7 @@ const books = [
         ],
         
         cover: "assets/covers/tbhk.webp",
+        spine: "#F8984E",
 
         comment: "Add comment here"
     },
@@ -144,6 +152,7 @@ const books = [
         ],
         
         cover: "assets/covers/bungostraydogs.webp",
+        spine: "#4D4C5C",
 
         comment: "Add comment here"
     },
@@ -161,6 +170,7 @@ const books = [
         ],
         
         cover: "assets/covers/bungostraydogsbeast.webp",
+        spine: "#4086C4",
 
         comment: "Add comment here"
     },
@@ -178,6 +188,7 @@ const books = [
         ],
         
         cover: "assets/covers/blackbutler.webp",
+        spine: "#0000",
 
         comment: "Add comment here"
     },
@@ -195,6 +206,7 @@ const books = [
         ],
         
         cover: "assets/covers/onepiece.webp",
+        spine: "#293991",
 
         comment: "Add comment here"
     },
@@ -213,6 +225,7 @@ const books = [
         ],
         
         cover: "assets/covers/deathnote.webp",
+        spine: "#0000",
 
         comment: "Add comment here"
     },
@@ -229,6 +242,7 @@ const books = [
         ],
 
         cover: "assets/covers/ohshc.webp",
+        spine: "#FBDED6",
 
         comment: "Add comment here"
     }
@@ -249,6 +263,7 @@ const games = [
         ],
 
         cover: "assets/covers/cultofthelamb.webp",
+        spine: "#3B3058",
 
         comment: "Add comment here"
     },
@@ -265,6 +280,7 @@ const games = [
         ],
 
         cover: "assets/covers/omori.webp",
+        spine: "#FFFF",
 
         comment: "Add comment here"
     },
@@ -281,6 +297,7 @@ const games = [
         ],
 
         cover: "assets/covers/undertale.webp",
+        spine: "#0000",
         
         comment: "Add comment here"
     },
@@ -297,6 +314,7 @@ const games = [
         ],
         
         cover: "assets/covers/persona5.webp",
+        spine: "#0A0002",
 
         comment: "Add comment here"
     },
@@ -313,6 +331,7 @@ const games = [
         ],
         
         cover: "assets/covers/stardewvalley.webp",
+        spine: "#034283",
 
         comment: "Add comment here"
     },
@@ -328,6 +347,7 @@ const games = [
         ],
         
         cover: "assets/covers/sims3.webp",
+        spine: "#FFFF",
 
         comment: "Add comment here"
     },
@@ -344,6 +364,7 @@ const games = [
         ],
         
         cover: "assets/covers/tlozb.webp",
+        spine: "#415E7E",
 
         comment: "Add comment here"
     }
