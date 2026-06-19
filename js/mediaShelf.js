@@ -38,9 +38,7 @@ function createShelfItem(media) {
 
     /* Generate HTML structure dynamically */
     shelfItem.innerHTML = `
-        <div class="spine">
-            <p>${media.title}</p>
-        </div>
+        <div class="spine" style="background-color: ${media.spine};"></div>
 
         <div class="cover">
             <img src="${media.cover}" alt="${media.title} cover">
