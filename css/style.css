@@ -208,7 +208,30 @@ footer {
     background-color: #221F30;
 
     overflow: hidden;
+    position: relative;
 
+}
+
+/* Slightly darken the shelf edges to indicate more scrollable content */
+.shelf::before,
+.shelf::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.shelf::before {
+    left:0;
+    background: linear-gradient(to right, #221F30, transparent);
+}
+
+.shelf::after {
+    right:0;
+    background: linear-gradient(to left, #221F30, transparent);
 }
 
 /* Filter buttons */
@@ -239,6 +262,14 @@ footer {
     
     overflow-x: auto;
     overflow-y: visible;
+
+    /* Make shelf items snap into position when scrolling horizontally */
+    scroll-snap-type: x mandatory;
+}
+
+/* Hide scrollbar */
+.shelf-items::-webkit-scrollbar {
+    display: none;
 }
 
 /* Individual shelf item */
@@ -259,6 +290,8 @@ footer {
     /* Hover Animation*/
     transition: transform 0.4s ease;
     box-shadow: -20px 32px 32px rgba(0, 0, 0, 0.35);
+
+    scroll-snap-align: center;
 
 }
 
