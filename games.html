@@ -63,17 +63,18 @@
 
     <footer hx-get="components/footer.html" hx-trigger="load" hx-swap="innerHTML"></footer>
 
-    <script src="js/data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"
+        integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
+        crossorigin="anonymous"></script>
+
+    <script src="js/script.js"></script>
     
+    <script src="js/data.js"></script>
     <script src="js/mediaShelf.js"></script>
     <script>
         /* Initialize shelf with all game entries */
         initializeShelf(games);
         </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"
-        integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
-        crossorigin="anonymous"></script>
 
 </body>
 </html>
