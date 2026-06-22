@@ -1,9 +1,8 @@
-/* Page Layout */
+/* Base Layout ============================ */
 
 header {
     position: sticky;
     top: 0;
-
     z-index: 1000;
 }
 
@@ -11,7 +10,12 @@ body {
     margin: 0;
 }
 
-/* Global Navigation */
+/* Utility class for hiding elements */
+.hidden {
+    display: none;
+}
+
+/* Global Navigation ============================ */
 
 nav {
     position: relative;
@@ -45,7 +49,7 @@ nav ul li a {
     padding: 16px;
 }
 
-/* Mobile navigation menu */
+/* ---- Mobile navigation menu ---- */
 .mobile-menu.hidden {
     display: none;
 }
@@ -59,37 +63,8 @@ nav ul li a {
     display: none;
 }
 
-@media (min-width: 768px) {
-    .mobile-menu {
-        display: none;
-    }
-}
+/* Footer ============================ */
 
-@media (max-width: 767px) {
-
-    .desktop-nav {
-        display: none;
-    }
-
-    .logo img {
-        width: 200px;
-    }
-
-    .menu-button {
-        display: block;
-    }
-
-    .mobile-menu {
-        position: absolute;
-        top: 100%;
-        right: 0;
-
-        width: 200px;
-        background-color: rgba(0, 0, 0, 0.625);
-    }
-}
-
-/* Footer */
 footer {
     text-align: center;
     padding: 16px;
@@ -98,13 +73,14 @@ footer {
     color: white;
 }
 
-/* Home Page */
+/* Home Page ============================ */
+
 .home-page {
     padding: 80px 16px;
     background-color: #3C3190;
 }
 
-/* Home Page: Library Card */
+/* ---- Library Card ---- */
 
 .library-card {
     max-width: 900px;
@@ -128,18 +104,15 @@ footer {
     padding: 8px 14px;
 
     border-bottom: 3px solid #f4c8df;
-
 }
 
 .library-card_top img {
-    width: 120px
-
+    width: 120px;
 }
 
 .library-card_bottom {
     display: flex;
     padding: 16px 14px;
-
 }
 
 .barcode {
@@ -150,7 +123,7 @@ footer {
     background: repeating-linear-gradient(90deg, #a80a5c 0px 2px, transparent 2px 4px, #a80a5c 4px 6px, transparent 6px 8px, #a80a5c 8px 12px, transparent 12px 14px);
 }
 
-.library-card_main{
+.library-card_main {
     display: flex;
     gap: 64px;
     padding: 24px;
@@ -205,7 +178,7 @@ footer {
     transform: translateY(-2px);
 }
 
-/* Home Page: Description */
+/* ---- Home Page: Description ---- */
 
 .home-description {
     margin: 32px auto;
@@ -215,20 +188,21 @@ footer {
     text-align: center;
 }
 
-/* Books Page */
+/* Media Page ============================ */
+
+/* ---- Books Page ---- */
 .books-page {
     background-color: #d4d3d3;
     overflow-x: hidden;
 }
 
-/* Games Page */
+/* ---- Games Page ---- */
 .games-page {
     background-color: #d4d3d3;
     overflow-x: hidden;
 }
 
-/* Hero section wiht page title and description*/
-
+/* Hero section with page title and description (books & games) */
 .page-title {
     min-height: 90vh;
 
@@ -242,7 +216,7 @@ footer {
 
 }
 
-/* Shelf Interface */
+/* Shelf ============================ */
 .shelf {
     min-height: 100vh;
 
@@ -282,19 +256,6 @@ footer {
     background: linear-gradient(to left, #221F30, transparent);
 }
 
-/* Remove overlay on mobile for better visibility*/
-@media (max-width: 767px) {
-    .shelf::before,
-    .shelf::after {
-        display: none;
-    }
-
-     .shelf-items {
-        gap: 32px;
-        padding-inline: 48px;
-    }
-}
-
 /* Filter buttons */
 .filter {
     display: flex;
@@ -310,7 +271,6 @@ footer {
 }
 
 /* Container for dynamically generated shelf items */
-
 .shelf-items {
     display: flex;
     gap: 50px;
@@ -344,7 +304,6 @@ footer {
 }
 
 /* Individual shelf item */
-
 .shelf-item {
     position: relative;
     flex: 0 0 auto;
@@ -363,7 +322,6 @@ footer {
     box-shadow: -20px 32px 32px rgba(0, 0, 0, 0.35);
 
     scroll-snap-align: center;
-
 }
 
 .shelf-item:hover {
@@ -396,7 +354,6 @@ footer {
     /* Add depth to the book spine */
     box-shadow: 3px 0 8px rgba(0, 0, 0, 0.25);
     border: 1px solid rgba(0, 0, 0, 0.445);
-
 }
 
 .spine img {
@@ -414,7 +371,6 @@ footer {
     width: 100%;
     height: 100%;
     overflow: hidden; 
-
 }
 
 /* Simulate reflected light on the media cover */
@@ -432,7 +388,6 @@ footer {
     object-fit: cover;
     object-position: center;
     display: block;
-
 }
 
 /* Display for the currently selected item */
@@ -447,7 +402,7 @@ footer {
     color: white;
 }
 
-/* Detail View */
+/* Media Details Ticket ============================ */
 
 .media-details {
     min-height: 100vh;
@@ -476,9 +431,8 @@ footer {
     margin: 0 auto;
     padding: 48px 64px;
 
-    background-color: #ed3b81;
+    background-color: #e6adc4;
     border: 3px solid black;
-    
 }
 
 /* Vertical decorative line separating cover and content */
@@ -527,7 +481,6 @@ footer {
     align-items: center;
     /* Center cover visually within the ticket section */
     padding-right: 20%;
-
 }
 
 .media-details_image img {
@@ -560,23 +513,8 @@ footer {
     line-height: 1.2;
 }
 
-/* Increase cover area and reduce ticket size on smaller desktop screens */
-@media (max-width: 1440px) {
-    .media-details_layout {
-        grid-template-columns: 40% 60%;
-        min-height: 450px;
-        gap: 32px;
-        padding: 55px;
-    }
 
-    .media-details_layout::before,
-    .media-details_layout::after,
-    .ticket-cutout {
-        left: 40%;
-    }
-}
-
-/* Quiz Page */
+/* Quiz Page ============================ */
 .quiz-page {
     min-height: 100vh;
     background-color: #b9b9b9;
@@ -591,18 +529,17 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .quiz {
     width: 100%;
     height: 90vh;
-    display: grid;
-    grid-template-rows: 1fr auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     /* Background will be later replaced by an image*/
-    background-color: #09edfb;
-
+    background-color: #e6adc4;
 }
 
 .quiz-screen {
@@ -616,7 +553,7 @@ footer {
     min-height: 180px;
     padding: 32px;
     margin: 0 auto 32px;
-    width: 85%;
+    width: min(900px, 90vw);
 
     display: flex;
     flex-direction: column;
@@ -650,7 +587,7 @@ footer {
     background-color: white;
 }
 
-/* Quiz Result Screen*/
+/* ---- Quiz Result Screen ---- */
 .quiz-results.hidden,
 .quiz-section.hidden {
     display: none;
@@ -679,15 +616,45 @@ footer {
     gap: 32px;
     padding: 24px 32px;
 
-    background-color: #a80a5c;
+    background-color: #e6adc4;
     border: 4px solid white;
 }
 
+/* ============================
+    Responsive Styles
+============================ */
 
-/* Breakpoint 1023px for mobile & tablet layout */
+/* Responsive: Desktop ============================ */
+@media (min-width: 768px) {
+
+    /* ---- Navigation ---- */
+    .mobile-menu {
+        display: none;
+    }
+}
+
+/* ---- Media Details Ticket ----  */
+/* Increase cover area and reduce ticket size on smaller desktop screens */
+@media (max-width: 1440px) {
+
+    .media-details_layout {
+        grid-template-columns: 40% 60%;
+        min-height: 450px;
+        gap: 32px;
+        padding: 55px;
+    }
+
+    .media-details_layout::before,
+    .media-details_layout::after,
+    .ticket-cutout {
+        left: 40%;
+    }
+}
+
+/* Responsive: Tablet ============================ */
 @media (max-width: 1023px) {
 
-    /* Home page - library card */
+    /* ---- Home page: library card ---- */
     /* Convert the horizontal library card into a vertical, stacked layout */
     .library-card {
         max-width: 420px;
@@ -738,7 +705,7 @@ footer {
         max-width: 320px;
     }
 
-    /* Detail view - ticket */
+    /* ---- Media Details Ticket ----  */
     /* Convert ticket into a vertical layout */
     .media-details_layout {
         grid-template-columns: 1fr;
@@ -793,10 +760,32 @@ footer {
 
 }
 
-/* Breakpoint 767px for small mobile screens */
+/* Responsive: Mobile ============================ */
 @media (max-width: 767px) {
 
-    /* Home page - library card */
+    /* ---- Navigation ---- */
+    .desktop-nav {
+        display: none;
+    }
+
+    .logo img {
+        width: 200px;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .mobile-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+
+        width: 200px;
+        background-color: rgba(0, 0, 0, 0.625);
+    }
+
+    /* ---- Home page: library card ---- */
     /* Reduce image size and stack profile information into a single column */
 
      .library-card_top img {
@@ -815,7 +804,7 @@ footer {
         grid-column: auto;
     } 
 
-    /* Detail view - ticket */
+    /* ---- Media Details Ticket ---- */
     /* Give the "content section" more space on small screens */
     .media-details_layout {
         grid-template-rows: 60% 40%;
@@ -828,9 +817,39 @@ footer {
         top: 60%;
     }
 
-    /* Shelf */
+    /* ---- Shelf ---- */
     /* Hide scrollbar */
     .shelf-items::-webkit-scrollbar {
         display: none;
+    }
+
+    /* Remove overlay on mobile for better visibility*/
+    .shelf::before,
+    .shelf::after {
+        display: none;
+    }
+
+     .shelf-items {
+        gap: 32px;
+        padding-inline: 48px;
+    }
+
+    /* ----Quiz Page ---- */
+    .quiz-questions {
+        width: 80%;
+        text-align: center;
+    }
+
+    .quiz-questions div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .quiz button {
+        width: 100%;
+        max-width: 280px;
+        margin: 0;
     }
 }
