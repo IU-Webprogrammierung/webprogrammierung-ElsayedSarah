@@ -431,7 +431,7 @@ footer {
     margin: 0 auto;
     padding: 48px 64px;
 
-    background-color: #ed3b81;
+    background-color: #e6adc4;
     border: 3px solid black;
 }
 
@@ -539,7 +539,7 @@ footer {
     align-items: center;
 
     /* Background will be later replaced by an image*/
-    background-color: #09edfb;
+    background-color: #e6adc4;
 }
 
 .quiz-screen {
@@ -616,7 +616,7 @@ footer {
     gap: 32px;
     padding: 24px 32px;
 
-    background-color: #a80a5c;
+    background-color: #e6adc4;
     border: 4px solid white;
 }
 
