@@ -80,6 +80,9 @@ nav ul li a {
 
 .menu-button {
     display: none;
+    color: white;
+    background: none;
+    border: none;
 }
 
 /* Footer ============================ */
@@ -445,7 +448,7 @@ footer {
     grid-template-columns: 30% 70%;
     gap: 64px;
     
-    width: min(2100px, 90vw);
+    width: min(1400px, 90vw);
     min-height: 650px;
     margin: 0 auto;
     padding: 48px 64px;
@@ -779,6 +782,7 @@ footer {
 
     .media-details_content {
         padding: 32px 16px 0;
+        font-size: 14px;
     }
 
 }
@@ -841,6 +845,15 @@ footer {
     }
 
     /* ---- Shelf ---- */
+    .shelf {
+        min-height: 100svh;
+        padding: 32px 16px;
+    }
+
+    .page-title {
+        min-height: 80svh;
+    }
+
     /* Hide scrollbar */
     .shelf-items::-webkit-scrollbar {
         display: none;
@@ -853,11 +866,19 @@ footer {
     }
 
      .shelf-items {
-        gap: 32px;
+        gap: 38px;
         padding-inline: 48px;
     }
 
     /* ----Quiz Page ---- */
+    .quiz-section {
+        min-height: 100svh;
+    }
+
+    .quiz {
+        height: 85svh;
+    }
+
     .quiz-questions {
         width: 80%;
         text-align: center;
