@@ -161,8 +161,17 @@ footer {
 /* Home Page ============================ */
 
 .home-page {
+    min-height: 100vh;
     padding: 80px 16px;
+    box-sizing: border-box;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-top: 40px;
+    padding-bottom: 80px;
+    
     /* Background image for the home page */
     /* Decorative background only; contains no essential information */
     /* TODO: Replace temporary home-background asset */
@@ -834,7 +843,6 @@ footer {
     /* Convert the horizontal library card into a vertical, stacked layout */
     .library-card {
         max-width: 420px;
-        margin: 40px auto 0;
         padding: 14px;
     }
 
