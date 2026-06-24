@@ -96,7 +96,7 @@ header nav {
 /* Footer ============================ */
 
 footer {
-    padding: 48px;
+    padding: 32px 48px;
 
     background-color: #333;
     color: white;
@@ -162,14 +162,22 @@ footer {
 
 .home-page {
     padding: 80px 16px;
-    background-color: #3C3190;
+
+    /* Background image for the home page */
+    /* Decorative background only; contains no essential information */
+    /* TODO: Replace temporary home-background asset */
+    background-image: url("../assets/testhome.png");
+    background-size: cover;
+    background-position: center;
 }
 
 /* ---- Library Card ---- */
 
 .library-card {
+    position: relative;
+
     max-width: 900px;
-    margin: 60px auto;
+    margin: 12px auto 0;
     padding: 16px;
 
     border: 10px solid #f4c8df;
@@ -177,10 +185,30 @@ footer {
 
     background-image: linear-gradient(45deg, #fedfef, #f9fafd);
     box-shadow: 0 16px 12px rgba(16, 1, 39, 0.61);
+
+    z-index: 3;
+}
+
+/* Add subtle hover feedback to interactive card elements */
+.library-card,
+.home-description,
+.library-card_image img,
+.tag,
+.tag-b,
+.tag-c,
+.tag-c
+.sticker {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .library-card:hover {
-    transform: translateY(-1px);
+    transform: translateY(-4px);
+    box-shadow: 0 22px 20px rgba(16, 1, 39, 0.65);
+}
+
+.library-card h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 
 .library-card_top {
@@ -200,12 +228,28 @@ footer {
     padding: 16px 14px;
 }
 
+/* Decorative barcode pattern */
 .barcode {
     width: 400px;
     height: 50px;
 
     /* barcode pattern */
     background: repeating-linear-gradient(90deg, #a80a5c 0px 2px, transparent 2px 4px, #a80a5c 4px 6px, transparent 6px 8px, #a80a5c 8px 12px, transparent 12px 14px);
+}
+
+/* Decorative sticker overlapping the library card */
+.sticker {
+    position: absolute;
+
+    bottom: -50px;
+    right: 80px;
+    width: 120px;
+
+    filter:
+    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))
+    drop-shadow(4px 4px 0 #010149);
+
+    z-index: 10;
 }
 
 .library-card_main {
@@ -216,11 +260,17 @@ footer {
 
 .library-card_image img {
     width: 300px;
+    height: auto;
     display: block;
 }
 
-.library-card_image img:hover {
-    transform: translateY(-2px);
+.chibi {
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.35));
+}
+
+.library-card_image img:hover,
+.sticker:hover {
+    transform: translateY(-4px) rotate(-2deg);
 }
 
 .library-card_content {
@@ -234,6 +284,8 @@ footer {
 .genre-profile {
     /* Goes across both columns */
     grid-column: 1 / 3;
+
+    border-top: 3px solid #f4c8df;
 }
 
 .genre-profile_list {
@@ -246,7 +298,10 @@ footer {
     padding: 0;
 }
 
-.tag {
+.tag,
+.tag-b,
+.tag-c,
+.tag-d {
     min-width: 100px;
     padding: 8px 16px;
 
@@ -254,23 +309,59 @@ footer {
     border-radius: 8px; 
     border: 2px solid #000000;
     color: black;
-    background-color:#09edfb;
+
+    text-transform: uppercase;
 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 4px 4px 0 #07165d;
 }
 
-.tag:hover {
+/* Alternative tag color variations */
+.tag {
+    background-color:#09edfb;
+}
+
+.tag-b {
+    background-color:#f4c8df;
+}
+
+.tag-c {
+    background-color:#ffde59;    
+}
+
+.tag-d {
+    background-color: #ed3b81;
+}
+
+.tag:hover,
+.tag-b:hover,
+.tag-c:hover,
+.tag-d:hover {
     transform: translateY(-2px);
 }
+
 
 /* ---- Home Page: Description ---- */
 
 .home-description {
-    margin: 32px auto;
-    padding: 28px;
+    position: relative;
+
+    width: min(700px, 80vw);
+    margin: -30px auto 0;
+    padding: 48px 32px 24px;
 
     color: white;
     text-align: center;
+
+    background-color: #a80a5c;
+    border-radius: 24px;
+    box-shadow: 0 16px 12px rgba(16, 1, 39, 0.61);
+
+    z-index: 1;
+}
+
+.home-description:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 18px rgba(16, 1, 39, 0.55);
 }
 
 /* Media Page ============================ */
@@ -743,8 +834,19 @@ footer {
     /* Convert the horizontal library card into a vertical, stacked layout */
     .library-card {
         max-width: 420px;
-        margin: 40px auto;
+        margin: 40px auto 0;
         padding: 14px;
+    }
+
+    .sticker {
+        right: 20px;
+    }
+
+    .home-description {
+        width: 100%;
+        max-width: 360px;
+        box-sizing: border-box;
+        padding: 40px 20px 20px;
     }
 
     .library-card_top {
@@ -752,11 +854,11 @@ footer {
     }
 
     .library-card_top img {
-        width: 100px;
+        width: 90px;
     }
 
     .library-card_top h1 {
-        font-size: 2rem;
+        font-size: 26px;
     }
 
     .library-card_main {
@@ -783,6 +885,10 @@ footer {
 
     .genre-profile_list {
         justify-content: center;
+    }
+
+    .tag {
+    min-width: 60px;
     }
 
     .library-card_bottom {
@@ -899,7 +1005,7 @@ footer {
     }
 
     .library-card_top h1 {
-        font-size: 20px;
+        font-size: 22px;
     }
 
      .library-card_content {

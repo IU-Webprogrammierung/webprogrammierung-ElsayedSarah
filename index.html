@@ -26,28 +26,36 @@
             <div class="library-card_main">
 
                 <div class="library-card_image">
-                    <img src="assets/library-profile.png" alt="Chibi-style illustration representing Sarah Elsayed">
+                    <!-- Width and height added to improve Lighthouse score and prevent layout shifts -->
+                    <img 
+                        src="assets/library-profile.png" 
+                        class="chibi" 
+                        alt="Chibi-style illustration representing Sarah Elsayed" 
+                        width="300" 
+                        height="300"
+                    >
                 </div>
 
                 <div class="library-card_content">
 
                     <div>
-                        <p>Name</p>
+                        <h2>Name</h2>
                         <p>Sarah Elsayed</p>
                     </div>
 
                     <div>
-                        <p>Issued</p>
+                        <h2>Issued</h2>
                         <p>11/05/2026</p>
                     </div>
                     
                     <div class="genre-profile">
-                        <p>Genre Profile</p>
+                        <h2>Genre Profile</h2>
                         <ul class="genre-profile_list">
                             <li class="tag">Fiction</li>
-                            <li class="tag">Horror</li>
+                            <li class="tag-d">Horror</li>
                             <li class="tag">RPG</li>
-                            <li class="tag">Romance</li>
+                            <li class="tag-c">Romance</li>
+                            <li class="tag-b">Dark</li>
                         </ul>
                     </div>
 
@@ -60,16 +68,21 @@
                 <div class="barcode" aria-hidden="true"></div>
             </div>
 
+            <!-- Decorative sticker element -->
+            <!-- TODO: Replace temporary sticker asset -->
+            <img src="assets/stickertest.png" class="sticker" alt="" aria-hidden="true">
+
         </section>
 
         <!-- Description of the website -->
         <section class="home-description">
-            <p> Welcome to my Digital Media Library! </p>
-            <p>
-                This website showcases a curated collection of my favorite books and video games. 
-                Each entry includes personal ratings and comments, 
-                while the integrated quiz helps visitors discover media that match their interests.
+
+            <p> 
+                Welcome to my Digital Media Library! 
+                Explore a curated collection of favorite books and games, 
+                with personal notes and recommendations. 
             </p>
+            
         </section>
         
     </main>
