@@ -158,6 +158,73 @@ footer {
     padding: 0;
 }
 
+/* Custom 404 Page ============================ */
+
+/* Reuse and adapt the existing library card layout
+   instead of creating a separate card component */
+.error-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px;
+
+    background-image: url("../assets/Chibi_Background.webp");
+    background-size: cover;
+    background-position: center;
+}
+
+.error-card {
+    width: min(1200px, 90vw);
+}
+
+/* Override the default library card layout to center the 404 error message */
+.error-card .library-card_main {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.error-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 26px;
+    gap: 26px;
+
+}
+
+.error-card_bottom {
+    margin-top: 16px;
+}
+
+.error-card h1 {
+    font-size: 3rem;
+}
+
+.error-page a {
+    display: inline-block;
+
+    padding: 12px 24px;
+
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    text-transform: uppercase;
+
+    background-color: #ed3b81;
+    border: 2px solid black;
+    border-radius: 8px;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 4px 4px 0 #07165d;
+}
+
+.error-page a:hover {
+    transform: translateY(-2px);
+}
+
 /* Home Page ============================ */
 
 .home-page {
@@ -169,8 +236,8 @@ footer {
     flex-direction: column;
     justify-content: center;
 
-    padding-top: 40px;
-    padding-bottom: 80px;
+    padding-top: 30px;
+    padding-bottom: 90px;
     
     /* Background image for the home page */
     /* Decorative background only; contains no essential information */
