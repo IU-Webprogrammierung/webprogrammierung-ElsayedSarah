@@ -42,24 +42,30 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    background-color: #000000;
     padding: 14px 24px;
+}
+
+header nav {
+     background-color: #000000;
 }
 
 .logo img {
     width: 300px;
 }
 
-nav ul {
-    display: flex;
-
+.desktop-nav,
+.mobile-menu {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-nav ul li a {
+.desktop-nav {
+    display: flex;
+}
+
+.desktop-nav a,
+.mobile-menu a {
     display: block;
 
     color: white;
@@ -83,16 +89,73 @@ nav ul li a {
     color: white;
     background: none;
     border: none;
+
+    cursor: pointer;
 }
 
 /* Footer ============================ */
 
 footer {
-    text-align: center;
-    padding: 16px;
+    padding: 48px;
 
     background-color: #333;
     color: white;
+}
+
+/* Upper footer area: navigation and logo */
+.footer-top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+    align-items: center;
+
+    padding-bottom: 32px;
+    margin-bottom: 24px;
+
+    border-bottom: 3px solid white;
+}
+
+.footer-main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.footer-main-nav a,
+.footer-secondary-nav a {
+    color: white;
+    text-decoration: none;
+    text-transform: none;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: right;
+}
+
+.footer-logo img {
+    width: 500px;
+    max-width: 100%;
+}
+
+/* Lower footer area: legal links and copyright */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-secondary-nav ul {
+    display: flex;
+    gap: 24px;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Home Page ============================ */
@@ -810,6 +873,22 @@ footer {
 
         width: 200px;
         background-color: rgba(0, 0, 0, 0.625);
+    }
+
+    /* ---- Footer ---- */
+    .footer-top,
+    .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-logo img {
+        width: 300px;
+    }
+    
+    .footer-main-nav ul {
+        align-items: center;
     }
 
     /* ---- Home page: library card ---- */
