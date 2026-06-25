@@ -1,5 +1,9 @@
 /* Base Layout ============================ */
 
+html {
+    scroll-behavior: smooth;
+}
+
 header {
     position: sticky;
     top: 0;
@@ -98,7 +102,7 @@ header nav {
 footer {
     padding: 32px 48px;
 
-    background-color: #333;
+    background-image: linear-gradient(45deg, #181416, #3a3950);
     color: white;
 }
 
@@ -515,7 +519,30 @@ footer {
     margin-bottom: 24px;
 }
 
-.filter button {
+/* Mobile Filter-Toggle-Button: Hidden on desktop; displayed in the mobile media query */
+.filter-toggle {
+    display: none;
+    padding: 0;
+
+    color: black;
+    font-size: 1.3rem;
+    background: #e6adc4;
+    border: none;
+    border-radius: 0 24px 24px 0;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 8px rgba(0,0,0,.25);
+    transition: background .2s ease, transform .2s ease;
+}
+
+.filter-options {
+    display: flex;
+    gap: 18px;
+}
+
+.filter-options button {
+    width: 100px;
     padding: 10px 20px;
     color: white;
     background-color: #000000;
@@ -769,10 +796,13 @@ footer {
 /* Quiz Page ============================ */
 .quiz-page {
     min-height: 100vh;
-    background-color: #b9b9b9;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-image: url("../assets/Chibi_Background.webp");
+    background-size: cover;
+    background-position: center;
 }
 
 .quiz-section {
@@ -790,8 +820,7 @@ footer {
     justify-content: center;
     align-items: center;
 
-    /* Background will be later replaced by an image*/
-    background-color: #e6adc4;
+    /* TODO: Add a decorative background that changes depending on the current quiz question */
 }
 
 .quiz-screen {
@@ -1106,8 +1135,11 @@ footer {
 
     /* ---- Shelf ---- */
     .shelf {
+        position: relative;
         min-height: 100svh;
-        padding: 32px 16px;
+        padding: 20px 0;
+        gap: 8px;
+        justify-content: center;
     }
 
     .page-title {
@@ -1125,9 +1157,83 @@ footer {
         display: none;
     }
 
-     .shelf-items {
-        gap: 38px;
-        padding-inline: 48px;
+    /* Reduce the 3D effect on mobile to improve readability
+   and make touch interaction feel more natural */
+    .shelf-item {
+        transform: scale(0.9);
+    }
+
+    .shelf-item.active {
+        transform: scale(0.9);
+    }
+
+    .filter {
+        /* Keep the filter menu accessible while scrolling within the shelf section */
+        position: sticky;
+        top: clamp(16px, 2.5svh, 24px);
+        width: 100%;
+
+        z-index: 20;
+
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    /* Display the filter toggle button on mobile */
+    .filter-toggle {
+        display: block;
+
+        position: absolute;
+        left: 0;
+    }
+
+    /* Hide filter options by default and expand them when the toggle button is activated */
+    .filter-options {
+        margin-left: 20px;
+        justify-content: center;
+        gap: 10px;
+        padding: 8px;
+        overflow: hidden;
+
+        max-width: 0;
+        opacity: 0;
+
+        transition: max-width 0.3s ease, opacity 0.2s ease;
+    }
+
+    .filter-options.open {
+        max-width: 320px;
+        opacity: 1;
+    }
+
+    /* Use more compact filter buttons on smaller screens */
+    .filter button {
+        width: 70px;
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    /* Center a single media item while keeping adjacent items partially visible */
+    .shelf-items {
+        height: 460px;
+        /* Center a single 280px-wide shelf item within the viewport */
+        padding-inline: calc((100vw - 280px) / 2);
+        gap: 90px;
+        align-items: center;
+    }
+
+    .selected-media {
+        margin-top: 0;
+    }
+
+    .selected-media h2 {
+        font-size: 1.2rem;
+    }
+
+    .selected-media a {
+        font-size: 0.9rem;
     }
 
     /* ----Quiz Page ---- */

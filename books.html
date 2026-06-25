@@ -25,11 +25,18 @@
          <!-- Shelf Interface -->
         <section class="shelf">
 
-            <!-- Filter Buttons -->
-            <div class="filter" role="group" aria-label="Book category filters">
-                <button id="all-books">All</button>
-                <button id="filter-novel">Novel</button>
-                <button id="filter-manga">Manga</button>
+            <div class="filter">
+
+                <!-- Filter Toggle Button for Mobile View -->
+                <button class="filter-toggle" id="filter-toggle" aria-label="Toggle book category filter">☰ Filter</button>
+
+                <!-- Filter Buttons for Book category -->
+                <div class="filter-options" id="filter-options" role="group" aria-label="Book category filters">
+                    <button id="all-books">All</button>
+                    <button id="filter-novel">Novel</button>
+                    <button id="filter-manga">Manga</button>
+                </div>
+
             </div>
 
             <!-- Shelf items -->
