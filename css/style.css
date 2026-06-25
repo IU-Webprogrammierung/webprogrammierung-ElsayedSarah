@@ -1,5 +1,9 @@
 /* Base Layout ============================ */
 
+html {
+    scroll-behavior: smooth;
+}
+
 header {
     position: sticky;
     top: 0;
@@ -98,7 +102,7 @@ header nav {
 footer {
     padding: 32px 48px;
 
-    background-color: #333;
+    background-image: linear-gradient(45deg, #181416, #3a3950);
     color: white;
 }
 
@@ -769,10 +773,13 @@ footer {
 /* Quiz Page ============================ */
 .quiz-page {
     min-height: 100vh;
-    background-color: #b9b9b9;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-image: url("../assets/Chibi_Background.webp");
+    background-size: cover;
+    background-position: center;
 }
 
 .quiz-section {
@@ -790,8 +797,7 @@ footer {
     justify-content: center;
     align-items: center;
 
-    /* Background will be later replaced by an image*/
-    background-color: #e6adc4;
+    /* TODO: Add a decorative background that changes depending on the current quiz question */
 }
 
 .quiz-screen {
@@ -1107,7 +1113,9 @@ footer {
     /* ---- Shelf ---- */
     .shelf {
         min-height: 100svh;
-        padding: 32px 16px;
+        padding: 20px 0;
+        gap: 8px;
+        justify-content: center;
     }
 
     .page-title {
@@ -1125,9 +1133,44 @@ footer {
         display: none;
     }
 
-     .shelf-items {
-        gap: 38px;
-        padding-inline: 48px;
+    /* Reduce the 3D effect on mobile to improve readability
+   and make touch interaction feel more natural */
+    .shelf-item {
+        transform: scale(0.9);
+    }
+
+    .shelf-item.active {
+        transform: scale(0.9);
+    }
+
+    .filter {
+        margin-bottom: 0;
+    }
+
+    .filter button {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    /* Center a single media item while keeping adjacent items partially visible */
+    .shelf-items {
+        height: 460px;
+        /* Center a single 280px-wide shelf item within the viewport */
+        padding-inline: calc((100vw - 280px) / 2);
+        gap: 90px;
+        align-items: center;
+    }
+
+    .selected-media {
+        margin-top: 0;
+    }
+
+    .selected-media h2 {
+        font-size: 1.2rem;
+    }
+
+    .selected-media a {
+        font-size: 0.9rem;
     }
 
     /* ----Quiz Page ---- */
