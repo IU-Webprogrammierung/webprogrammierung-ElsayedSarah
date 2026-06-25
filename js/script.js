@@ -17,6 +17,18 @@ document.addEventListener("click", function (event) {
     mobileMenu.classList.toggle("hidden");
 });
 
+/* Highlight the current page in the global navigation */
+document.body.addEventListener("htmx:afterSwap", function () {
+    const currentPage = window.location.pathname.split("/").pop();
+
+    document.querySelectorAll(".desktop-nav a, .mobile-menu a").forEach(link => {
+        link.classList.toggle(
+            "active",
+            link.getAttribute("href") === currentPage
+        );
+    });
+});
+
 /* Books Page ============================ */
 
 /* Toggle the collapsible filter menu on mobile */

@@ -138,6 +138,7 @@ function initializeBookFilters() {
     }
 
     allButton.addEventListener("click", function () {
+        setActiveFilter(allButton);
         renderShelf(books);
     });
 
@@ -146,6 +147,7 @@ function initializeBookFilters() {
             return book.category === "novel";
         });
 
+        setActiveFilter(novelButton);
         renderShelf(novels);
     });
 
@@ -154,6 +156,19 @@ function initializeBookFilters() {
             return book.category === "manga";
         });
 
+        setActiveFilter(mangaButton);
         renderShelf(mangas);
     });
+
+     /* "All" is selected when the page loads */
+    setActiveFilter(allButton);
+}
+
+/* Highlight the currently selected book category filter */
+function setActiveFilter(activeButton) {
+    [allButton, novelButton, mangaButton].forEach(function (button) {
+        button.classList.remove("active");
+    });
+
+    activeButton.classList.add("active");
 }

@@ -97,6 +97,13 @@ header nav {
     cursor: pointer;
 }
 
+/* Highlight the current page in the global navigation */
+.desktop-nav a.active,
+.mobile-menu a.active {
+    background: #ed3b81;
+    border-radius: 8px;
+}
+
 /* Footer ============================ */
 
 footer {
@@ -544,9 +551,16 @@ footer {
 .filter-options button {
     width: 100px;
     padding: 10px 20px;
+    font-weight: bold;
     color: white;
     background-color: #000000;
     border: 2px solid white;
+}
+
+/* Highlight the current active filter */
+.filter-options button.active {
+    background-color: #09edfb;
+    color: black;
 }
 
 /* Container for dynamically generated shelf items */
