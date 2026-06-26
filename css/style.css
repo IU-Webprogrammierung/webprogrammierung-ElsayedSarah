@@ -793,20 +793,38 @@ footer {
 .media-details_content {
     display: flex;
     flex-direction: column;
-    padding: 48px;
+    padding: 32px;
 
+    font-size: 1.125rem;
 }
 
 #detail-media-title {
-    margin-bottom: 4px;
+    margin-bottom: 1px;
 }
 
 #selected-media-author {
-    margin-bottom: 24px;
+    margin-bottom: 18px;
 }
 
 #selected-media-comment {
+    /* Long comments can scroll without breaking the ticket layout */
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 12px;
+    padding-bottom: 20px;
+
     line-height: 1.2;
+    white-space: pre-line;
+}
+
+/* Style scrollbar for long comments */
+#selected-media-comment::-webkit-scrollbar {
+    width: 4px;
+}
+
+#selected-media-comment::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.35);
+    border-radius: 999px;
 }
 
 
@@ -1025,17 +1043,18 @@ footer {
     /* Convert ticket into a vertical layout */
     .media-details_layout {
         grid-template-columns: 1fr;
-        grid-template-rows: 65% 35%;
+        grid-template-rows: 80% 20%;
         gap: 0;
 
-        width: min(420px, 70vw);
-        min-height: 760px;
-        padding: 40px 32px;
+        width: min(620px, 75vw);
+        height: clamp(620px, 80svh, 780px);
+        min-height: auto;
+        padding: 22px 32px;
     }
 
     /* Move decorative line below the cover */
     .media-details_layout::before {
-        top: 65%;
+        top: 80%;
         bottom: auto;
         left: 0;
         right: 0;
@@ -1046,14 +1065,14 @@ footer {
 
     /* Reposition ticket cutouts to match the horizontal decorative line */
     .media-details_layout::after {
-        top: 65%;
+        top: 80%;
         left: -14px;
 
         transform: translateY(-50%);
     }
 
     .ticket-cutout {
-        top: 65%;
+        top: 80%;
         bottom: auto;
         left: auto;
         right: -14px;
@@ -1061,18 +1080,19 @@ footer {
         transform: translateY(-50%);
     }
 
+    /* Cover was already visible in the shelf, so the ticket focuses on text */
     .media-details_image {
-        padding-right: 0;
-        padding-bottom: 32px;
-    }
-
-    .media-details_image img {
-        width: 300px;
+       display: none;
     }
 
     .media-details_content {
-        padding: 32px 16px 0;
-        font-size: 14px;
+        padding: 12px 12px 0;
+
+        font-size: 1rem;
+    }
+
+    #selected-media-comment {
+        max-height: 80%;
     }
 
 }
@@ -1138,16 +1158,33 @@ footer {
     } 
 
     /* ---- Media Details Ticket ---- */
-    /* Give the "content section" more space on small screens */
+    /* Make the ticket nearly full-width and show the lower area as a small preview */
     .media-details_layout {
-        grid-template-rows: 60% 40%;
+        grid-template-rows: 85% 15%;
+
+        max-width: 100%;
+        height: clamp(560px, calc(100svh - 32px), 700px);
+    }
+
+    .media-details {
+         padding: 32px 12px;
     }
 
      /* Move the perforation line and cutouts accordingly */
     .media-details_layout::before,
     .media-details_layout::after,
     .ticket-cutout {
-        top: 60%;
+        top: 85%;
+    }
+
+    .media-details_content {
+        overflow: hidden;
+
+        font-size: 0.9375rem;
+    }
+
+    #selected-media-comment {
+        padding-right: 8px;
     }
 
     /* ---- Shelf ---- */

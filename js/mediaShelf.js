@@ -39,11 +39,25 @@ function centerShelfItem(shelfItem) {
     });
 }
 
-/* Scroll to detail view after selecting a media item */
+/* Scroll to detail view after selecting a media item (desktop/tablet only) */
 function scrollToMediaDetails() {
-    mediaDetails.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
+    if (window.innerWidth > 767) {
+        mediaDetails.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+}
+
+/* Allow the "More Details" link to scroll to a more centered position on mobile */
+if (moreDetailsLink) {
+    moreDetailsLink.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        mediaDetails.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
     });
 }
 
