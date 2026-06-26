@@ -28,6 +28,7 @@ const mangaButton = document.querySelector("#filter-manga");
 
 /* Detail view section (hidden until a media is selected) */
 const mediaDetails = document.querySelector("#media-details");
+const moreDetailsLink = document.querySelector("#more-details-link");
 
 /*Center the selected shelf item inside the shelf */
 function centerShelfItem(shelfItem) {
@@ -35,6 +36,14 @@ function centerShelfItem(shelfItem) {
         behavior: "smooth",
         inline: "center",
         block: "nearest"
+    });
+}
+
+/* Scroll to detail view after selecting a media item */
+function scrollToMediaDetails() {
+    mediaDetails.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
     });
 }
 
@@ -63,6 +72,7 @@ function createShelfItem(media) {
     shelfItem.addEventListener("click", function () {
         /* Reveal detail view when a media is selected */
         mediaDetails.classList.remove("hidden");
+        moreDetailsLink.classList.remove("hidden");
         centerShelfItem(shelfItem);
 
         selectedMediaTitle.textContent = media.title;
@@ -71,6 +81,8 @@ function createShelfItem(media) {
         selectedMediaComment.textContent = media.comment;
         selectedMediaImage.src = media.cover;
         selectedMediaImage.alt = media.title + " cover";
+
+        scrollToMediaDetails();
     });
 
     /* Allow shelf items to be selected using the keyboard  */

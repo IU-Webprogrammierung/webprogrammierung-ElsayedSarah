@@ -704,6 +704,9 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* Offset the snap scroll position for the sticky header */
+    scroll-margin-top: 80px;
 }
 
 /* Hide detail view until a media item has been selected */
