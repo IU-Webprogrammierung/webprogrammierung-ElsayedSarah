@@ -100,7 +100,7 @@ header nav {
 /* Highlight the current page in the global navigation */
 .desktop-nav a.active,
 .mobile-menu a.active {
-    background: #ed3b81;
+    background: #a80a5c;
     border-radius: 8px;
 }
 
@@ -503,7 +503,7 @@ footer {
     content: "";
     position: absolute;
     top: 0;
-    width: 80px;
+    width: 85px;
     height: 100%;
     z-index: 5;
     pointer-events: none;
@@ -578,22 +578,28 @@ footer {
     overflow-x: auto;
     overflow-y: visible;
 
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+
     /* Make shelf items snap into position when scrolling horizontally */
     scroll-snap-type: x mandatory;
+
+    /* Indicate that the shelf can be dragged horizontally */
+    cursor: grab;
 }
 
-/* Customize the appearance of the horizontal scrollbar */
+.shelf-items.dragging {
+    /* Show active dragging state while the shelf is being dragged */
+    cursor: grabbing;
+    /* Disable snap while dragging for smoother manual scrolling */
+    scroll-snap-type: none;
+    user-select: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
 .shelf-items::-webkit-scrollbar {
-    height: 8px;
-}
-
-.shelf-items::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.shelf-items::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.35);
-    border-radius: 999px;
+    display: none;
 }
 
 /* Individual shelf item */
@@ -1037,6 +1043,11 @@ footer {
     .barcode {
         width: 100%;
         max-width: 320px;
+    }
+
+    /* ---- Shelf ---- */
+    .shelf-item:hover {
+        transform: none;
     }
 
     /* ---- Media Details Ticket ----  */
