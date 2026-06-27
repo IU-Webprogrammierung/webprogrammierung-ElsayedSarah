@@ -28,6 +28,11 @@ const mangaButton = document.querySelector("#filter-manga");
 
 /* Detail view section (hidden until a media is selected) */
 const mediaDetails = document.querySelector("#media-details");
+const moreDetailsLink = document.querySelector("#more-details-link");
+
+/* Track whether the shelf is currently being dragged */
+let pointerDown = false;
+let shelfIsDragging = false;
 
 /*Center the selected shelf item inside the shelf */
 function centerShelfItem(shelfItem) {
@@ -35,6 +40,28 @@ function centerShelfItem(shelfItem) {
         behavior: "smooth",
         inline: "center",
         block: "nearest"
+    });
+}
+
+/* Scroll to detail view after selecting a media item (desktop/tablet only) */
+function scrollToMediaDetails() {
+    if (window.innerWidth > 767) {
+        mediaDetails.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+}
+
+/* Allow the "More Details" link to scroll to a more centered position on mobile */
+if (moreDetailsLink) {
+    moreDetailsLink.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        mediaDetails.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
     });
 }
 
@@ -61,8 +88,15 @@ function createShelfItem(media) {
 
     /* Show information of selected media */
     shelfItem.addEventListener("click", function () {
+
+        /* Prevent accidental media selection while dragging */
+        if (shelfIsDragging) {
+            return;
+        }
+
         /* Reveal detail view when a media is selected */
         mediaDetails.classList.remove("hidden");
+        moreDetailsLink.classList.remove("hidden");
         centerShelfItem(shelfItem);
 
         selectedMediaTitle.textContent = media.title;
@@ -71,6 +105,8 @@ function createShelfItem(media) {
         selectedMediaComment.textContent = media.comment;
         selectedMediaImage.src = media.cover;
         selectedMediaImage.alt = media.title + " cover";
+
+        scrollToMediaDetails();
     });
 
     /* Allow shelf items to be selected using the keyboard  */
@@ -138,6 +174,7 @@ function initializeBookFilters() {
     }
 
     allButton.addEventListener("click", function () {
+        setActiveFilter(allButton);
         renderShelf(books);
     });
 
@@ -146,6 +183,7 @@ function initializeBookFilters() {
             return book.category === "novel";
         });
 
+        setActiveFilter(novelButton);
         renderShelf(novels);
     });
 
@@ -154,6 +192,70 @@ function initializeBookFilters() {
             return book.category === "manga";
         });
 
+        setActiveFilter(mangaButton);
         renderShelf(mangas);
     });
+
+     /* "All" is selected when the page loads */
+    setActiveFilter(allButton);
 }
+
+/* Highlight the currently selected book category filter */
+function setActiveFilter(activeButton) {
+    [allButton, novelButton, mangaButton].forEach(function (button) {
+        button.classList.remove("active");
+    });
+
+    activeButton.classList.add("active");
+}
+
+/* Enable drag-to-scroll for desktop users */
+function initializeShelfDragging() {
+
+    /* Touch devices already support native horizontal scrolling; so no drag-to-scroll needed */
+    if (!window.matchMedia("(pointer: fine)").matches) {
+        return;
+    }
+
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    /* Start drag tracking and store current scroll position */
+    mediaShelf.addEventListener("pointerdown", function (event) {
+        pointerDown = true;
+        shelfIsDragging = false;
+
+        startX = event.clientX;
+        startScrollLeft = mediaShelf.scrollLeft;
+    });
+
+    /* Move the shelf horizontally while dragging */
+    document.addEventListener("pointermove", function (event) {
+        if (!pointerDown) {
+            return;
+        }
+
+        /* Slightly reduce drag speed for smoother movement */
+        const distance = (event.clientX - startX) * 0.9;
+
+        if (Math.abs(distance) > 8) {
+            shelfIsDragging = true;
+            mediaShelf.classList.add("dragging");
+
+            event.preventDefault();
+            mediaShelf.scrollLeft = startScrollLeft - distance;
+        }
+    });
+
+    /* Stop dragging and re-activate normal click behavior */
+    document.addEventListener("pointerup", function () {
+        pointerDown = false;
+        mediaShelf.classList.remove("dragging");
+
+        setTimeout(function () {
+            shelfIsDragging = false;
+        }, 0);
+    });
+}
+
+initializeShelfDragging();
