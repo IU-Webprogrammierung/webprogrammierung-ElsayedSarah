@@ -169,6 +169,32 @@ footer {
     padding: 0;
 }
 
+/* Imprint- & Credits-Page (Footer) ============================ */
+
+.info-page {
+    min-height: 35vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.info-content {
+    width: min(900px, 90vw);
+    margin: 0 auto 80px;
+    padding: 32px;
+}
+
+.info-content h2 {
+    margin-top: 32px;
+}
+
+.info-content ul {
+    padding-left: 24px;
+}
+
 /* Custom 404 Page ============================ */
 
 /* Reuse and adapt the existing library card layout
