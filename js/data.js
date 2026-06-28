@@ -15,6 +15,9 @@ const books = [
         cover: "assets/covers/nolongerhuman.webp",
         spine: "#DC477B",
 
+        /* External media page (used by the detail view) */
+        externalLink: "https://www.goodreads.com/book/show/194746.No_Longer_Human",
+
         comment: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
         At vero eos et accusam et justo duo dolores et ea rebum. 
         Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
@@ -40,6 +43,8 @@ const books = [
         cover: "assets/covers/howlsmovingcastle.webp",
         spine: "#72ACAE",
 
+        externalLink: "https://www.goodreads.com/book/show/6294.Howl_s_Moving_Castle",
+
         comment: "Add comment here"
     },
     {
@@ -57,6 +62,8 @@ const books = [
         cover: "assets/covers/lapvona.webp",
         spine: "#141213",
         
+        externalLink: "https://www.goodreads.com/book/show/59693959-lapvona",
+
         comment: "Add comment here"
     },
     {
@@ -73,6 +80,8 @@ const books = [
         
         cover: "assets/covers/thesaltgrowsheavy.webp",
         spine: "#BC1714",
+
+        externalLink: "https://www.goodreads.com/book/show/61884779-the-salt-grows-heavy",
 
         comment: "Add comment here"
     },
@@ -91,6 +100,8 @@ const books = [
         cover: "assets/covers/heavenofficalsblessing.webp",
         spine: "#2B4844",
 
+        externalLink: "https://www.goodreads.com/book/show/53153332-heaven-s-official-blessing",
+
         comment: "Add comment here"
     },
     {
@@ -107,6 +118,8 @@ const books = [
         
         cover: "assets/covers/butter.webp",
         spine: "#FFCA0A",
+
+        externalLink: "https://www.goodreads.com/book/show/200776812-butter",
 
         comment: "Add comment here"
     },
@@ -126,6 +139,8 @@ const books = [
         cover: "assets/covers/thesecrethistory.webp",
         spine: "#F3F2ED",
 
+        externalLink: "https://www.goodreads.com/book/show/29044.The_Secret_History",
+
         comment: "Add comment here"
     },
        {
@@ -143,6 +158,8 @@ const books = [
         
         cover: "assets/covers/tbhk.webp",
         spine: "#F8984E",
+
+        externalLink: "https://myanimelist.net/manga/105084/Jibaku_Shounen_Hanako-kun",
 
         comment: "Add comment here"
     },
@@ -162,6 +179,8 @@ const books = [
         cover: "assets/covers/bungostraydogs.webp",
         spine: "#4D4C5C",
 
+        externalLink: "https://myanimelist.net/manga/56529/Bungou_Stray_Dogs",
+
         comment: "Add comment here"
     },
     {
@@ -179,6 +198,8 @@ const books = [
         
         cover: "assets/covers/bungostraydogsbeast.webp",
         spine: "#4086C4",
+
+        externalLink: "https://myanimelist.net/manga/123006/Bungou_Stray_Dogs__Beast",
 
         comment: "Add comment here"
     },
@@ -198,6 +219,8 @@ const books = [
         cover: "assets/covers/blackbutler.webp",
         spine: "#0000",
 
+        externalLink: "https://myanimelist.net/manga/3866/Kuroshitsuji",
+
         comment: "Add comment here"
     },
     {
@@ -215,6 +238,8 @@ const books = [
         
         cover: "assets/covers/onepiece.webp",
         spine: "#293991",
+
+        externalLink: "https://myanimelist.net/manga/13/One_Piece",
 
         comment: "Add comment here"
     },
@@ -235,6 +260,8 @@ const books = [
         cover: "assets/covers/deathnote.webp",
         spine: "#0000",
 
+        externalLink: "https://myanimelist.net/manga/21/Death_Note",
+
         comment: "Add comment here"
     },
     {
@@ -251,6 +278,8 @@ const books = [
 
         cover: "assets/covers/ohshc.webp",
         spine: "#FBDED6",
+
+        externalLink: "https://myanimelist.net/manga/30/Ouran_Koukou_Host_Club",
 
         comment: "Add comment here"
     }
@@ -273,6 +302,8 @@ const games = [
         cover: "assets/covers/cultofthelamb.webp",
         spine: "#3B3058",
 
+        externalLink: "https://store.steampowered.com/app/1313140/Cult_of_the_Lamb",
+
         comment: "Add comment here"
     },
     {
@@ -290,6 +321,8 @@ const games = [
         cover: "assets/covers/omori.webp",
         spine: "#FFFF",
 
+        externalLink: "https://store.steampowered.com/app/1150690/OMORI",
+
         comment: "Add comment here"
     },
     {
@@ -306,6 +339,8 @@ const games = [
 
         cover: "assets/covers/undertale.webp",
         spine: "#0000",
+
+        externalLink: "https://store.steampowered.com/app/391540/Undertale",
         
         comment: "Add comment here"
     },
@@ -324,6 +359,8 @@ const games = [
         cover: "assets/covers/persona5.webp",
         spine: "#0A0002",
 
+        externalLink: "https://store.steampowered.com/app/1687950/Persona_5_Royal",
+
         comment: "Add comment here"
     },
     {
@@ -341,6 +378,8 @@ const games = [
         cover: "assets/covers/stardewvalley.webp",
         spine: "#034283",
 
+        externalLink: "https://store.steampowered.com/app/413150/Stardew_Valley",
+
         comment: "Add comment here"
     },
     {
@@ -356,6 +395,8 @@ const games = [
         
         cover: "assets/covers/sims3.webp",
         spine: "#FFFF",
+
+        externalLink: "https://store.steampowered.com/app/47890/The_Sims_3",
 
         comment: "Add comment here"
     },
@@ -373,6 +414,8 @@ const games = [
         
         cover: "assets/covers/tlozb.webp",
         spine: "#415E7E",
+
+        externalLink: "https://www.nintendo.com/de-de/Spiele/Nintendo-Switch-Spiele/The-Legend-of-Zelda-Breath-of-the-Wild-1173609.html",
 
         comment: "Add comment here"
     }
