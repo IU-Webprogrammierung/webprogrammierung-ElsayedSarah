@@ -105,6 +105,7 @@ function createShelfItem(media) {
         selectedMediaComment.textContent = media.comment;
         selectedMediaImage.src = media.cover;
         selectedMediaImage.alt = media.title + " cover";
+        /* Future enhancement: Display a platform-specific external link (e.g. Goodreads, MyAnimeList, Steam) */
 
         scrollToMediaDetails();
     });
