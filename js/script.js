@@ -21,11 +21,17 @@ document.addEventListener("click", function (event) {
 document.body.addEventListener("htmx:afterSwap", function () {
     const currentPage = window.location.pathname.split("/").pop();
 
-    document.querySelectorAll(".desktop-nav a, .mobile-menu a").forEach(link => {
-        link.classList.toggle(
-            "active",
-            link.getAttribute("href") === currentPage
-        );
+    document.querySelectorAll(".desktop-nav a, .mobile-menu a").forEach(function (link) {
+
+        const isCurrentPage = link.getAttribute("href") === currentPage;
+
+        link.classList.toggle("active", isCurrentPage);
+
+        if (isCurrentPage) {
+            link.setAttribute("aria-current", "page");
+        } else {
+            link.removeAttribute("aria-current");
+        }
     });
 });
 
