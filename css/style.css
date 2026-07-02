@@ -516,9 +516,9 @@ footer {
     padding: 48px 16px 64px;
     gap: 32px;
 
-    background-color: #221F30;
+    background: radial-gradient(circle at center, rgba(255,255,255,.08), transparent 45%),#111018;
 
-    overflow: hidden;
+    overflow: visible;
     position: relative;
 
 }
@@ -537,15 +537,15 @@ footer {
 
 .shelf::before {
     left:0;
-    background: linear-gradient(to right, #221F30, transparent);
+    background: linear-gradient(to right, #000000, transparent);
 }
 
 .shelf::after {
     right:0;
-    background: linear-gradient(to left, #221F30, transparent);
+    background: linear-gradient(to left, #000000, transparent);
 }
 
-/* Filter buttons */
+/* ---- Filter buttons ---- */
 .filter {
     display: flex;
     gap: 18px;
@@ -589,20 +589,25 @@ footer {
     color: black;
 }
 
+/* ---- Shelf Items ---- */
 /* Container for dynamically generated shelf items */
 .shelf-items {
     display: flex;
+    position: relative;
+
     gap: 50px;
     padding-inline: 100px;
+    padding-block: 46px 36px; /* Add vertical padding so labels, shadows and hover effects are not clipped */
     box-sizing: border-box;
     justify-content: flex-start;
     align-items: center;
+
     width: 100%;
-    height: 500px;
+    height: 540px;
     margin: 0;
     
     overflow-x: auto;
-    overflow-y: visible;
+    overflow-y: hidden; /* Prevent vertical scrolling while allowing horizontal scrolling */
 
     /* Hide scrollbar for IE, Edge and Firefox */
     -ms-overflow-style: none;  
@@ -628,7 +633,7 @@ footer {
     display: none;
 }
 
-/* Individual shelf item */
+/* ---- Shelf Item (Individual) ---- */
 .shelf-item {
     position: relative;
     flex: 0 0 auto;
@@ -643,10 +648,22 @@ footer {
     transform-origin: right center;
 
     /* Hover Animation*/
-    transition: transform 0.4s ease;
+    transition: transform 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
     box-shadow: -20px 32px 32px rgba(0, 0, 0, 0.35);
 
     scroll-snap-align: center;
+}
+
+/* Decorative editorial label displayed above each shelf item */
+.shelf-item::before {
+    content: "VOL. " attr(data-index);
+    position: absolute;
+    top: -28px;
+    left: 0;
+
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.55);
 }
 
 .shelf-item:hover {
@@ -655,11 +672,38 @@ footer {
 
 /* Highlights selected item */
 .shelf-item.active {
-    transition: transform 0.4s ease;
     transform: rotateY(12deg) translateY(-12px) translateX(22px) scale(1.08);
     z-index: 10;
 }
 
+/* Dim non-selected items when an item is active */
+.shelf-items:has(.shelf-item.active) .shelf-item:not(.active)::after {
+    background: rgba(17, 16, 24, 0.35);
+}
+
+/* 
+    Darken non-selected shelf items using an overlay instead of CSS filter/opacity.
+
+    Initial approach:
+    Applying filter and opacity directly to the entire .shelf-item caused
+    the browser to flatten the 3D transformed element, which removed the
+    intended book perspective.
+
+    Using a pseudo-element overlay preserves the 3D effect while still
+    visually reducing the emphasis of non-selected items.
+*/
+.shelf-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(17, 16, 24, 0);
+    pointer-events: none;
+    transition: background 0.3s ease;
+    z-index: 3;
+}
+
+/* ---- Shelf Item: Spine and Cover ---- */
 
 .spine {
     position: absolute;
@@ -717,7 +761,7 @@ footer {
 
 /* Display for the currently selected item */
 .selected-media {
-    margin-top: 24px;
+    margin-top: 0;
     text-align: center;
     font-weight: bold;
     color: white;
