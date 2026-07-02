@@ -127,6 +127,12 @@ function activeShelfItem() {
 
     shelfItems.forEach(function(item) {
         item.addEventListener("click", function() {
+
+            /* Prevent active state from changing while dragging */
+            if (shelfIsDragging) {
+                return;
+            }
+            
             shelfItems.forEach(function (i) {
                 i.classList.remove("active")
             });
