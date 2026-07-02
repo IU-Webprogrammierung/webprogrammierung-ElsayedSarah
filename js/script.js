@@ -52,4 +52,19 @@ document.addEventListener("click", function (event) {
     }
 
     filterOptions.classList.toggle("open");
+    filterToggle.classList.toggle("open"); /* Update the visual state of the mobile filter toggle (CSS) */
+
+    /*
+        After the opening transition has finished, reposition the animated
+        filter indicator so it matches the currently active filter button.
+
+        Waiting for the transition to finish prevents incorrect positioning
+        while the filter menu is still collapsed.
+    */
+
+    if (filterOptions.classList.contains("open")) {
+        filterOptions.addEventListener("transitionend", function () {
+            moveFilterIndicator(document.querySelector(".filter-options button.active"));
+        }, { once: true });
+    }
 });

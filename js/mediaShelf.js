@@ -127,6 +127,12 @@ function activeShelfItem() {
 
     shelfItems.forEach(function(item) {
         item.addEventListener("click", function() {
+
+            /* Prevent active state from changing while dragging */
+            if (shelfIsDragging) {
+                return;
+            }
+            
             shelfItems.forEach(function (i) {
                 i.classList.remove("active")
             });
@@ -139,8 +145,10 @@ function activeShelfItem() {
 function renderShelf(mediaList) {
     mediaShelf.innerHTML = "";
 
-    mediaList.forEach(function (media) {
+    mediaList.forEach(function (media, index) {
         const shelfItem = createShelfItem(media);
+        /* Add index for decorative "VOL. 01" labels */
+        shelfItem.dataset.index = String(index + 1).padStart(2, "0"); 
         mediaShelf.appendChild(shelfItem);
     });
 
@@ -168,6 +176,38 @@ function renderShelf(mediaList) {
     }
 }
 
+/* ---- Filter  ---- */
+
+/* GSAP: Animate the shelf when changing filters */
+function animateShelfFilterChange(filteredMedia, activeButton) {
+    setActiveFilter(activeButton);
+
+        gsap.to(mediaShelf, {
+        x: -40,
+        opacity: 0,
+        duration: .2,
+        ease: "power2.in",
+        onComplete() {
+
+            renderShelf(filteredMedia);
+            mediaShelf.scrollLeft = 0;
+
+            gsap.fromTo(mediaShelf,
+                {
+                    x: 40,
+                    opacity: 0
+                },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: .35,
+                    ease: "power2.out"
+                });
+        }
+    });
+}
+
+
 /* Filter buttons (only for book-items) */
 function initializeBookFilters() {
     if(!novelButton || !mangaButton || !allButton) {
@@ -175,8 +215,7 @@ function initializeBookFilters() {
     }
 
     allButton.addEventListener("click", function () {
-        setActiveFilter(allButton);
-        renderShelf(books);
+        animateShelfFilterChange(books, allButton);
     });
 
     novelButton.addEventListener("click", function () {
@@ -184,8 +223,7 @@ function initializeBookFilters() {
             return book.category === "novel";
         });
 
-        setActiveFilter(novelButton);
-        renderShelf(novels);
+        animateShelfFilterChange(novels, novelButton);
     });
 
     mangaButton.addEventListener("click", function () {
@@ -193,8 +231,7 @@ function initializeBookFilters() {
             return book.category === "manga";
         });
 
-        setActiveFilter(mangaButton);
-        renderShelf(mangas);
+        animateShelfFilterChange(mangas, mangaButton);
     });
 
      /* "All" is selected when the page loads */
@@ -208,7 +245,29 @@ function setActiveFilter(activeButton) {
     });
 
     activeButton.classList.add("active");
+    moveFilterIndicator(activeButton);
 }
+
+/* GSAP: Animate the active filter indicator to the selected filter button */
+function moveFilterIndicator(activeButton) {
+    const indicator = document.querySelector(".filter-indicator");
+    const filterOptions = document.querySelector(".filter-options");
+
+    if (!indicator || !filterOptions || !activeButton) {
+        return;
+    }
+
+    const containerPadding = parseFloat(getComputedStyle(filterOptions).paddingLeft);
+
+    gsap.to(indicator, {
+        x: activeButton.offsetLeft - containerPadding,
+        width: activeButton.offsetWidth,
+        duration: 0.35,
+        ease: "power2.out"
+    });
+}
+
+/* ---- Drag-to-Scroll ---- */
 
 /* Enable drag-to-scroll for desktop users */
 function initializeShelfDragging() {
@@ -259,4 +318,5 @@ function initializeShelfDragging() {
     });
 }
 
+setActiveFilter(allButton);
 initializeShelfDragging();

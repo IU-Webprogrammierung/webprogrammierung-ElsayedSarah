@@ -32,6 +32,9 @@
 
                 <!-- Filter Buttons for Book category -->
                 <div class="filter-options" id="filter-options" role="group" aria-label="Book category filters">
+                    <!-- Animated indicator that moves beneath the active filter button -->
+                    <span class="filter-indicator" aria-hidden="true"></span>
+                    
                     <button id="all-books">All</button>
                     <button id="filter-novel">Novel</button>
                     <button id="filter-manga">Manga</button>
@@ -82,6 +85,8 @@
     <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"
         integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
         crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 
     <script src="js/script.js"></script>
 
