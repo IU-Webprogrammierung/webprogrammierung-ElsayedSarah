@@ -176,6 +176,8 @@ function renderShelf(mediaList) {
     }
 }
 
+/* ---- Filter  ---- */
+
 /* GSAP: Animate the shelf when changing filters */
 function animateShelfFilterChange(filteredMedia, activeButton) {
     setActiveFilter(activeButton);
@@ -243,7 +245,29 @@ function setActiveFilter(activeButton) {
     });
 
     activeButton.classList.add("active");
+    moveFilterIndicator(activeButton);
 }
+
+/* GSAP: Animate the active filter indicator to the selected filter button */
+function moveFilterIndicator(activeButton) {
+    const indicator = document.querySelector(".filter-indicator");
+    const filterOptions = document.querySelector(".filter-options");
+
+    if (!indicator || !filterOptions || !activeButton) {
+        return;
+    }
+
+    const containerPadding = parseFloat(getComputedStyle(filterOptions).paddingLeft);
+
+    gsap.to(indicator, {
+        x: activeButton.offsetLeft - containerPadding,
+        width: activeButton.offsetWidth,
+        duration: 0.35,
+        ease: "power2.out"
+    });
+}
+
+/* ---- Drag-to-Scroll ---- */
 
 /* Enable drag-to-scroll for desktop users */
 function initializeShelfDragging() {
@@ -294,4 +318,5 @@ function initializeShelfDragging() {
     });
 }
 
+setActiveFilter(allButton);
 initializeShelfDragging();
