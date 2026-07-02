@@ -170,6 +170,36 @@ function renderShelf(mediaList) {
     }
 }
 
+/* GSAP: Animate the shelf when changing filters */
+function animateShelfFilterChange(filteredMedia, activeButton) {
+    setActiveFilter(activeButton);
+
+        gsap.to(mediaShelf, {
+        x: -40,
+        opacity: 0,
+        duration: .2,
+        ease: "power2.in",
+        onComplete() {
+
+            renderShelf(filteredMedia);
+            mediaShelf.scrollLeft = 0;
+
+            gsap.fromTo(mediaShelf,
+                {
+                    x: 40,
+                    opacity: 0
+                },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: .35,
+                    ease: "power2.out"
+                });
+        }
+    });
+}
+
+
 /* Filter buttons (only for book-items) */
 function initializeBookFilters() {
     if(!novelButton || !mangaButton || !allButton) {
@@ -177,8 +207,7 @@ function initializeBookFilters() {
     }
 
     allButton.addEventListener("click", function () {
-        setActiveFilter(allButton);
-        renderShelf(books);
+        animateShelfFilterChange(books, allButton);
     });
 
     novelButton.addEventListener("click", function () {
@@ -186,8 +215,7 @@ function initializeBookFilters() {
             return book.category === "novel";
         });
 
-        setActiveFilter(novelButton);
-        renderShelf(novels);
+        animateShelfFilterChange(novels, novelButton);
     });
 
     mangaButton.addEventListener("click", function () {
@@ -195,8 +223,7 @@ function initializeBookFilters() {
             return book.category === "manga";
         });
 
-        setActiveFilter(mangaButton);
-        renderShelf(mangas);
+        animateShelfFilterChange(mangas, mangaButton);
     });
 
      /* "All" is selected when the page loads */
