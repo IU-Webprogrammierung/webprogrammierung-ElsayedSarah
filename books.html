@@ -7,6 +7,17 @@
     <title>Books | Digital Media Library</title>
 
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"
+        integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
+        crossorigin="anonymous" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+
+    <script src="js/script.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/mediaShelf.js" defer></script>
+    <script src="js/booksPage.js" defer></script>
 </head>
 <body>
 
@@ -81,22 +92,6 @@
     </main>
 
     <footer hx-get="components/footer.html" hx-trigger="load" hx-swap="innerHTML"></footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"
-        integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
-        crossorigin="anonymous"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-
-    <script src="js/script.js"></script>
-
-    <script src="js/data.js"></script>
-
-    <script src="js/mediaShelf.js"></script>
-    <script>
-        initializeShelf(books);
-        initializeBookFilters();
-    </script>
-
+   
 </body>
 </html>
