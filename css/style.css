@@ -1,8 +1,8 @@
-/* Base Layout ============================ */
+/* ==========================================================================
+    Base Styles
+    ========================================================================== */
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 header {
     position: sticky;
@@ -10,20 +10,16 @@ header {
     z-index: 1000;
 }
 
-body {
-    margin: 0;
-}
+body { margin: 0; }
 
 /* Utility class for hiding elements */
-.hidden {
-    display: none;
-}
+.hidden { display: none; }
 
-/* Typography ============================ */
+/* ==========================================================================
+    Typography 
+    ========================================================================== */
 
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 h1,
 nav {
@@ -38,7 +34,9 @@ h3,
     letter-spacing: 0.05em;
 }
 
-/* Global Navigation ============================ */
+/* ==========================================================================
+    Global Navigation 
+    ========================================================================== */
 
 nav {
     position: relative;
@@ -49,43 +47,40 @@ nav {
     padding: 14px 24px;
 }
 
-header nav {
-     background-color: #000000;
-}
+header nav { background-color: #000000; }
 
-.logo img {
-    width: 300px;
-}
+.logo img { width: 300px; }
 
 .desktop-nav,
 .mobile-menu {
     list-style-type: none;
     margin: 0;
     padding: 0;
+
+    & a {
+        display: block;
+
+        color: white;
+        text-decoration: none;
+
+        padding: 16px;
+
+        /* Highlight the current page in the global navigation */
+        &.active {
+            background: #a80a5c;
+            border-radius: 8px;
+        }
+    }
 }
 
-.desktop-nav {
-    display: flex;
-}
-
-.desktop-nav a,
-.mobile-menu a {
-    display: block;
-
-    color: white;
-    text-decoration: none;
-
-    padding: 16px;
-}
+.desktop-nav { display: flex; }
 
 /* ---- Mobile navigation menu ---- */
-.mobile-menu.hidden {
-    display: none;
-}
-
 .mobile-menu {
     display: flex;
     flex-direction: column;
+
+    &.hidden { display: none; }
 }
 
 .menu-button {
@@ -97,14 +92,9 @@ header nav {
     cursor: pointer;
 }
 
-/* Highlight the current page in the global navigation */
-.desktop-nav a.active,
-.mobile-menu a.active {
-    background: #a80a5c;
-    border-radius: 8px;
-}
-
-/* Footer ============================ */
+/* ==========================================================================
+    Footer 
+    ========================================================================== */
 
 footer {
     padding: 32px 48px;
@@ -126,31 +116,49 @@ footer {
     border-bottom: 3px solid white;
 }
 
-.footer-main-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.footer-main-nav {
+    & ul {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
 
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    & a {
+        color: white;
+        text-decoration: none;
+        text-transform: none;
+    }
 }
 
-.footer-main-nav a,
-.footer-secondary-nav a {
-    color: white;
-    text-decoration: none;
-    text-transform: none;
+.footer-secondary-nav {
+    & ul {
+        display: flex;
+        gap: 24px;
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    & a {
+        color: white;
+        text-decoration: none;
+        text-transform: none;
+    }
 }
 
 .footer-logo {
     display: flex;
     justify-content: right;
-}
 
-.footer-logo img {
-    width: 500px;
-    max-width: 100%;
+    & img {
+        width: 500px;
+        max-width: 100%;
+    }
 }
 
 /* Lower footer area: legal links and copyright */
@@ -160,24 +168,17 @@ footer {
     align-items: center;
 }
 
-.footer-secondary-nav ul {
-    display: flex;
-    gap: 24px;
-
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-/* Imprint- & Credits-Page (Footer) ============================ */
+/* ==========================================================================
+    Imprint- & Credits-Page (Footer) 
+    ========================================================================== */
 
 .info-page {
     min-height: 35vh;
 
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     text-align: center;
 }
 
@@ -185,17 +186,15 @@ footer {
     width: min(900px, 90vw);
     margin: 0 auto 80px;
     padding: 32px;
+
+    & h2 { margin-top: 32px; }
+
+    & ul { padding-left: 24px; }
 }
 
-.info-content h2 {
-    margin-top: 32px;
-}
-
-.info-content ul {
-    padding-left: 24px;
-}
-
-/* Custom 404 Page ============================ */
+/* ==========================================================================
+    Custom 404 Page 
+    ========================================================================== */
 
 /* Reuse and adapt the existing library card layout
    instead of creating a separate card component */
@@ -211,17 +210,35 @@ footer {
     background-image: url("../assets/Chibi_Background.webp");
     background-size: cover;
     background-position: center;
+
+    & a {
+        display: inline-block;
+
+        padding: 12px 24px;
+
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        text-transform: uppercase;
+
+        background-color: #ed3b81;
+        border: 2px solid black;
+        border-radius: 8px;
+
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 4px 4px 0 #07165d;
+    }
 }
 
 .error-card {
     width: min(1200px, 90vw);
-}
 
-/* Override the default library card layout to center the 404 error message */
-.error-card .library-card_main {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    /* Override the default library card layout to center the 404 error message */
+    & .library-card_main {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    & h1 { font-size: 3rem; }
 }
 
 .error-content {
@@ -234,49 +251,21 @@ footer {
 
 }
 
-.error-card_bottom {
-    margin-top: 16px;
-}
+.error-card_bottom { margin-top: 16px; }
 
-.error-card h1 {
-    font-size: 3rem;
-}
-
-.error-page a {
-    display: inline-block;
-
-    padding: 12px 24px;
-
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    text-transform: uppercase;
-
-    background-color: #ed3b81;
-    border: 2px solid black;
-    border-radius: 8px;
-
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 4px 4px 0 #07165d;
-}
-
-.error-page a:hover {
-    transform: translateY(-2px);
-}
-
-/* Home Page ============================ */
+/* ==========================================================================
+    Home Page 
+    ========================================================================== */
 
 .home-page {
     min-height: 100vh;
-    padding: 80px 16px;
+    padding: 30px 16px 90px;
     box-sizing: border-box;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    padding-top: 30px;
-    padding-bottom: 90px;
     
-    /* Background image for the home page */
     /* Decorative background only; contains no essential information */
     /* TODO: Replace temporary home-background asset */
     background-image: url("../assets/testhome.png");
@@ -285,7 +274,6 @@ footer {
 }
 
 /* ---- Library Card ---- */
-
 .library-card {
     position: relative;
 
@@ -300,28 +288,18 @@ footer {
     box-shadow: 0 16px 12px rgba(16, 1, 39, 0.61);
 
     z-index: 3;
-}
 
-/* Add subtle hover feedback to interactive card elements */
-.library-card,
-.home-description,
-.library-card_image img,
-.tag,
-.tag-b,
-.tag-c,
-.tag-c
-.sticker {
     transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-}
 
-.library-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 22px 20px rgba(16, 1, 39, 0.65);
-}
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 22px 20px rgba(16, 1, 39, 0.65);
+    }
 
-.library-card h2 {
-    font-size: 1rem;
-    text-transform: uppercase;
+    & h2 {
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
 }
 
 .library-card_top {
@@ -330,10 +308,8 @@ footer {
     padding: 8px 14px;
 
     border-bottom: 3px solid #f4c8df;
-}
 
-.library-card_top img {
-    width: 120px;
+    & img { width: 120px; }
 }
 
 .library-card_bottom {
@@ -363,6 +339,10 @@ footer {
     drop-shadow(4px 4px 0 #010149);
 
     z-index: 10;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+
+    &:hover { transform: translateY(-4px) rotate(-2deg); }
 }
 
 .library-card_main {
@@ -371,20 +351,19 @@ footer {
     padding: 24px;
 }
 
-.library-card_image img {
-    width: 300px;
-    height: auto;
-    display: block;
+.library-card_image {
+    & img {
+        width: 300px;
+        height: auto;
+        display: block;
+
+        transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+
+        &:hover { transform: translateY(-4px) rotate(-2deg); }
+    }
 }
 
-.chibi {
-    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.35));
-}
-
-.library-card_image img:hover,
-.sticker:hover {
-    transform: translateY(-4px) rotate(-2deg);
-}
+.chibi { filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.35)); }
 
 .library-card_content {
     display: grid;
@@ -426,35 +405,21 @@ footer {
     text-transform: uppercase;
 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 4px 4px 0 #07165d;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+
+    &:hover { transform: translateY(-2px); }
 }
 
 /* Alternative tag color variations */
-.tag {
-    background-color:#09edfb;
-}
+.tag { background-color:#09edfb; }
 
-.tag-b {
-    background-color:#f4c8df;
-}
+.tag-b { background-color:#f4c8df; }
 
-.tag-c {
-    background-color:#ffde59;    
-}
+.tag-c { background-color:#ffde59; }
 
-.tag-d {
-    background-color: #ed3b81;
-}
-
-.tag:hover,
-.tag-b:hover,
-.tag-c:hover,
-.tag-d:hover {
-    transform: translateY(-2px);
-}
-
+.tag-d { background-color: #ed3b81; }
 
 /* ---- Home Page: Description ---- */
-
 .home-description {
     position: relative;
 
@@ -470,22 +435,20 @@ footer {
     box-shadow: 0 16px 12px rgba(16, 1, 39, 0.61);
 
     z-index: 1;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 18px rgba(16, 1, 39, 0.55);
+    }
 }
 
-.home-description:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 20px 18px rgba(16, 1, 39, 0.55);
-}
+/* ==========================================================================
+    Media Shelf 
+    ========================================================================== */
 
-/* Media Page ============================ */
-
-/* ---- Books Page ---- */
-.books-page {
-    background-color: #d4d3d3;
-    overflow-x: hidden;
-}
-
-/* ---- Games Page ---- */
+.books-page,
 .games-page {
     background-color: #d4d3d3;
     overflow-x: hidden;
@@ -502,10 +465,9 @@ footer {
     text-align: center;
 
     padding: 80px 16px;
-
 }
 
-/* Shelf ============================ */
+/* ---- Shelf ---- */
 .shelf {
     min-height: 100vh;
 
@@ -521,31 +483,24 @@ footer {
     overflow: visible;
     position: relative;
 
+    /* Slightly darken the shelf edges to indicate more scrollable content */
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 85px;
+        height: 100%;
+        z-index: 5;
+        pointer-events: none;
+    }
+
+    &::before { left: 0; background: linear-gradient(to right, #000000, transparent); }
+    &::after { right: 0; background: linear-gradient(to left, #000000, transparent); }
+
 }
 
-/* Slightly darken the shelf edges to indicate more scrollable content */
-.shelf::before,
-.shelf::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 85px;
-    height: 100%;
-    z-index: 5;
-    pointer-events: none;
-}
-
-.shelf::before {
-    left:0;
-    background: linear-gradient(to right, #000000, transparent);
-}
-
-.shelf::after {
-    right:0;
-    background: linear-gradient(to left, #000000, transparent);
-}
-
-/* ---- Filter buttons ---- */
+/* ---- Filter ---- */
 .filter {
     display: flex;
     gap: 18px;
@@ -571,18 +526,20 @@ footer {
 
     box-shadow: 0 4px 8px rgba(0,0,0,.25);
     transition: background .2s ease, transform .2s ease, border-radius 0.3s ease;
-}
 
-/* Move the filter toggle button to the left when open, and change its background color */
-.filter-toggle.open {
-    color: black;
-    transform: translateX(-22px);
-    background: #d691ed;
-    border-radius: 0 18px 18px 0;
+    /* Move the filter toggle button to the left when open, and change its background color */
+    &.open {
+        color: black;
+        transform: translateX(-22px);
+        background: #d691ed;
+        border-radius: 0 18px 18px 0;
+    }
 }
 
 /* Filter container */
 .filter-options {
+    position: relative;
+    
     display: flex;
     gap: 8px;
     padding: 6px;
@@ -593,30 +550,31 @@ footer {
 
     backdrop-filter: blur(14px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-}
 
-.filter-options button {
-    position: relative;
-    z-index: 2;
+    & button {
+        position: relative;
+        z-index: 2;
 
-    min-width: 110px;
-    padding: 12px 20px;
+        min-width: 110px;
+        padding: 12px 20px;
 
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
 
-    color: rgba(255, 255, 255, 0.72);
-    background: transparent;
-    border: none;
-    border-radius: 999px;
+        color: rgba(255, 255, 255, 0.72);
+        background: transparent;
+        border: none;
+        border-radius: 999px;
 
-    cursor: pointer;
-}
+        cursor: pointer;
+    
 
-/* Highlight the current active filter */
-.filter-options button.active {
-    color: black;
+        /* Highlight the active filter button */
+        &.active {
+            color: black;
+        }
+    }
 }
 
 /* Animated background indicator for the active filter button */
@@ -642,8 +600,9 @@ footer {
     position: relative;
 
     gap: 50px;
+    /* Add vertical padding so labels, shadows and hover effects are not clipped */
     padding-inline: 100px;
-    padding-block: 46px 36px; /* Add vertical padding so labels, shadows and hover effects are not clipped */
+    padding-block: 46px 36px; 
     box-sizing: border-box;
     justify-content: flex-start;
     align-items: center;
@@ -653,7 +612,8 @@ footer {
     margin: 0;
     
     overflow-x: auto;
-    overflow-y: hidden; /* Prevent vertical scrolling while allowing horizontal scrolling */
+    /* Prevent vertical scrolling while allowing horizontal scrolling */
+    overflow-y: hidden; 
 
     /* Hide scrollbar for IE, Edge and Firefox */
     -ms-overflow-style: none;  
@@ -664,19 +624,24 @@ footer {
 
     /* Indicate that the shelf can be dragged horizontally */
     cursor: grab;
-}
 
-.shelf-items.dragging {
-    /* Show active dragging state while the shelf is being dragged */
-    cursor: grabbing;
-    /* Disable snap while dragging for smoother manual scrolling */
-    scroll-snap-type: none;
-    user-select: none;
-}
+    &.dragging {
+        /* Show active dragging state while the shelf is being dragged */
+        cursor: grabbing;
+        /* Disable snap while dragging for smoother manual scrolling */
+        scroll-snap-type: none;
+        user-select: none;
+    }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.shelf-items::-webkit-scrollbar {
-    display: none;
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar { display: none; }
+
+    /* Dim non-selected items when an item is active */
+    &:has(.shelf-item.active) {
+        & .shelf-item:not(.active)::after {
+            background: rgba(17, 16, 24, 0.35);
+        }
+    }
 }
 
 /* ---- Shelf Item (Individual) ---- */
@@ -698,61 +663,53 @@ footer {
     box-shadow: -20px 32px 32px rgba(0, 0, 0, 0.35);
 
     scroll-snap-align: center;
-}
 
-/* Decorative editorial label displayed above each shelf item */
-.shelf-item::before {
-    content: "VOL. " attr(data-index);
-    position: absolute;
-    top: -28px;
-    left: 0;
+    /* Decorative editorial label displayed above each shelf item */
+    &::before {
+        content: "VOL. " attr(data-index);
+        position: absolute;
+        top: -28px;
+        left: 0;
 
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
-    color: rgba(255, 255, 255, 0.55);
-}
+        font-size: 0.75rem;
+        letter-spacing: 0.18em;
+        color: rgba(255, 255, 255, 0.55);
+    }
 
-.shelf-item:hover {
-    transform: rotateY(24deg) translateY(-12px) translateX(12px) scale(1.05);
-}
+    /* 
+        Darken non-selected shelf items using an overlay instead of CSS filter/opacity.
 
-/* Highlights selected item */
-.shelf-item.active {
-    transform: rotateY(12deg) translateY(-12px) translateX(22px) scale(1.08);
-    z-index: 10;
-    /* Add a subtle glow effect to the selected item */
-    box-shadow: 0 0 18px rgba(197, 179, 215, 0.184);
-}
+        Initial approach:
+        Applying filter and opacity directly to the entire .shelf-item caused
+        the browser to flatten the 3D transformed element, which removed the
+        intended book perspective.
 
-/* Dim non-selected items when an item is active */
-.shelf-items:has(.shelf-item.active) .shelf-item:not(.active)::after {
-    background: rgba(17, 16, 24, 0.35);
-}
+        Using a pseudo-element overlay preserves the 3D effect while still
+        visually reducing the emphasis of non-selected items.
+    */
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
 
-/* 
-    Darken non-selected shelf items using an overlay instead of CSS filter/opacity.
+        background: rgba(17, 16, 24, 0);
+        pointer-events: none;
+        transition: background 0.3s ease;
+        z-index: 3;
+    }
 
-    Initial approach:
-    Applying filter and opacity directly to the entire .shelf-item caused
-    the browser to flatten the 3D transformed element, which removed the
-    intended book perspective.
+    &:hover { transform: rotateY(24deg) translateY(-12px) translateX(12px) scale(1.05); }
 
-    Using a pseudo-element overlay preserves the 3D effect while still
-    visually reducing the emphasis of non-selected items.
-*/
-.shelf-item::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background: rgba(17, 16, 24, 0);
-    pointer-events: none;
-    transition: background 0.3s ease;
-    z-index: 3;
+    /* Highlights selected item */
+    &.active {
+        transform: rotateY(12deg) translateY(-12px) translateX(22px) scale(1.08);
+        z-index: 10;
+        /* Add a subtle glow effect to the selected item */
+        box-shadow: 0 0 18px rgba(197, 179, 215, 0.184);
+    }
 }
 
 /* ---- Shelf Item: Spine and Cover ---- */
-
 .spine {
     position: absolute;
     top: 0;
@@ -771,15 +728,14 @@ footer {
     /* Add depth to the book spine */
     box-shadow: 3px 0 8px rgba(0, 0, 0, 0.25);
     border: 1px solid rgba(0, 0, 0, 0.445);
-}
 
-.spine img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
 }
-
 
 .cover {
     position: absolute;
@@ -788,23 +744,22 @@ footer {
     width: 100%;
     height: 100%;
     overflow: hidden; 
-}
 
-/* Simulate reflected light on the media cover */
-.cover::before {
-    content: "";
-    position: absolute;
-    inset: 0;
+    /* Simulate reflected light on the media cover */
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
 
-    background: linear-gradient(90deg, rgba(202, 208, 228, 0.266), transparent 40%, rgba(2, 5, 36, 0.31));
-}
+        background: linear-gradient(90deg, rgba(202, 208, 228, 0.266), transparent 40%, rgba(2, 5, 36, 0.31));
+    }
 
-.cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
 }
 
 /* Display for the currently selected item */
@@ -813,13 +768,11 @@ footer {
     text-align: center;
     font-weight: bold;
     color: white;
+
+    & a { color: white; }
 }
 
-.selected-media a {
-    color: white;
-}
-
-/* Media Details Ticket ============================ */
+/* ---- Details Ticket ---- */
 
 .media-details {
     min-height: 100vh;
@@ -831,11 +784,9 @@ footer {
 
     /* Offset the snap scroll position for the sticky header */
     scroll-margin-top: 80px;
-}
 
-/* Hide detail view until a media item has been selected */
-.media-details.hidden {
-    display: none;
+    /* Hide detail view until a media item has been selected */
+    &.hidden { display: none; }
 }
 
 /* Ticket container for selected media details */
@@ -853,32 +804,31 @@ footer {
 
     background-color: #e6adc4;
     border: 3px solid black;
-}
 
-/* Vertical decorative line separating cover and content */
-.media-details_layout::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 30%;
+    /* Vertical decorative line separating cover and content */
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 30%;
 
-    border-left: 6px dotted #d4d3d3;
-}
+        border-left: 6px dotted #d4d3d3;
+    }
 
-/* Upper ticket cutout */
-.media-details_layout::after {
-    content: "";
+    /* Upper ticket cutout */
+    &::after {
+        content: "";
+        position: absolute;
+        left: 30%;
+        top: -14px;
+        width: 28px;
+        height: 28px;
 
-    position: absolute;
-    left: 30%; /*Same as decorative line*/
-    top: -14px;
-    width: 28px;
-    height: 28px;
-
-    background-color: #d4d3d3;
-    border-radius: 50%;
-    transform: translateX(-50%);
+        background-color: #d4d3d3;
+        border-radius: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 /* Lower ticket cutout */
@@ -901,16 +851,16 @@ footer {
     align-items: center;
     /* Center cover visually within the ticket section */
     padding-right: 20%;
-}
 
-.media-details_image img {
-    width: 360px;
-    max-width: 100%;
-    display: block;
-    margin: 0 auto;
+    & img {
+        width: 360px;
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
 
-    border: 7px solid #f9fafd;
-    box-shadow: 3px 0 8px rgba(0, 0, 0, 0.25);
+        border: 7px solid #f9fafd;
+        box-shadow: 3px 0 8px rgba(0, 0, 0, 0.25);
+    }
 }
 
 /* Text content section of the ticket */
@@ -939,20 +889,20 @@ footer {
 
     line-height: 1.2;
     white-space: pre-line;
+
+    /* Style scrollbar for long comments */
+    &::-webkit-scrollbar { width: 4px; }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.35);
+        border-radius: 999px;
+    }
 }
 
-/* Style scrollbar for long comments */
-#selected-media-comment::-webkit-scrollbar {
-    width: 4px;
-}
+/* ==========================================================================
+    Quiz Page 
+    ========================================================================== */
 
-#selected-media-comment::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.35);
-    border-radius: 999px;
-}
-
-
-/* Quiz Page ============================ */
 .quiz-page {
     min-height: 100vh;
     display: flex;
@@ -970,6 +920,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &.hidden { display: none; }
 }
 
 .quiz {
@@ -979,7 +931,26 @@ footer {
     justify-content: center;
     align-items: center;
 
-    /* TODO: Add a decorative background that changes depending on the current quiz question */
+    & button {
+        min-width: 120px;
+        padding: 10px 24px;
+        margin: 0 24px;
+
+        font-weight: bold;
+        text-transform: uppercase;
+
+        color: white;
+        background-color: #000000;
+        border: 4px solid white;
+
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            color: #000000;
+            background-color: white;
+        }
+    }
 }
 
 .quiz-screen {
@@ -1006,7 +977,6 @@ footer {
     border: 4px solid white;
 }
 
-.quiz button,
 #quiz-restart {
     min-width: 120px;
     padding: 10px 24px;
@@ -1020,24 +990,16 @@ footer {
     border: 4px solid white;
 
     cursor: pointer;
-}
 
-.quiz button:hover,
-.quiz button:focus,
-#quiz-restart:hover,
-#quiz-restart:focus {
-    color: #000000;
-    background-color: white;
+    &:hover,
+    &:focus {
+        color: #000000;
+        background-color: white;
+    }
 }
 
 /* ---- Quiz Result Screen ---- */
 /* Basic recommendation card styling. Decorative elements will be added in a later iteration. */
-
-.quiz-results.hidden,
-.quiz-section.hidden {
-    display: none;
-}
-
 .quiz-results {
     min-height: calc(100vh - 80px); /* Header-Height */
     padding: 32px 16px;
@@ -1046,23 +1008,22 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 32px;
-}
 
-.quiz-results h2 {
-    margin: 0;
-    background-color: white;
-}
+    &.hidden { display: none; }
 
+    & h2 {
+        margin: 0;
+        background-color: white;
+    }
+}
 
 .quiz-results_list {
     display: flex;
     flex-direction: column;
     gap: 24px;
     width: min(900px, 90vw);
-}
 
-.quiz-results_list a {
-    color: black;
+    & a { color: black; }
 }
 
 .quiz-result-card {
@@ -1076,18 +1037,12 @@ footer {
     border: 4px solid white;
 }
 
-/* ============================
-    Responsive Styles
-============================ */
+/* ==========================================================================
+    Responsive Layout
+    ========================================================================== */
 
-/* Responsive: Desktop ============================ */
-@media (min-width: 768px) {
-
-    /* ---- Navigation ---- */
-    .mobile-menu {
-        display: none;
-    }
-}
+/* ---- Desktop ---- */
+@media (min-width: 768px) { .mobile-menu { display: none; } }
 
 /* ---- Media Details Ticket ----  */
 /* Increase cover area and reduce ticket size on smaller desktop screens */
@@ -1098,16 +1053,15 @@ footer {
         min-height: 450px;
         gap: 32px;
         padding: 55px;
+
+        &::before,
+        &::after { left: 40%; }
     }
 
-    .media-details_layout::before,
-    .media-details_layout::after,
-    .ticket-cutout {
-        left: 40%;
-    }
+    .ticket-cutout { left: 40%; }
 }
 
-/* Responsive: Tablet ============================ */
+/* ---- Tablet ---- */
 @media (max-width: 1023px) {
 
     /* ---- Home page: library card ---- */
@@ -1117,9 +1071,7 @@ footer {
         padding: 14px;
     }
 
-    .sticker {
-        right: 20px;
-    }
+    .sticker { right: 20px; }
 
     .home-description {
         width: 100%;
@@ -1130,14 +1082,10 @@ footer {
 
     .library-card_top {
         align-items: center;
-    }
 
-    .library-card_top img {
-        width: 90px;
-    }
+        & img { width: 90px; }
 
-    .library-card_top h1 {
-        font-size: 26px;
+        & h1 { font-size: 26px; }
     }
 
     .library-card_main {
@@ -1158,21 +1106,13 @@ footer {
         gap: 24px 16px;
     }
 
-    .genre-profile {
-        grid-column: 1/3;
-    }
+    .genre-profile { grid-column: 1/3; }
 
-    .genre-profile_list {
-        justify-content: center;
-    }
+    .genre-profile_list { justify-content: center; }
 
-    .tag {
-    min-width: 60px;
-    }
+    .tag { min-width: 60px; }
 
-    .library-card_bottom {
-        justify-content: center;
-    }
+    .library-card_bottom { justify-content: center; }
 
     .barcode {
         width: 100%;
@@ -1180,9 +1120,7 @@ footer {
     }
 
     /* ---- Shelf ---- */
-    .shelf-item:hover {
-        transform: none;
-    }
+    .shelf-item:hover { transform: none; }
 
     /* ---- Media Details Ticket ----  */
     /* Convert ticket into a vertical layout */
@@ -1195,25 +1133,25 @@ footer {
         height: clamp(620px, 80svh, 780px);
         min-height: auto;
         padding: 22px 32px;
-    }
 
-    /* Move decorative line below the cover */
-    .media-details_layout::before {
-        top: 80%;
-        bottom: auto;
-        left: 0;
-        right: 0;
+        /* Move decorative line below the cover */
+        &::before {
+            top: 80%;
+            bottom: auto;
+            left: 0;
+            right: 0;
 
-        border-left: none;
-        border-top: 6px dotted #d4d3d3;
-    }
+            border-left: none;
+            border-top: 6px dotted #d4d3d3;
+        }
 
-    /* Reposition ticket cutouts to match the horizontal decorative line */
-    .media-details_layout::after {
-        top: 80%;
-        left: -14px;
+        /* Reposition ticket cutouts to match the horizontal decorative line */
+        &::after {
+            top: 80%;
+            left: -14px;
 
-        transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
     }
 
     .ticket-cutout {
@@ -1226,37 +1164,26 @@ footer {
     }
 
     /* Cover was already visible in the shelf, so the ticket focuses on text */
-    .media-details_image {
-       display: none;
-    }
+    .media-details_image { display: none; }
 
     .media-details_content {
         padding: 12px 12px 0;
-
         font-size: 1rem;
     }
 
-    #selected-media-comment {
-        max-height: 80%;
-    }
+    #selected-media-comment { max-height: 80%; }
 
 }
 
-/* Responsive: Mobile ============================ */
+/* ---- Mobile ---- */
 @media (max-width: 767px) {
 
     /* ---- Navigation ---- */
-    .desktop-nav {
-        display: none;
-    }
+    .desktop-nav { display: none; }
 
-    .logo img {
-        width: 200px;
-    }
+    .logo img { width: 200px; }
 
-    .menu-button {
-        display: block;
-    }
+    .menu-button { display: block; }
 
     .mobile-menu {
         position: absolute;
@@ -1275,32 +1202,22 @@ footer {
         text-align: center;
     }
 
-    .footer-logo img {
-        width: 300px;
-    }
+    .footer-logo img { width: 300px; }
     
-    .footer-main-nav ul {
-        align-items: center;
-    }
+    .footer-main-nav ul { align-items: center; }
 
     /* ---- Home page: library card ---- */
     /* Reduce image size and stack profile information into a single column */
+     .library-card_top {
+     
+        & img { width: 80px; }
 
-     .library-card_top img {
-        width: 80px;
+        & h1 { font-size: 22px; }
     }
 
-    .library-card_top h1 {
-        font-size: 22px;
-    }
+    .library-card_content { grid-template-columns: 1fr; }
 
-     .library-card_content {
-        grid-template-columns: 1fr;
-    }
-
-    .genre-profile {
-        grid-column: auto;
-    } 
+    .genre-profile { grid-column: auto; } 
 
     /* ---- Media Details Ticket ---- */
     /* Make the ticket nearly full-width and show the lower area as a small preview */
@@ -1309,28 +1226,23 @@ footer {
 
         max-width: 100%;
         height: clamp(560px, calc(100svh - 32px), 700px);
+
+        /* Move the perforation line and cutouts accordingly */
+        &::before,
+        &::after { top: 85%; }
     }
 
-    .media-details {
-         padding: 32px 12px;
-    }
+    .media-details { padding: 32px 12px; }
 
-     /* Move the perforation line and cutouts accordingly */
-    .media-details_layout::before,
-    .media-details_layout::after,
-    .ticket-cutout {
-        top: 85%;
-    }
+    /* Move the perforation line and cutouts accordingly */
+    .ticket-cutout { top: 85%; }
 
     .media-details_content {
         overflow: hidden;
-
         font-size: 0.9375rem;
     }
 
-    #selected-media-comment {
-        padding-right: 8px;
-    }
+    #selected-media-comment {padding-right: 8px; }
 
     /* ---- Shelf ---- */
     .shelf {
@@ -1339,31 +1251,20 @@ footer {
         padding: 20px 0;
         gap: 8px;
         justify-content: center;
+
+        /* Remove overlay on mobile for better visibility*/
+        &::before,
+        &::after { display: none; }
     }
 
-    .page-title {
-        min-height: 80svh;
-    }
-
-    /* Hide scrollbar */
-    .shelf-items::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* Remove overlay on mobile for better visibility*/
-    .shelf::before,
-    .shelf::after {
-        display: none;
-    }
-
+    .page-title { min-height: 80svh; }
+    
     /* Reduce the 3D effect on mobile to improve readability
    and make touch interaction feel more natural */
     .shelf-item {
-        transform: scale(0.9);
-    }
+        transform: none;
 
-    .shelf-item.active {
-        transform: scale(0.9);
+        &.active { transform: scale(0.9); }
     }
 
     .filter {
@@ -1401,11 +1302,8 @@ footer {
         opacity: 0;
 
         transition: max-width 0.3s ease, opacity 0.2s ease;
-    }
 
-    .filter-options.open {
-        max-width: 280px;
-        opacity: 1;
+        &.open { max-width: 280px; opacity: 1; }
     }
 
     /* Use more compact filter buttons on smaller screens */
@@ -1430,44 +1328,41 @@ footer {
         padding-inline: calc((100vw - 280px) / 2);
         gap: 90px;
         align-items: center;
+
+        /* Hide scrollbar */
+        &::-webkit-scrollbar { display: none; }
     }
 
     .selected-media {
         margin-top: 0;
-    }
 
-    .selected-media h2 {
-        font-size: 1.2rem;
-    }
+        & h2 { font-size: 1.2rem; }
 
-    .selected-media a {
-        font-size: 0.9rem;
+        & a { font-size: 0.9rem; }
     }
 
     /* ----Quiz Page ---- */
-    .quiz-section {
-        min-height: 100svh;
-    }
+    .quiz-section { min-height: 100svh; }
 
     .quiz {
         height: 85svh;
+
+        & button { 
+            width: 100%;
+            max-width: 280px;
+            margin: 0; 
+        }
     }
 
     .quiz-questions {
         width: 80%;
         text-align: center;
-    }
 
-    .quiz-questions div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-    }
-
-    .quiz button {
-        width: 100%;
-        max-width: 280px;
-        margin: 0;
+        & div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
     }
 }
