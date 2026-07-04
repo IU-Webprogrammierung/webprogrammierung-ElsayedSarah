@@ -1,7 +1,7 @@
 /* Data structure for shelf items (books) */
 const books = [
     {   
-        id:"nolongerhuman",
+        id:"no-longer-human",
 
         title: "No Longer Human",
         category: "novel",
@@ -12,7 +12,7 @@ const books = [
             "psychological"
         ],
 
-        cover: "assets/covers/nolongerhuman.webp",
+        cover: "assets/covers/nolongerhuman.avif",
         spine: "#DC477B",
 
         /* External media page (used by the detail view) */
@@ -29,7 +29,7 @@ const books = [
         At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.`
     },
     {
-        id:"howlsmovingcastle",
+        id:"howls-moving-castle",
         
         title: "Howl's Moving Castle",
         category: "novel",
@@ -40,7 +40,7 @@ const books = [
             "romance"
         ],
 
-        cover: "assets/covers/howlsmovingcastle.webp",
+        cover: "assets/covers/howlsmovingcastle.avif",
         spine: "#72ACAE",
 
         externalLink: "https://www.goodreads.com/book/show/6294.Howl_s_Moving_Castle",
@@ -59,7 +59,7 @@ const books = [
             "psychological"
         ],
 
-        cover: "assets/covers/lapvona.webp",
+        cover: "assets/covers/lapvona.avif",
         spine: "#141213",
         
         externalLink: "https://www.goodreads.com/book/show/59693959-lapvona",
@@ -67,7 +67,7 @@ const books = [
         comment: "Add comment here"
     },
     {
-        id:"thesaltgrowsheavy",
+        id:"the-salt-grows-heavy",
         
         title: "The Salt Grows Heavy",
         category: "novel",
@@ -78,7 +78,7 @@ const books = [
             "fantasy"
         ],
         
-        cover: "assets/covers/thesaltgrowsheavy.webp",
+        cover: "assets/covers/thesaltgrowsheavy.avif",
         spine: "#BC1714",
 
         externalLink: "https://www.goodreads.com/book/show/61884779-the-salt-grows-heavy",
@@ -86,7 +86,7 @@ const books = [
         comment: "Add comment here"
     },
     {
-        id:"heavenofficialsblessing",
+        id:"heaven-officials-blessing",
         
         title: "Heaven Official's Blessing",
         category: "novel",
@@ -97,7 +97,7 @@ const books = [
             "romance"
         ],
         
-        cover: "assets/covers/heavenofficalsblessing.webp",
+        cover: "assets/covers/heavenofficialsblessing.avif",
         spine: "#2B4844",
 
         externalLink: "https://www.goodreads.com/book/show/53153332-heaven-s-official-blessing",
@@ -116,7 +116,7 @@ const books = [
             "mystery"
         ],
         
-        cover: "assets/covers/butter.webp",
+        cover: "assets/covers/butter.avif",
         spine: "#FFCA0A",
 
         externalLink: "https://www.goodreads.com/book/show/200776812-butter",
@@ -124,7 +124,7 @@ const books = [
         comment: "Add comment here"
     },
     {
-        id:"thesecrethistory",
+        id:"the-secret-history",
         
         title: "The Secret History",
         category: "novel",
@@ -136,7 +136,7 @@ const books = [
             "mystery"
         ],
         
-        cover: "assets/covers/thesecrethistory.webp",
+        cover: "assets/covers/thesecrethistory.avif",
         spine: "#F3F2ED",
 
         externalLink: "https://www.goodreads.com/book/show/29044.The_Secret_History",
@@ -144,7 +144,7 @@ const books = [
         comment: "Add comment here"
     },
        {
-        id:"jibakushounenhanakokun",
+        id:"jibaku-shounen-hanako-kun",
         
         title: "Jibaku Shounen Hanako-kun",
         category: "manga",
@@ -156,7 +156,7 @@ const books = [
             "romance"
         ],
         
-        cover: "assets/covers/tbhk.webp",
+        cover: "assets/covers/jibakushounenhanakokun.avif",
         spine: "#F8984E",
 
         externalLink: "https://myanimelist.net/manga/105084/Jibaku_Shounen_Hanako-kun",
@@ -164,7 +164,7 @@ const books = [
         comment: "Add comment here"
     },
     {
-        id:"bungostraydogs",
+        id:"bungo-stray-dogs",
         
         title: "Bungo Stray Dogs",
         category: "manga",
@@ -176,7 +176,7 @@ const books = [
             "action"
         ],
         
-        cover: "assets/covers/bungostraydogs.webp",
+        cover: "assets/covers/bungostraydogs.avif",
         spine: "#4D4C5C",
 
         externalLink: "https://myanimelist.net/manga/56529/Bungou_Stray_Dogs",
@@ -184,7 +184,7 @@ const books = [
         comment: "Add comment here"
     },
     {
-        id:"bungostraydogsbeast",
+        id:"bungo-stray-dogs-beast",
         
         title: "Bungo Stray Dogs: Beast",
         category: "manga",
@@ -196,7 +196,7 @@ const books = [
             "dark"
         ],
         
-        cover: "assets/covers/bungostraydogsbeast.webp",
+        cover: "assets/covers/bungostraydogsbeast.avif",
         spine: "#4086C4",
 
         externalLink: "https://myanimelist.net/manga/123006/Bungou_Stray_Dogs__Beast",
@@ -204,7 +204,7 @@ const books = [
         comment: "Add comment here"
     },
     {
-        id:"blackbutler",
+        id:"black-butler",
         
         title: "Black Butler",
         category: "manga",
@@ -216,7 +216,7 @@ const books = [
             "supernatural"
         ],
         
-        cover: "assets/covers/blackbutler.webp",
+        cover: "assets/covers/blackbutler.avif",
         spine: "#0000",
 
         externalLink: "https://myanimelist.net/manga/3866/Kuroshitsuji",
@@ -224,7 +224,7 @@ const books = [
         comment: "Add comment here"
     },
     {
-        id:"onepiece",
+        id:"one-piece",
         
         title: "One Piece",
         category: "manga",
@@ -236,7 +236,7 @@ const books = [
             "action"
         ],
         
-        cover: "assets/covers/onepiece.webp",
+        cover: "assets/covers/onepiece.avif",
         spine: "#293991",
 
         externalLink: "https://myanimelist.net/manga/13/One_Piece",
@@ -244,7 +244,7 @@ const books = [
         comment: "Add comment here"
     },
     {
-        id:"deathnote",
+        id:"death-note",
         
         title: "Death Note",
         category: "manga",
@@ -257,7 +257,7 @@ const books = [
             "supernatural"
         ],
         
-        cover: "assets/covers/deathnote.webp",
+        cover: "assets/covers/deathnote.avif",
         spine: "#0000",
 
         externalLink: "https://myanimelist.net/manga/21/Death_Note",
@@ -265,7 +265,7 @@ const books = [
         comment: "Add comment here"
     },
     {
-        id:"ohshc",
+        id:"ouran-highschool-host-club",
         
         title: "Ouran Highschool Host Club",
         category: "manga",
@@ -276,7 +276,7 @@ const books = [
             "slice of life"
         ],
 
-        cover: "assets/covers/ohshc.webp",
+        cover: "assets/covers/ouranhighschoolhostclub.avif",
         spine: "#FBDED6",
 
         externalLink: "https://myanimelist.net/manga/30/Ouran_Koukou_Host_Club",
@@ -288,7 +288,7 @@ const books = [
 
 const games = [
     {
-        id:"cultofthelamb",
+        id:"cult-of-the-lamb",
         
         title: "Cult of the Lamb",
         developer: "Massive Monster",
@@ -299,7 +299,7 @@ const games = [
             "dark"
         ],
 
-        cover: "assets/covers/cultofthelamb.webp",
+        cover: "assets/covers/cultofthelamb.avif",
         spine: "#3B3058",
 
         externalLink: "https://store.steampowered.com/app/1313140/Cult_of_the_Lamb",
@@ -318,7 +318,7 @@ const games = [
             "story-driven"
         ],
 
-        cover: "assets/covers/omori.webp",
+        cover: "assets/covers/omori.avif",
         spine: "#FFFF",
 
         externalLink: "https://store.steampowered.com/app/1150690/OMORI",
@@ -337,7 +337,7 @@ const games = [
             "fantasy"
         ],
 
-        cover: "assets/covers/undertale.webp",
+        cover: "assets/covers/undertale.avif",
         spine: "#0000",
 
         externalLink: "https://store.steampowered.com/app/391540/Undertale",
@@ -345,7 +345,7 @@ const games = [
         comment: "Add comment here"
     },
     {
-        id:"persona5r",
+        id:"persona-5-royal",
         
         title: "Persona 5 Royal",
         developer: "Atlus",
@@ -356,7 +356,7 @@ const games = [
             "story-driven"
         ],
         
-        cover: "assets/covers/persona5.webp",
+        cover: "assets/covers/persona5.avif",
         spine: "#0A0002",
 
         externalLink: "https://store.steampowered.com/app/1687950/Persona_5_Royal",
@@ -364,7 +364,7 @@ const games = [
         comment: "Add comment here"
     },
     {
-        id:"stardewvalley",
+        id:"stardew-valley",
         
         title: "Stardew Valley",
         developer: "ConcernedApe",
@@ -375,7 +375,7 @@ const games = [
             "romance"
         ],
         
-        cover: "assets/covers/stardewvalley.webp",
+        cover: "assets/covers/stardewvalley.avif",
         spine: "#034283",
 
         externalLink: "https://store.steampowered.com/app/413150/Stardew_Valley",
@@ -383,9 +383,9 @@ const games = [
         comment: "Add comment here"
     },
     {
-        id:"sims3",
+        id:"the-sims-3",
         
-        title: "Sims 3",
+        title: "The Sims 3",
         developer: "Maxis Studio",
 
         genre: [
@@ -393,7 +393,7 @@ const games = [
             "romance"
         ],
         
-        cover: "assets/covers/sims3.webp",
+        cover: "assets/covers/thesims3.avif",
         spine: "#FFFF",
 
         externalLink: "https://store.steampowered.com/app/47890/The_Sims_3",
@@ -401,7 +401,7 @@ const games = [
         comment: "Add comment here"
     },
     {
-        id:"tlozbotw",
+        id:"the-legend-of-zelda-breath-of-the-wild",
         
         title: "The Legend of Zelda: Breath of the Wild",
         developer: "Nintendo",
@@ -412,7 +412,7 @@ const games = [
             "action"
         ],
         
-        cover: "assets/covers/tlozb.webp",
+        cover: "assets/covers/thelegendofzeldabreathofthewild.avif",
         spine: "#415E7E",
 
         externalLink: "https://www.nintendo.com/de-de/Spiele/Nintendo-Switch-Spiele/The-Legend-of-Zelda-Breath-of-the-Wild-1173609.html",
