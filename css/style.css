@@ -38,9 +38,7 @@ h3,
     Global Navigation 
     ========================================================================== */
 
-nav {
-    position: relative;
-
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,36 +47,57 @@ nav {
 
 header nav { background-color: #000000; }
 
-.logo img { width: 300px; }
+.logo { 
+    display: grid;
+    place-items: center;
+    margin-right: 32px ;
+    
+    & img { width: 130px; }
+}
 
 .desktop-nav,
 .mobile-menu {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 8px;
 
     & a {
         display: block;
 
         color: white;
         text-decoration: none;
+        border-radius: 999px;
 
-        padding: 16px;
+        padding: 14px;
+        border: 2px solid transparent;
 
-        /* Highlight the current page in the global navigation */
-        &.active {
-            background: #a80a5c;
-            border-radius: 8px;
+        transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+           border-color: white;
+        }
+
+        &.active,
+        &[aria-current="page"] {
+            background: white;
+            color: black;
+            border-color: white;
         }
     }
 }
 
-.desktop-nav { display: flex; }
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
 /* ---- Mobile navigation menu ---- */
 .mobile-menu {
     display: flex;
     flex-direction: column;
+    gap: 4px;
 
     &.hidden { display: none; }
 }
@@ -148,16 +167,6 @@ footer {
         color: white;
         text-decoration: none;
         text-transform: none;
-    }
-}
-
-.footer-logo {
-    display: flex;
-    justify-content: right;
-
-    & img {
-        width: 500px;
-        max-width: 100%;
     }
 }
 
@@ -308,8 +317,6 @@ footer {
     padding: 8px 14px;
 
     border-bottom: 3px solid #f4c8df;
-
-    & img { width: 120px; }
 }
 
 .library-card_bottom {
@@ -1181,7 +1188,7 @@ footer {
     /* ---- Navigation ---- */
     .desktop-nav { display: none; }
 
-    .logo img { width: 200px; }
+    .logo img { width: 110px; }
 
     .menu-button { display: block; }
 
@@ -1201,8 +1208,6 @@ footer {
         flex-direction: column;
         text-align: center;
     }
-
-    .footer-logo img { width: 300px; }
     
     .footer-main-nav ul { align-items: center; }
 
