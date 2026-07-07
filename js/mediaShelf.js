@@ -94,6 +94,14 @@ function createShelfItem(media) {
             return;
         }
 
+        /* Remove the one-time quiz recommendation URL parameter after it has been processed */
+        const url = new URL(window.location.href);
+
+        if (url.searchParams.has("media")) {
+            url.searchParams.delete("media");
+            window.history.replaceState({}, "", url.pathname + url.search);
+        }
+
         /* Reveal detail view when a media is selected */
         mediaDetails.classList.remove("hidden");
         moreDetailsLink.classList.remove("hidden");
