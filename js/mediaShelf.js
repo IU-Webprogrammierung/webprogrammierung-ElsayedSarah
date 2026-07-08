@@ -153,10 +153,8 @@ function activeShelfItem() {
 function renderShelf(mediaList) {
     mediaShelf.innerHTML = "";
 
-    mediaList.forEach(function (media, index) {
+    mediaList.forEach(function (media) {
         const shelfItem = createShelfItem(media);
-        /* Add index for decorative "VOL. 01" labels */
-        shelfItem.dataset.index = String(index + 1).padStart(2, "0"); 
         mediaShelf.appendChild(shelfItem);
     });
 
