@@ -1,4 +1,26 @@
 /* ==========================================================================
+    Design Tokens
+    ========================================================================== */
+
+:root {
+    /* Shelf */
+    --book-w: clamp(13rem, 17vw, 17.5rem);
+    --book-h: calc(var(--book-w) * 1.5);
+    --shelf-items-h: calc(var(--book-h) + 6rem);
+    --shelf-item-gap: clamp(2rem, 4vw, 3.5rem);
+
+    /* Filter */
+    --filter-font-size: clamp(0.75rem, 0.85vw, 0.85rem);
+    --filter-padding-y: clamp(0.45rem, 0.8vw, 0.65rem);
+    --filter-padding-x: clamp(0.75rem, 1.1vw, 1rem);
+    --shelf-filter-gap: clamp(0.45rem, 0.8vh, 0.65rem);
+
+    /* Selected media text */
+    --shelf-selected-gap: clamp(1.2rem, 2vh, 2rem);
+    --selected-title-size: clamp(1.1rem, 1.1vw, 1.3rem);
+}
+
+/* ==========================================================================
     Base Styles
     ========================================================================== */
 
@@ -116,65 +138,58 @@ header nav { background-color: #000000; }
     ========================================================================== */
 
 footer {
-    padding: 32px 48px;
-
-    background-image: linear-gradient(45deg, #181416, #3a3950);
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 12px;
+    background: black;
     color: white;
+    text-align: center;
+    margin: 0;
+
+    /* Decorative separator line  */
+    &::before {
+        content: "";
+        position: absolute;
+        top: 20px;          
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: white;
+    }
+
+    /* Copyright notice */
+    & small { 
+        display: block;
+        margin-top: 24px; 
+    }
 }
 
-/* Upper footer area: navigation and logo */
-.footer-top {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 48px;
-    align-items: center;
-
-    padding-bottom: 32px;
-    margin-bottom: 24px;
-
-    border-bottom: 3px solid white;
-}
-
-.footer-main-nav {
+.footer-legal-nav {
     & ul {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-
-        list-style: none;
         margin: 0;
         padding: 0;
-    }
-
-    & a {
-        color: white;
-        text-decoration: none;
-        text-transform: none;
-    }
-}
-
-.footer-secondary-nav {
-    & ul {
-        display: flex;
-        gap: 24px;
-
         list-style: none;
-        margin: 0;
-        padding: 0;
     }
-    
+
+    & li { border-bottom: 2px solid white; }
+
     & a {
+        display: block;
+        padding: 18px 32px;
+
         color: white;
         text-decoration: none;
-        text-transform: none;
-    }
-}
+        text-transform: uppercase;
+        text-align: left;
 
-/* Lower footer area: legal links and copyright */
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+        font-size: 32px;
+        font-weight: bold;
+        line-height: 1;
+        letter-spacing: 0.02em;
+
+        &:hover,
+        &:focus-visible { background: linear-gradient(90deg,#2c1b52 0%,#8b7ab0 55%,#c8b6ea 100%); }
+    }
 }
 
 /* ==========================================================================
@@ -482,8 +497,10 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 48px 16px 64px;
-    gap: 32px;
+
+
+    padding-block: clamp(1rem, 3vh, 3rem);
+    gap: 0;
 
     background: radial-gradient(circle at center, rgba(255,255,255,.08), transparent 45%),#111018;
 
@@ -510,8 +527,7 @@ footer {
 /* ---- Filter ---- */
 .filter {
     display: flex;
-    gap: 18px;
-    margin-bottom: 24px;
+    margin-bottom: var(--shelf-filter-gap);
 }
 
 /* Mobile Filter-Toggle-Button: Hidden on desktop; displayed in the mobile media query */
@@ -562,9 +578,10 @@ footer {
         position: relative;
         z-index: 2;
 
-        min-width: 110px;
-        padding: 12px 20px;
+        min-width: 100px;
+        padding:  var(--filter-padding-y) var(--filter-padding-x);
 
+        font-size: var(--filter-font-size);
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: 0.08em;
@@ -606,17 +623,16 @@ footer {
     display: flex;
     position: relative;
 
-    gap: 50px;
+    gap: var(--shelf-item-gap);
     /* Add vertical padding so labels, shadows and hover effects are not clipped */
-    padding-inline: 100px;
-    padding-block: 46px 36px; 
+    padding-inline: clamp(2rem, 7vw, 6.25rem);
+    padding-block: 4.25rem 2.25rem;
     box-sizing: border-box;
-    justify-content: flex-start;
+    margin-bottom: var(--shelf-selected-gap);
     align-items: center;
 
     width: 100%;
-    height: 540px;
-    margin: 0;
+    height: var(--shelf-items-h);
     
     overflow-x: auto;
     /* Prevent vertical scrolling while allowing horizontal scrolling */
@@ -656,8 +672,8 @@ footer {
     position: relative;
     flex: 0 0 auto;
     /* shelf item size management*/
-    width: 280px; 
-    height: 420px;
+    width: var(--book-w); 
+    height: var(--book-h);
 
     /* 3D-Effect */
     perspective: 700px;
@@ -670,18 +686,6 @@ footer {
     box-shadow: -20px 32px 32px rgba(0, 0, 0, 0.35);
 
     scroll-snap-align: center;
-
-    /* Decorative editorial label displayed above each shelf item */
-    &::before {
-        content: "VOL. " attr(data-index);
-        position: absolute;
-        top: -28px;
-        left: 0;
-
-        font-size: 0.75rem;
-        letter-spacing: 0.18em;
-        color: rgba(255, 255, 255, 0.55);
-    }
 
     /* 
         Darken non-selected shelf items using an overlay instead of CSS filter/opacity.
@@ -721,13 +725,13 @@ footer {
     position: absolute;
     top: 0;
     left: 0;
-    width: 45px;
+    width: 38px;
     height: 100%;
     
     /* 3D-rotation and placement of spine */
-    transform: translateX(calc(-45px / 2)) 
+    transform: translateX(calc(-38px / 2)) 
                rotateY(-75deg)
-               translateX(calc(-45px/ 2));
+               translateX(calc(-38px/ 2));
     overflow: hidden;
 
     background-color: #959595;
@@ -771,12 +775,19 @@ footer {
 
 /* Display for the currently selected item */
 .selected-media {
-    margin-top: 0;
+    margin: 0;
     text-align: center;
     font-weight: bold;
     color: white;
 
-    & a { color: white; }
+    & h2 {
+        font-size: var(--selected-title-size);
+        margin: 0 0 0.35rem;
+    }
+    & a { 
+        color: white;
+        font-size: clamp(0.85rem, 0.9vw, 0.95rem); 
+    }
 }
 
 /* ---- Details Ticket ---- */
@@ -1071,6 +1082,15 @@ footer {
 /* ---- Tablet ---- */
 @media (max-width: 1023px) {
 
+    /* ---- Design Tokens ---- */
+    :root {
+        --book-w: clamp(15rem, 32vw, 18rem);
+        --shelf-item-gap: clamp(2rem, 5vw, 3rem);
+
+        --filter-font-size: 0.8rem;
+        --selected-title-size: 1.2rem;
+    }
+
     /* ---- Home page: library card ---- */
     /* Convert the horizontal library card into a vertical, stacked layout */
     .library-card {
@@ -1127,7 +1147,10 @@ footer {
     }
 
     /* ---- Shelf ---- */
-    .shelf-item:hover { transform: none; }
+    .shelf-item {
+        &:hover { transform: none; }
+        &.active { transform: none; }
+    }
 
     /* ---- Media Details Ticket ----  */
     /* Convert ticket into a vertical layout */
@@ -1184,6 +1207,20 @@ footer {
 
 /* ---- Mobile ---- */
 @media (max-width: 767px) {
+    
+    /* ---- Design Tokens ---- */
+    :root {
+        --book-w: clamp(12.5rem, 68vw, 15.75rem);
+        --shelf-item-gap: 5.625rem;
+
+        --filter-font-size: 0.72rem;
+        --filter-padding-y: 0.5rem;
+        --filter-padding-x: 0.65rem;
+        --shelf-filter-gap: 0.75rem;
+        --shelf-selected-gap: 1.25rem;
+
+        --selected-title-size: 1.15rem;
+    }
 
     /* ---- Navigation ---- */
     .desktop-nav { display: none; }
@@ -1202,15 +1239,14 @@ footer {
     }
 
     /* ---- Footer ---- */
-    .footer-top,
-    .footer-bottom {
+    .footer-legal-nav {
         display: flex;
         flex-direction: column;
-        text-align: center;
+        align-items: stretch;
+
+        & a { text-align: center; }
     }
     
-    .footer-main-nav ul { align-items: center; }
-
     /* ---- Home page: library card ---- */
     /* Reduce image size and stack profile information into a single column */
      .library-card_top {
@@ -1251,11 +1287,7 @@ footer {
 
     /* ---- Shelf ---- */
     .shelf {
-        position: relative;
-        min-height: 100svh;
-        padding: 20px 0;
-        gap: 8px;
-        justify-content: center;
+        padding-block: 1rem;
 
         /* Remove overlay on mobile for better visibility*/
         &::before,
@@ -1264,13 +1296,7 @@ footer {
 
     .page-title { min-height: 80svh; }
     
-    /* Reduce the 3D effect on mobile to improve readability
-   and make touch interaction feel more natural */
-    .shelf-item {
-        transform: none;
-
-        &.active { transform: scale(0.9); }
-    }
+    .shelf-item { transform: none; }
 
     .filter {
         /* Keep the filter menu accessible while scrolling within the shelf section */
@@ -1297,7 +1323,7 @@ footer {
     .filter-options {
         position: relative;
 
-        margin-left: 20px;
+        margin-left: 0;
         justify-content: center;
         gap: 4px;
         padding: 4px;
@@ -1328,11 +1354,11 @@ footer {
 
     /* Center a single media item while keeping adjacent items partially visible */
     .shelf-items {
-        height: 460px;
-        /* Center a single 280px-wide shelf item within the viewport */
-        padding-inline: calc((100vw - 280px) / 2);
-        gap: 90px;
+        height: var(--shelf-items-h);
+        padding-inline: 8rem;
+        gap: var(--shelf-item-gap);
         align-items: center;
+        margin-bottom: var(--shelf-selected-gap);
 
         /* Hide scrollbar */
         &::-webkit-scrollbar { display: none; }
@@ -1341,7 +1367,7 @@ footer {
     .selected-media {
         margin-top: 0;
 
-        & h2 { font-size: 1.2rem; }
+        & h2 { font-size: var(--selected-title-size); }
 
         & a { font-size: 0.9rem; }
     }

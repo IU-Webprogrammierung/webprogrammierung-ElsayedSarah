@@ -70,6 +70,8 @@ const gameQuestions = [
 
 /* Variable to keep count of current Question position */
 let currentQuestion = 0;
+/* Tracks which question set is currently active */
+let activeQuestions = [];
 
 /* Starting screen for the quiz */
 function showStartScreen () {
@@ -96,13 +98,15 @@ function showMediaTypeQuestions () {
 
     document.querySelector("#book-button").addEventListener("click", function () {
         answers.mediaType = "book";
+        activeQuestions = bookQuestions;
         showMangaInclusionQuestion();
     });
 
     document.querySelector("#game-button").addEventListener("click", function () {
         answers.mediaType = "game";
+        activeQuestions = gameQuestions;
         currentQuestion = 0;
-        showGameQuestions();
+        showQuestions();
     });
 
 }
@@ -121,28 +125,28 @@ function showMangaInclusionQuestion() {
     document.querySelector("#manga-yes").addEventListener("click", function () {
         answers.includeManga = true;
         currentQuestion = 0;
-        showBookQuestions();
+        showQuestions();
     });
 
     document.querySelector("#manga-no").addEventListener("click", function () {
         answers.includeManga = false;
         currentQuestion = 0;
-        showBookQuestions();
+        showQuestions();
     });
 
 }
 
-/* Questions to further specify the book recommendation */
-function showBookQuestions() {
+/* Questions to further specify the book/game recommendation */
+function showQuestions() {
 
     /* Check if all Questions have been asked after each loop */
-    if (currentQuestion >= bookQuestions.length) {
+    if (currentQuestion >= activeQuestions.length) {
         showQuizResults();
         return;
     }
 
     /* Keep track of current Question */
-    const question = bookQuestions[currentQuestion];
+    const question = activeQuestions[currentQuestion];
 
     /* Show Question */
     quizGame.innerHTML = `
@@ -155,53 +159,17 @@ function showBookQuestions() {
     `;
 
     document.querySelector("#option-a").addEventListener("click", function () {
-        currentQuestion ++;
         answers.genres.push(question.genreA);
-        showBookQuestions();
+        currentQuestion ++;
+        showQuestions();
     });
 
     document.querySelector("#option-b").addEventListener("click", function () {
-        currentQuestion ++;
         answers.genres.push(question.genreB);
-        showBookQuestions();
-    });
-        
-}
-
-/* Questions to further specify the game recommendation */
-function showGameQuestions() {
-
-    /* Check if all Questions have been asked after each loop */
-    if (currentQuestion >= gameQuestions.length) {
-        showQuizResults();
-        return;
-    }
-
-    /* Keep track of current Question */
-    const question = gameQuestions[currentQuestion];
-
-    /* Show Question */
-    quizGame.innerHTML = `
-        <p>${question.text}</p>
-
-        <div>
-            <button id="option-a">${question.genreA}</button>
-            <button id="option-b">${question.genreB}</button>
-        </div>
-    `;
-
-    document.querySelector("#option-a").addEventListener("click", function () {
         currentQuestion ++;
-        answers.genres.push(question.genreA);
-        showGameQuestions();
+        showQuestions();
     });
-
-    document.querySelector("#option-b").addEventListener("click", function () {
-        currentQuestion ++;
-        answers.genres.push(question.genreB);
-        showGameQuestions();
-    });
- 
+         
 }
 
 /* 
@@ -305,6 +273,7 @@ function showQuizResults () {
         answers.includeManga = null;
         answers.genres = [];
         currentQuestion = 0;
+        activeQuestions = [];
        
         showStartScreen();
     });
