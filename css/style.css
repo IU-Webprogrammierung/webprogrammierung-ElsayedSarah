@@ -13,7 +13,8 @@
     --filter-font-size: clamp(0.75rem, 0.85vw, 0.85rem);
     --filter-padding-y: clamp(0.45rem, 0.8vw, 0.65rem);
     --filter-padding-x: clamp(0.75rem, 1.1vw, 1rem);
-    --shelf-filter-gap: clamp(0.45rem, 0.8vh, 0.65rem);
+    --shelf-padding-top: clamp(1rem, 3vh, 3rem);
+    --sticky-filter-top: 0;
 
     /* Selected media text */
     --shelf-selected-gap: clamp(1.2rem, 2vh, 2rem);
@@ -64,7 +65,7 @@ h3,
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 24px;
+    padding: 4px 18px;
 }
 
 header nav { background-color: #000000; }
@@ -74,7 +75,7 @@ header nav { background-color: #000000; }
     place-items: center;
     margin-right: 32px ;
     
-    & img { width: 130px; }
+    & img { width: 110px; }
 }
 
 .desktop-nav,
@@ -126,6 +127,13 @@ header nav { background-color: #000000; }
 
 .menu-button {
     display: none;
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 1.4rem;
+    line-height: 1;
+
     color: white;
     background: none;
     border: none;
@@ -498,8 +506,8 @@ footer {
     align-items: center;
     justify-content: center;
 
-
-    padding-block: clamp(1rem, 3vh, 3rem);
+    padding-top: var(--shelf-padding-top);
+    padding-bottom: clamp(1rem, 3vh, 3rem);
     gap: 0;
 
     background: radial-gradient(circle at center, rgba(255,255,255,.08), transparent 45%),#111018;
@@ -527,7 +535,11 @@ footer {
 /* ---- Filter ---- */
 .filter {
     display: flex;
-    margin-bottom: var(--shelf-filter-gap);
+    justify-content: center;
+    align-items: center;
+
+    position: sticky;
+    top: var(--sticky-filter-top);
 }
 
 /* Mobile Filter-Toggle-Button: Hidden on desktop; displayed in the mobile media query */
@@ -790,12 +802,14 @@ footer {
     }
 }
 
-/* ---- Details Ticket ---- */
+/* ==========================================================================
+    Detail View
+    ========================================================================== */
 
 .media-details {
     min-height: 100vh;
 
-    padding: 48px 16px;
+    padding: clamp(24px, 5vh, 48px) 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -813,12 +827,12 @@ footer {
 
     display: grid;
     grid-template-columns: 30% 70%;
-    gap: 64px;
+    gap: clamp(28px, 4vw, 64px);
     
     width: min(1400px, 90vw);
-    min-height: 650px;
+    height: clamp(420px, 68vh, 620px);
     margin: 0 auto;
-    padding: 48px 64px;
+    padding: clamp(24px, 5vh, 48px) clamp(28px, 5vw, 64px);
 
     background-color: #e6adc4;
     border: 3px solid black;
@@ -871,7 +885,7 @@ footer {
     padding-right: 20%;
 
     & img {
-        width: 360px;
+        width: clamp(240px, 24vw, 360px);
         max-width: 100%;
         display: block;
         margin: 0 auto;
@@ -884,19 +898,15 @@ footer {
 /* Text content section of the ticket */
 .media-details_content {
     display: flex;
+    min-height: 0;
     flex-direction: column;
-    padding: 32px;
-
-    font-size: 1.125rem;
+    padding: clamp(16px, 2.5vw, 32px);
+    font-size: clamp(1rem, 1vw, 1.125rem);
 }
 
-#detail-media-title {
-    margin-bottom: 1px;
-}
+#detail-media-title { margin-bottom: 1px; }
 
-#selected-media-author {
-    margin-bottom: 18px;
-}
+#selected-media-author { margin-bottom: 18px; }
 
 #selected-media-comment {
     /* Long comments can scroll without breaking the ticket layout */
@@ -1159,8 +1169,8 @@ footer {
         grid-template-rows: 80% 20%;
         gap: 0;
 
-        width: min(620px, 75vw);
-        height: clamp(620px, 80svh, 780px);
+        width: min(560px, 82vw);
+        height: clamp(660px, 84svh, 820px);
         min-height: auto;
         padding: 22px 32px;
 
@@ -1216,16 +1226,19 @@ footer {
         --filter-font-size: 0.72rem;
         --filter-padding-y: 0.5rem;
         --filter-padding-x: 0.65rem;
-        --shelf-filter-gap: 0.75rem;
+        --shelf-padding-top: 2rem;
+        --sticky-filter-top: 2rem;
         --shelf-selected-gap: 1.25rem;
 
         --selected-title-size: 1.15rem;
     }
 
     /* ---- Navigation ---- */
+    .navbar { padding: 4px 8px; }
+
     .desktop-nav { display: none; }
 
-    .logo img { width: 110px; }
+    .logo img { width: 95px; }
 
     .menu-button { display: block; }
 
@@ -1283,7 +1296,7 @@ footer {
         font-size: 0.9375rem;
     }
 
-    #selected-media-comment {padding-right: 8px; }
+    #selected-media-comment { padding-right: 8px; }
 
     /* ---- Shelf ---- */
     .shelf {
@@ -1299,15 +1312,8 @@ footer {
     .shelf-item { transform: none; }
 
     .filter {
-        /* Keep the filter menu accessible while scrolling within the shelf section */
-        position: sticky;
-        top: clamp(16px, 2.5svh, 24px);
         width: 100%;
-
         z-index: 20;
-
-        justify-content: center;
-        align-items: center;
         margin-bottom: 0;
     }
 
@@ -1342,7 +1348,7 @@ footer {
         min-width: 72px;
         width: auto;
         padding: 8px 10px;
-        font-size: 0.72rem;
+        font-size: var(--filter-font-size);
         white-space: nowrap;
     }
 
@@ -1352,12 +1358,11 @@ footer {
         height: calc(100% - 8px);
     }
 
-    /* Center a single media item while keeping adjacent items partially visible */
+    /* Center a single media item */
     .shelf-items {
         height: var(--shelf-items-h);
         padding-inline: 8rem;
         gap: var(--shelf-item-gap);
-        align-items: center;
         margin-bottom: var(--shelf-selected-gap);
 
         /* Hide scrollbar */
