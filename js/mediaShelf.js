@@ -1,19 +1,6 @@
-/*
-    Note: books.js and games.js were merged into a shared mediaShelf.js file.
+/* Shared rendering and interaction logic for the Library media shelf */
 
-    Media data is now stored in data.js, while mediaShelf.js contains the
-    shared shelf logic. This avoids duplicate code and allows both pages
-    to reuse the same functionality with different data sets.
-*/
-
-
-/* Initialize the shelf with the media data provided by the current page (e.g. books.html or games.html) */
-function initializeShelf(mediaList) {
-    renderShelf(mediaList);
-}
-
-
-/* Select DOM-Elements */
+/* ---- DOM references ---- */
 const mediaShelf = document.querySelector("#media-shelf");
 const selectedMediaTitle = document.querySelector("#selected-media-title");
 const detailMediaTitle = document.querySelector("#detail-media-title");
@@ -21,10 +8,10 @@ const selectedMediaImage = document.querySelector("#selected-media-image");
 const selectedMediaAuthor = document.querySelector("#selected-media-author");
 const selectedMediaComment = document.querySelector("#selected-media-comment");
 
-/* Select filter buttons (only for book-page) */
-const allButton = document.querySelector("#all-books");
-const novelButton = document.querySelector("#filter-novel");
-const mangaButton = document.querySelector("#filter-manga");
+/* Book category filter */
+const allButton = document.querySelector('[data-filter="all"]');
+const novelButton = document.querySelector('[data-filter="novel"]');
+const mangaButton = document.querySelector('[data-filter="manga"]');
 
 /* Detail view section (hidden until a media is selected) */
 const mediaDetails = document.querySelector("#media-details");
@@ -34,6 +21,7 @@ const moreDetailsLink = document.querySelector("#more-details-link");
 let pointerDown = false;
 let shelfIsDragging = false;
 
+/* ---- Shelf ---- */
 /*Center the selected shelf item inside the shelf */
 function centerShelfItem(shelfItem) {
     shelfItem.scrollIntoView({
@@ -65,9 +53,26 @@ if (moreDetailsLink) {
     });
 }
 
-/* Create media article elements */
+/* Reset the selected media and hide the detail view */
+function resetMediaSelection(emptySelectionText) {
+    selectedMediaTitle.textContent = emptySelectionText;
+
+    detailMediaTitle.textContent = "";
+    selectedMediaAuthor.textContent = "";
+    selectedMediaComment.textContent = "";
+
+    selectedMediaImage.removeAttribute("src");
+    selectedMediaImage.alt = "Cover of the selected media item";
+
+    mediaDetails.classList.add("hidden");
+    moreDetailsLink.classList.add("hidden");
+}
+
+/* ---- Shelf Rendering ---- */
+/* Create one interactive shelf item */
 function createShelfItem(media) {
-    const shelfItem = document.createElement("article");
+    const shelfItem = document.createElement("li");
+
     shelfItem.classList.add("shelf-item");
     /* Store media ID for automatic selection via URL parameters */
     shelfItem.dataset.id = media.id; 
@@ -75,11 +80,12 @@ function createShelfItem(media) {
     /* Improve accessibility with keyboard focus and aria-label */
     shelfItem.tabIndex = 0;
     shelfItem.setAttribute("role", "button");
+    shelfItem.setAttribute("aria-pressed", "false");
     shelfItem.setAttribute("aria-label", `Select ${media.title}`);
 
     /* Generate HTML structure dynamically */
     shelfItem.innerHTML = `
-        <div class="spine" style="background-color: ${media.spine};"></div>
+        <div class="spine" style="background-color: ${media.spine};" aria-hidden="true"></div>
 
         <div class="cover">
             <img src="${media.cover}" alt="${media.title} cover">
@@ -88,65 +94,62 @@ function createShelfItem(media) {
 
     /* Show information of selected media */
     shelfItem.addEventListener("click", function () {
+        selectShelfItem(shelfItem, media);
 
-        /* Prevent accidental media selection while dragging */
-        if (shelfIsDragging) {
-            return;
-        }
-
-        /* Remove the one-time quiz recommendation URL parameter after it has been processed */
-        const url = new URL(window.location.href);
-
-        if (url.searchParams.has("media")) {
-            url.searchParams.delete("media");
-            window.history.replaceState({}, "", url.pathname + url.search);
-        }
-
-        /* Reveal detail view when a media is selected */
-        mediaDetails.classList.remove("hidden");
-        moreDetailsLink.classList.remove("hidden");
-        centerShelfItem(shelfItem);
-
-        selectedMediaTitle.textContent = media.title;
-        detailMediaTitle.textContent = media.title;
-        selectedMediaAuthor.textContent = media.author || media.developer;
-        selectedMediaComment.textContent = media.comment;
-        selectedMediaImage.src = media.cover;
-        selectedMediaImage.alt = media.title + " cover";
-        /* Future enhancement: Display a platform-specific external link (e.g. Goodreads, MyAnimeList, Steam) */
-
-        scrollToMediaDetails();
     });
 
-    /* Allow shelf items to be selected using the keyboard  */
+    /* Allow keyboard users to select the item */
     shelfItem.addEventListener("keydown", function (event) {
         if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
-            shelfItem.click();
+            selectShelfItem(shelfItem, media);
         }
     });
 
     return shelfItem;
 }
 
-/* Mark selected shelf item as selected */
-function activeShelfItem() {
-    const shelfItems = document.querySelectorAll(".shelf-item");
+/* Select one shelf item and update the detail view */
+function selectShelfItem(shelfItem, media) {
+    /* Prevent accidental media selection while dragging */
+    if (shelfIsDragging) {
+        return;
+    }
 
-    shelfItems.forEach(function(item) {
-        item.addEventListener("click", function() {
+    const shelfItems = mediaShelf.querySelectorAll(".shelf-item");
 
-            /* Prevent active state from changing while dragging */
-            if (shelfIsDragging) {
-                return;
-            }
-            
-            shelfItems.forEach(function (i) {
-                i.classList.remove("active")
-            });
-            item.classList.add("active");
-        });
+    /* Mark selected shelf item as selected */
+    shelfItems.forEach(function (item) {
+        const isSelected = item === shelfItem;
+
+        item.classList.toggle("active", isSelected);
+        item.setAttribute("aria-pressed", String(isSelected));
     });
+
+
+    /* Remove the one-time quiz recommendation URL parameter after it has been processed */
+    const url = new URL(window.location.href);
+
+    if (url.searchParams.has("media")) {
+        url.searchParams.delete("media");
+        window.history.replaceState({}, "", url);
+    }
+        
+    /* Reveal detail view when a media is selected */
+    mediaDetails.classList.remove("hidden");
+    moreDetailsLink.classList.remove("hidden");
+    
+
+    selectedMediaTitle.textContent = media.title;
+    detailMediaTitle.textContent = media.title;
+    selectedMediaAuthor.textContent = media.author || media.developer || "";
+    selectedMediaComment.textContent = media.comment || "";
+    selectedMediaImage.src = media.cover;
+    selectedMediaImage.alt = media.title + " cover";
+    /* Future enhancement: Display a platform-specific external link (e.g. Goodreads, MyAnimeList, Steam) */
+
+    centerShelfItem(shelfItem);
+    scrollToMediaDetails();
 }
 
 /* Render all (filtered) media in the shelf */
@@ -157,8 +160,6 @@ function renderShelf(mediaList) {
         const shelfItem = createShelfItem(media);
         mediaShelf.appendChild(shelfItem);
     });
-
-    activeShelfItem();
 
     /*
     If a media ID is present in the URL, find the matching shelf item and
@@ -174,11 +175,14 @@ function renderShelf(mediaList) {
         return;
     }
 
-    const selectedShelfItem = document.querySelector(`[data-id="${selectedMediaId}"]`);
+    const selectedShelfItem = Array.from(
+        mediaShelf.querySelectorAll(".shelf-item")
+    ).find(function (item) {
+        return item.dataset.id === selectedMediaId;
+    });
 
     if (selectedShelfItem) {
         selectedShelfItem.click();
-        centerShelfItem(selectedShelfItem);
     }
 }
 
@@ -187,6 +191,7 @@ function renderShelf(mediaList) {
 /* GSAP: Animate the shelf when changing filters */
 function animateShelfFilterChange(filteredMedia, activeButton) {
     setActiveFilter(activeButton);
+    resetMediaSelection("Select a book");
 
         gsap.to(mediaShelf, {
         x: -40,
@@ -240,18 +245,37 @@ function initializeBookFilters() {
         animateShelfFilterChange(mangas, mangaButton);
     });
 
-     /* "All" is selected when the page loads */
-    setActiveFilter(allButton);
+    resetBookFilters();
 }
 
 /* Highlight the currently selected book category filter */
 function setActiveFilter(activeButton) {
-    [allButton, novelButton, mangaButton].forEach(function (button) {
-        button.classList.remove("active");
+    const filterButtons = [
+        allButton,
+        novelButton,
+        mangaButton
+    ].filter(Boolean);
+
+    filterButtons.forEach(function (button) {
+        const isActive = button === activeButton;
+
+        button.classList.toggle("active", isActive);
+        button.setAttribute(
+            "aria-pressed",
+            String(isActive)
+        );
     });
 
-    activeButton.classList.add("active");
     moveFilterIndicator(activeButton);
+}
+
+/* Restore the default book filter when returning to Books */
+function resetBookFilters() {
+    if (!allButton || !novelButton || !mangaButton) {
+        return;
+    }
+
+    setActiveFilter(allButton);
 }
 
 /* GSAP: Animate the active filter indicator to the selected filter button */
@@ -274,7 +298,6 @@ function moveFilterIndicator(activeButton) {
 }
 
 /* ---- Drag-to-Scroll ---- */
-
 /* Enable drag-to-scroll for desktop users */
 function initializeShelfDragging() {
 
@@ -324,5 +347,4 @@ function initializeShelfDragging() {
     });
 }
 
-setActiveFilter(allButton);
 initializeShelfDragging();

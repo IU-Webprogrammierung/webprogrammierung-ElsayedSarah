@@ -475,17 +475,11 @@ footer {
 }
 
 /* ==========================================================================
-    Media Shelf 
+    Library Page 
     ========================================================================== */
 
-.books-page,
-.games-page {
-    background-color: #d4d3d3;
-    overflow-x: hidden;
-}
-
-/* Hero section with page title and description (books & games) */
-.page-title {
+/* ---- Library Hero ---- */
+.library-hero {
     min-height: 90vh;
 
     display: flex;
@@ -495,6 +489,67 @@ footer {
     text-align: center;
 
     padding: 80px 16px;
+    background-color: #d4d3d3;
+}
+
+/* ---- Media Type Switch ---- */
+.library-type-switch {
+    position: relative;
+    
+    display: flex;
+    gap: 8px;
+    padding: 6px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    & button {
+        position: relative;
+        z-index: 2;
+
+        min-width: 100px;
+        padding:  var(--filter-padding-y) var(--filter-padding-x);
+
+        font-size: var(--filter-font-size);
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+
+        color: black;
+        background: transparent;
+        border: none;
+        border-radius: 999px;
+
+        cursor: pointer;
+    
+
+        /* Highlight the active media type */
+        &.active { color: white; }
+
+         &:focus-visible { 
+            outline: 3px solid white;
+            outline-offset: 3px;
+        }
+    }
+}
+
+.library-type-indicator {
+    position: absolute;
+    z-index: 1;
+
+    top: 6px;
+    left: 6px;
+
+    height: calc(100% - 12px);
+
+    background: #661e7e;
+    border-radius: 999px;
+
+    box-shadow: 0 0 24px rgba(197, 179, 215, 0.45);
 }
 
 /* ---- Shelf ---- */
@@ -538,8 +593,7 @@ footer {
     justify-content: center;
     align-items: center;
 
-    position: sticky;
-    top: var(--sticky-filter-top);
+    &.hidden { display: none; }
 }
 
 /* Mobile Filter-Toggle-Button: Hidden on desktop; displayed in the mobile media query */
@@ -607,8 +661,11 @@ footer {
     
 
         /* Highlight the active filter button */
-        &.active {
-            color: black;
+        &.active { color: black; }
+        
+        &:focus-visible { 
+            outline: 3px solid white;
+            outline-offset: 3px;
         }
     }
 }
@@ -632,16 +689,21 @@ footer {
 /* ---- Shelf Items ---- */
 /* Container for dynamically generated shelf items */
 .shelf-items {
-    display: flex;
     position: relative;
+
+    display: flex;
+    justify-content: flex-start; /* Fallback */
+    justify-content: safe center;
+    align-items: center;
+
+    list-style-type: none;
 
     gap: var(--shelf-item-gap);
     /* Add vertical padding so labels, shadows and hover effects are not clipped */
     padding-inline: clamp(2rem, 7vw, 6.25rem);
     padding-block: 4.25rem 2.25rem;
     box-sizing: border-box;
-    margin-bottom: var(--shelf-selected-gap);
-    align-items: center;
+    margin: 0 0 var(--shelf-selected-gap);
 
     width: 100%;
     height: var(--shelf-items-h);
@@ -751,13 +813,6 @@ footer {
     /* Add depth to the book spine */
     box-shadow: 3px 0 8px rgba(0, 0, 0, 0.25);
     border: 1px solid rgba(0, 0, 0, 0.445);
-
-    & img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
 }
 
 .cover {
@@ -814,6 +869,8 @@ footer {
     justify-content: center;
     align-items: center;
 
+    background-color: #d4d3d3;
+
     /* Offset the snap scroll position for the sticky header */
     scroll-margin-top: 80px;
 
@@ -854,8 +911,8 @@ footer {
         position: absolute;
         left: 30%;
         top: -14px;
-        width: 28px;
-        height: 28px;
+        width: 32px;
+        height: 32px;
 
         background-color: #d4d3d3;
         border-radius: 50%;
@@ -868,8 +925,8 @@ footer {
     position: absolute;
     bottom: -14px;
     left: 30%; /*Same as decorative line*/
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
 
     background-color: #d4d3d3;
     border-radius: 50%;
@@ -1307,7 +1364,7 @@ footer {
         &::after { display: none; }
     }
 
-    .page-title { min-height: 80svh; }
+    .library-hero { min-height: 90svh; }
     
     .shelf-item { transform: none; }
 
@@ -1360,6 +1417,7 @@ footer {
 
     /* Center a single media item */
     .shelf-items {
+        justify-content: flex-start;
         height: var(--shelf-items-h);
         padding-inline: 8rem;
         gap: var(--shelf-item-gap);
