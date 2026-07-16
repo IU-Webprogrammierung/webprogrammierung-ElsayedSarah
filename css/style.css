@@ -3,6 +3,16 @@
     ========================================================================== */
 
 :root {
+    /* Home library card */
+    --home-card-width: clamp(780px, 80vw, 910px);
+    --home-card-padding: clamp(12px, 2vh, 16px);
+    --home-card-main-gap: clamp(24px, 4vw, 64px);
+    --home-card-main-padding: clamp(30px, 4.5vh, 36px);
+    --home-card-image-width: clamp(280px, 28vw, 300px);
+    --home-card-title-size: clamp(1.5rem, 1.8vw, 2rem);
+    --home-card-subtitle-size: 1rem;
+    --home-card-tag-size: clamp(0.9rem, 1vw, 1rem);
+
     /* Shelf */
     --book-w: clamp(13rem, 17vw, 17.5rem);
     --book-h: calc(var(--book-w) * 1.5);
@@ -24,6 +34,11 @@
 /* ==========================================================================
     Base Styles
     ========================================================================== */
+
+/* Universal Box Sizing */
+*,
+*::before,
+*::after { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
 
@@ -292,7 +307,6 @@ footer {
 .home-page {
     min-height: 100vh;
     padding: 30px 16px 90px;
-    box-sizing: border-box;
 
     display: flex;
     flex-direction: column;
@@ -309,9 +323,9 @@ footer {
 .library-card {
     position: relative;
 
-    max-width: 900px;
+    width: var(--home-card-width);
     margin: 12px auto 0;
-    padding: 16px;
+    padding: var(--home-card-padding);
 
     border: 10px solid #f4c8df;
     border-radius: 32px;
@@ -329,7 +343,7 @@ footer {
     }
 
     & h2 {
-        font-size: 1rem;
+        font-size: var(--home-card-subtitle-size);
         text-transform: uppercase;
     }
 }
@@ -340,17 +354,19 @@ footer {
     padding: 8px 14px;
 
     border-bottom: 3px solid #f4c8df;
+
+    & h1 { font-size: var(--home-card-title-size); }
 }
 
 .library-card_bottom {
     display: flex;
-    padding: 16px 14px;
+    padding: clamp(14px, 2vh, 20px) 14px;
 }
 
 /* Decorative barcode pattern */
 .barcode {
-    width: 400px;
-    height: 50px;
+    width: clamp(220px, 30vw, 400px);
+    height: clamp(35px, 5vh, 50px);
 
     /* barcode pattern */
     background: repeating-linear-gradient(90deg, #a80a5c 0px 2px, transparent 2px 4px, #a80a5c 4px 6px, transparent 6px 8px, #a80a5c 8px 12px, transparent 12px 14px);
@@ -362,7 +378,7 @@ footer {
 
     bottom: -50px;
     right: 80px;
-    width: 120px;
+    width: clamp(80px, 10vw, 120px);
 
     filter:
     drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))
@@ -377,13 +393,15 @@ footer {
 
 .library-card_main {
     display: flex;
-    gap: 64px;
-    padding: 24px;
+    gap: var(--home-card-main-gap);
+    padding: var(--home-card-main-padding);
 }
 
 .library-card_image {
     & img {
-        width: 300px;
+        width: var(--home-card-image-width);
+        max-height: 42vh;
+        object-fit: contain;
         height: auto;
         display: block;
 
@@ -424,8 +442,8 @@ footer {
 .tag-b,
 .tag-c,
 .tag-d {
-    min-width: 100px;
-    padding: 8px 16px;
+    min-width: clamp(90px, 8vw, 120px);
+    padding: clamp(6px, 1vh, 8px) clamp(12px, 2vw, 16px);
 
     text-align: center;
     border-radius: 8px; 
@@ -433,6 +451,7 @@ footer {
     color: black;
 
     text-transform: uppercase;
+    font-size: var(--home-card-tag-size);
 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 4px 4px 0 #07165d;
     transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
@@ -702,7 +721,6 @@ footer {
     /* Add vertical padding so labels, shadows and hover effects are not clipped */
     padding-inline: clamp(2rem, 7vw, 6.25rem);
     padding-block: 4.25rem 2.25rem;
-    box-sizing: border-box;
     margin: 0 0 var(--shelf-selected-gap);
 
     width: 100%;
@@ -1151,6 +1169,17 @@ footer {
 
     /* ---- Design Tokens ---- */
     :root {
+        /* Home library card */
+        --home-card-width: min(420px, calc(100% - 32px));
+        --home-card-padding: 14px;
+        --home-card-main-gap: 32px;
+        --home-card-main-padding: 24px 16px;
+        --home-card-image-width: min(260px, 65vw);
+        --home-card-title-size: clamp(1.35rem, 3vw, 1.625rem);
+        --home-card-subtitle-size: .95rem;
+        --home-card-tag-size: 0.9rem;
+
+        /* Shelf */
         --book-w: clamp(15rem, 32vw, 18rem);
         --shelf-item-gap: clamp(2rem, 5vw, 3rem);
 
@@ -1160,12 +1189,8 @@ footer {
 
     /* ---- Home page: library card ---- */
     /* Convert the horizontal library card into a vertical, stacked layout */
-    .library-card {
-        max-width: 420px;
-        padding: 14px;
-    }
 
-    .sticker { right: 20px; }
+    .sticker { right: 10px; }
 
     .home-description {
         width: 100%;
@@ -1178,21 +1203,14 @@ footer {
         align-items: center;
 
         & img { width: 90px; }
-
-        & h1 { font-size: 26px; }
     }
 
     .library-card_main {
         flex-direction: column;
         align-items: center;
-        gap: 32px;
-        padding: 24px 16px;
     }
 
-    .library-card_image img {
-        width: 260px;
-        max-width: 100%;
-    }
+    .library-card_image img { max-width: 100%; }
 
     .library-card_content {
         width: 100%;
@@ -1204,7 +1222,13 @@ footer {
 
     .genre-profile_list { justify-content: center; }
 
-    .tag { min-width: 60px; }
+    .tag,
+    .tag-b,
+    .tag-c,
+    .tag-d {
+        min-width: 80px;
+        padding: 7px 12px;
+    }
 
     .library-card_bottom { justify-content: center; }
 
@@ -1277,6 +1301,17 @@ footer {
     
     /* ---- Design Tokens ---- */
     :root {
+        /* Home library card */
+        --home-card-width: min(360px, 92vw);
+        --home-card-padding: 12px;
+        --home-card-main-gap: 24px;
+        --home-card-main-padding: 20px 12px;
+        --home-card-image-width: min(220px, 68vw);
+        --home-card-title-size: clamp(1.1rem, 5vw, 1.375rem);
+        --home-card-subtitle-size: .9rem;
+        --home-card-tag-size: 0.85rem;
+
+        /* Shelf */
         --book-w: clamp(12.5rem, 68vw, 15.75rem);
         --shelf-item-gap: 5.625rem;
 
@@ -1319,11 +1354,11 @@ footer {
     
     /* ---- Home page: library card ---- */
     /* Reduce image size and stack profile information into a single column */
+    
      .library-card_top {
+        padding: 6px 8px;
      
         & img { width: 80px; }
-
-        & h1 { font-size: 22px; }
     }
 
     .library-card_content { grid-template-columns: 1fr; }
