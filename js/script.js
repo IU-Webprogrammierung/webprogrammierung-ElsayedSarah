@@ -35,7 +35,7 @@ document.body.addEventListener("htmx:afterSwap", function () {
     });
 });
 
-/* Books Page ============================ */
+/* Library Page ============================ */
 
 /* Toggle the collapsible filter menu on mobile */
 document.addEventListener("click", function (event) {
@@ -53,6 +53,12 @@ document.addEventListener("click", function (event) {
 
     filterOptions.classList.toggle("open");
     filterToggle.classList.toggle("open"); /* Update the visual state of the mobile filter toggle (CSS) */
+
+    /* Keep the accessible expanded state in sync */
+    filterToggle.setAttribute(
+        "aria-expanded",
+        String(filterOptions.classList.contains("open"))
+    );
 
     /*
         After the opening transition has finished, reposition the animated
