@@ -64,6 +64,8 @@ function resetMediaSelection(emptySelectionText) {
     selectedMediaImage.removeAttribute("src");
     selectedMediaImage.alt = "Cover of the selected media item";
 
+    mediaDetails.style.backgroundImage = "";
+
     mediaDetails.classList.add("hidden");
     moreDetailsLink.classList.add("hidden");
 }
@@ -147,6 +149,9 @@ function selectShelfItem(shelfItem, media) {
     selectedMediaImage.src = media.cover;
     selectedMediaImage.alt = media.title + " cover";
     /* Future enhancement: Display a platform-specific external link (e.g. Goodreads, MyAnimeList, Steam) */
+
+    mediaDetails.style.backgroundImage =
+    `url("${selectedMediaImage.src}")`;
 
     centerShelfItem(shelfItem);
     scrollToMediaDetails();
