@@ -166,6 +166,8 @@ function renderShelf(mediaList) {
         mediaShelf.appendChild(shelfItem);
     });
 
+    setupKeyboardNavigation(mediaShelf, ".shelf-item");
+
     /*
     If a media ID is present in the URL, find the matching shelf item and
     trigger its click event automatically.

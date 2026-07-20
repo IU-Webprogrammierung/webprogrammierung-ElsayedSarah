@@ -813,6 +813,12 @@ footer {
         /* Add a subtle glow effect to the selected item */
         box-shadow: 0 0 18px rgba(197, 179, 215, 0.184);
     }
+
+    &:focus-visible {
+        outline: 3px solid rgba(255, 255, 255, 0.9);
+        outline-offset: 6px;
+        transform: translateY(-6px);
+    }
 }
 
 /* ---- Shelf Item: Spine and Cover ---- */
@@ -1097,19 +1103,21 @@ footer {
     text-align: left;
 
     background: #080808;
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.25);
     border-radius: 16px;
 
     cursor: pointer;
-    transition:
-        transform 0.2s ease,
-        border-color 0.2s ease;
-}
+    transition: transform 0.2s ease, border-color 0.2s ease;
 
-.quiz-card:hover,
-.quiz-card:focus-visible {
-    transform: translateY(-6px);
-    border-color: #ff9ac6;
+    &:hover,
+    &:focus-visible {
+        transform: translateY(-6px);
+        border-color: #ff9ac6;
+    }
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .quiz-card-icon {

@@ -93,17 +93,19 @@ function showMediaTypeQuestions () {
         </p>
 
         <div class="quiz-options">
-            <button class="quiz-card" id="book-button">
+            <button class="quiz-card" type="button" id="book-button">
                 <span class="quiz-card-icon">✦</span>
                 <span class="quiz-card-title">Books</span>
             </button>
 
-            <button class="quiz-card" id="game-button">
+            <button class="quiz-card" type="button" id="game-button">
                 <span class="quiz-card-icon">✦</span>
                 <span class="quiz-card-title">Games</span>
             </button>
         </div>
     `;
+
+    setupKeyboardNavigation(quizGame, ".quiz-card");
 
     document.querySelector("#book-button").addEventListener("click", function () {
         answers.mediaType = "book";
@@ -128,17 +130,19 @@ function showMangaInclusionQuestion() {
         </p>
 
         <div class="quiz-options">
-            <button class="quiz-card" id="manga-yes">
+            <button class="quiz-card" type="button" id="manga-yes">
                 <span class="quiz-card-icon">✓</span>
                 <span class="quiz-card-title">Yes</span>
             </button>
 
-            <button class="quiz-card" id="manga-no">
+            <button class="quiz-card" type="button" id="manga-no">
                 <span class="quiz-card-icon">×</span>
                 <span class="quiz-card-title">No</span>
             </button>
         </div>
     `;
+
+    setupKeyboardNavigation(quizGame, ".quiz-card");
 
     document.querySelector("#manga-yes").addEventListener("click", function () {
         answers.includeManga = true;
@@ -171,17 +175,19 @@ function showQuestions() {
         <p class="quiz-question">${question.text}</p>
 
         <div class="quiz-options">
-            <button class="quiz-card" id="option-a">
+            <button class="quiz-card" type="button" id="option-a">
                 <span class="quiz-card-icon">✦</span>
                 <span class="quiz-card-title">${question.genreA}</span>
             </button>
 
-            <button class="quiz-card" id="option-b">
+            <button class="quiz-card" type="button" id="option-b">
                 <span class="quiz-card-icon">✦</span>
                 <span class="quiz-card-title">${question.genreB}</span>
             </button>
         </div>
     `;
+
+    setupKeyboardNavigation(quizGame, ".quiz-card");
 
     document.querySelector("#option-a").addEventListener("click", function () {
         answers.genres.push(question.genreA);

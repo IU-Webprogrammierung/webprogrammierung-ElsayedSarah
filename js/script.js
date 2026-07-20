@@ -74,3 +74,47 @@ document.addEventListener("click", function (event) {
         }, { once: true });
     }
 });
+
+/* Keyboard Navigation ============================ */
+/* Enable keyboard navigation with the left and right arrow keys */
+function setupKeyboardNavigation(container, itemSelector) {
+    if (!container) return;
+
+    const items = Array.from(container.querySelectorAll(itemSelector));
+
+    if (items.length === 0) return;
+
+    /* Make the first item focusable */
+    items[0].tabIndex = 0;
+    items[0].focus();
+
+    items.forEach(function (item, index) {
+        if (index > 0) {
+            item.tabIndex = -1;
+        }
+
+        item.addEventListener("keydown", function (event) {
+            let nextIndex = index;
+
+            if (event.key === "ArrowRight") {
+                nextIndex = (index + 1) % items.length;
+            }
+
+            if (event.key === "ArrowLeft") {
+                nextIndex = (index - 1 + items.length) % items.length;
+            }
+
+            /* Ignore all other keys */
+            if (nextIndex === index) {
+                return;
+            }
+
+            event.preventDefault();
+
+            /* Move keyboard focus to the next item */
+            item.tabIndex = -1;
+            items[nextIndex].tabIndex = 0;
+            items[nextIndex].focus();
+        });
+    });
+}
