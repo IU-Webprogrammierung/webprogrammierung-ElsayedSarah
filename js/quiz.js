@@ -88,11 +88,20 @@ function showStartScreen () {
 /* Select whether book or game recommendations should be used*/
 function showMediaTypeQuestions () {
     quizGame.innerHTML = `
-        <p> Do You Want A Book or Game Recommendation </p>
+        <p class="quiz-question">
+            Do You Want A Book or Game Recommendation?
+        </p>
 
-        <div>
-            <button id="book-button">Books</button>
-            <button id="game-button">Games</button>
+        <div class="quiz-options">
+            <button class="quiz-card" id="book-button">
+                <span class="quiz-card-icon">✦</span>
+                <span class="quiz-card-title">Books</span>
+            </button>
+
+            <button class="quiz-card" id="game-button">
+                <span class="quiz-card-icon">✦</span>
+                <span class="quiz-card-title">Games</span>
+            </button>
         </div>
     `;
 
@@ -114,11 +123,20 @@ function showMediaTypeQuestions () {
 /* Only shown when Book is selected. Decides whether manga should be included in the recommendation */
 function showMangaInclusionQuestion() {
     quizGame.innerHTML = `
-        <p> Do You Want To Include Manga(s) In Your Book Recommendation? </p>
+        <p class="quiz-question">
+            Do You Want To Include Manga In Your Book Recommendation?
+        </p>
 
-        <div>
-            <button id="manga-yes">Yes</button>
-            <button id="manga-no">No</button>
+        <div class="quiz-options">
+            <button class="quiz-card" id="manga-yes">
+                <span class="quiz-card-icon">✓</span>
+                <span class="quiz-card-title">Yes</span>
+            </button>
+
+            <button class="quiz-card" id="manga-no">
+                <span class="quiz-card-icon">×</span>
+                <span class="quiz-card-title">No</span>
+            </button>
         </div>
     `;
 
@@ -150,11 +168,18 @@ function showQuestions() {
 
     /* Show Question */
     quizGame.innerHTML = `
-        <p>${question.text}</p>
+        <p class="quiz-question">${question.text}</p>
 
-        <div>
-            <button id="option-a">${question.genreA}</button>
-            <button id="option-b">${question.genreB}</button>
+        <div class="quiz-options">
+            <button class="quiz-card" id="option-a">
+                <span class="quiz-card-icon">✦</span>
+                <span class="quiz-card-title">${question.genreA}</span>
+            </button>
+
+            <button class="quiz-card" id="option-b">
+                <span class="quiz-card-icon">✦</span>
+                <span class="quiz-card-title">${question.genreB}</span>
+            </button>
         </div>
     `;
 

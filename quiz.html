@@ -26,26 +26,16 @@
         <!-- Quiz Section -->
         <section class="quiz-section">
 
-            <article class="quiz">
+            <!-- Allow screen readers to announce newly generated quiz content -->
+            <div class="quiz-questions" id="quiz-game" aria-live="polite">
+                <!-- Quiz will be generated with JS -->
+            </div>
 
-                <div class="quiz-screen">
-                    <!-- For decoration and character sprites -->
-
-                </div>
-                
-                <!-- Allow screen readers to announce newly generated quiz content -->
-                <div class="quiz-questions" id="quiz-game" aria-live="polite">
-                    <!-- Quiz will be generated with JS -->
-                </div>
-
-            </article>
         </section>
         
         <!-- Quiz Result Screen -->
         <section class="quiz-results hidden" id="quiz-results">
-
             <!-- Recommended media will be generated with JS -->
-    
         </section>
 
     </main>
