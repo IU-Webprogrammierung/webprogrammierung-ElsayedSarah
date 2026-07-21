@@ -16,7 +16,13 @@ const books = [
         spine: "#DC477B",
 
         /* External media page (used by the detail view) */
-        externalLink: "https://www.goodreads.com/book/show/194746.No_Longer_Human",
+        externalLink: { 
+            url: "https://www.goodreads.com/book/show/194746.No_Longer_Human",
+            color: "#e9e3d7",
+            textColor: "#000000",
+            icon: "assets/icons/goodreads_icon.webp",
+            label: "Goodreads"
+        },
 
         comment: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
         At vero eos et accusam et justo duo dolores et ea rebum. 
@@ -43,7 +49,13 @@ const books = [
         cover: "assets/covers/howlsmovingcastle.avif",
         spine: "#72ACAE",
 
-        externalLink: "https://www.goodreads.com/book/show/6294.Howl_s_Moving_Castle",
+         externalLink: {
+            url: "https://www.goodreads.com/book/show/6294.Howl_s_Moving_Castle",
+            color: "#e9e3d7",
+            textColor: "#000000",
+            icon: "assets/icons/goodreads_icon.webp",
+            label: "Goodreads"
+        },
 
         comment: "Add comment here"
     },
@@ -62,7 +74,13 @@ const books = [
         cover: "assets/covers/lapvona.avif",
         spine: "#141213",
         
-        externalLink: "https://www.goodreads.com/book/show/59693959-lapvona",
+         externalLink: {
+            url: "https://www.goodreads.com/book/show/59693959-lapvona",
+            color: "#e9e3d7",
+            textColor: "#000000",
+            icon: "assets/icons/goodreads_icon.webp",
+            label: "Goodreads"
+        },
 
         comment: "Add comment here"
     },
@@ -81,7 +99,13 @@ const books = [
         cover: "assets/covers/thesaltgrowsheavy.avif",
         spine: "#BC1714",
 
-        externalLink: "https://www.goodreads.com/book/show/61884779-the-salt-grows-heavy",
+        externalLink: {
+            url: "https://www.goodreads.com/book/show/61884779-the-salt-grows-heavy",
+            color: "#e9e3d7",
+            textColor: "#000000",
+            icon: "assets/icons/goodreads_icon.webp",
+            label: "Goodreads"
+        },
 
         comment: "Add comment here"
     },
@@ -100,7 +124,13 @@ const books = [
         cover: "assets/covers/heavenofficialsblessing.avif",
         spine: "#2B4844",
 
-        externalLink: "https://www.goodreads.com/book/show/53153332-heaven-s-official-blessing",
+        externalLink: {
+            url: "https://www.goodreads.com/book/show/53153332-heaven-s-official-blessing",
+            color: "#e9e3d7",
+            textColor: "#000000",
+            icon: "assets/icons/goodreads_icon.webp",
+            label: "Goodreads"
+        },
 
         comment: "Add comment here"
     },
@@ -119,7 +149,13 @@ const books = [
         cover: "assets/covers/butter.avif",
         spine: "#FFCA0A",
 
-        externalLink: "https://www.goodreads.com/book/show/200776812-butter",
+        externalLink: {
+            url: "https://www.goodreads.com/book/show/200776812-butter",
+            color: "#e9e3d7",
+            textColor: "#000000",
+            icon: "assets/icons/goodreads_icon.webp",
+            label: "Goodreads"
+        },
 
         comment: "Add comment here"
     },
@@ -139,7 +175,13 @@ const books = [
         cover: "assets/covers/thesecrethistory.avif",
         spine: "#F3F2ED",
 
-        externalLink: "https://www.goodreads.com/book/show/29044.The_Secret_History",
+        externalLink: {
+            url: "https://www.goodreads.com/book/show/29044.The_Secret_History",
+            color: "#e9e3d7",
+            textColor: "#000000",
+            icon: "assets/icons/goodreads_icon.webp",
+            label: "Goodreads"
+        },
 
         comment: "Add comment here"
     },
@@ -159,7 +201,13 @@ const books = [
         cover: "assets/covers/jibakushounenhanakokun.avif",
         spine: "#F8984E",
 
-        externalLink: "https://myanimelist.net/manga/105084/Jibaku_Shounen_Hanako-kun",
+        externalLink: {
+            url: "https://myanimelist.net/manga/105084/Jibaku_Shounen_Hanako-kun",
+            color: "#2e51a3",
+            textColor: "#ffffff",
+            icon: "assets/icons/myanimelist_icon.webp",
+            label: "MyAnimeList"
+        },
 
         comment: "Add comment here"
     },
@@ -179,7 +227,13 @@ const books = [
         cover: "assets/covers/bungostraydogs.avif",
         spine: "#4D4C5C",
 
-        externalLink: "https://myanimelist.net/manga/56529/Bungou_Stray_Dogs",
+        externalLink: {
+            url: "https://myanimelist.net/manga/56529/Bungou_Stray_Dogs",
+            color: "#2e51a3",
+            textColor: "#ffffff",
+            icon: "assets/icons/myanimelist_icon.webp",
+            label: "MyAnimeList"
+        },
 
         comment: "Add comment here"
     },
@@ -199,7 +253,13 @@ const books = [
         cover: "assets/covers/bungostraydogsbeast.avif",
         spine: "#4086C4",
 
-        externalLink: "https://myanimelist.net/manga/123006/Bungou_Stray_Dogs__Beast",
+        externalLink: {
+            url: "https://myanimelist.net/manga/123006/Bungou_Stray_Dogs__Beast",
+            color: "#2e51a3",
+            textColor: "#ffffff",
+            icon: "assets/icons/myanimelist_icon.webp",
+            label: "MyAnimeList"
+        },
 
         comment: "Add comment here"
     },
@@ -219,7 +279,13 @@ const books = [
         cover: "assets/covers/blackbutler.avif",
         spine: "#0000",
 
-        externalLink: "https://myanimelist.net/manga/3866/Kuroshitsuji",
+        externalLink: {
+            url: "https://myanimelist.net/manga/3866/Kuroshitsuji",
+            color: "#2e51a3",
+            textColor: "#ffffff",
+            icon: "assets/icons/myanimelist_icon.webp",
+            label: "MyAnimeList"
+        },
 
         comment: "Add comment here"
     },
@@ -239,7 +305,13 @@ const books = [
         cover: "assets/covers/onepiece.avif",
         spine: "#293991",
 
-        externalLink: "https://myanimelist.net/manga/13/One_Piece",
+        externalLink: {
+            url: "https://myanimelist.net/manga/13/One_Piece",
+            color: "#2e51a3",
+            textColor: "#ffffff",
+            icon: "assets/icons/myanimelist_icon.webp",
+            label: "MyAnimeList"
+        },
 
         comment: "Add comment here"
     },
@@ -260,7 +332,14 @@ const books = [
         cover: "assets/covers/deathnote.avif",
         spine: "#0000",
 
-        externalLink: "https://myanimelist.net/manga/21/Death_Note",
+        externalLink: {
+            url: "https://myanimelist.net/manga/21/Death_Note",
+            color: "#2e51a3",
+            textColor: "#ffffff",
+            icon: "assets/icons/myanimelist_icon.webp",
+            label: "MyAnimeList"
+        },
+
 
         comment: "Add comment here"
     },
@@ -279,7 +358,13 @@ const books = [
         cover: "assets/covers/ouranhighschoolhostclub.avif",
         spine: "#FBDED6",
 
-        externalLink: "https://myanimelist.net/manga/30/Ouran_Koukou_Host_Club",
+        externalLink: {
+            url: "https://myanimelist.net/manga/30/Ouran_Koukou_Host_Club",
+            color: "#2e51a3",
+            textColor: "#ffffff",
+            icon: "assets/icons/myanimelist_icon.webp",
+            label: "MyAnimeList"
+        },
 
         comment: "Add comment here"
     }
@@ -302,7 +387,13 @@ const games = [
         cover: "assets/covers/cultofthelamb.avif",
         spine: "#3B3058",
 
-        externalLink: "https://store.steampowered.com/app/1313140/Cult_of_the_Lamb",
+        externalLink: {
+            url: "https://store.steampowered.com/app/1313140/Cult_of_the_Lamb",
+            color: "#041533",
+            textColor: "#ffffff",
+            icon: "assets/icons/steam_icon.webp",
+            label: "Steam"
+        },
 
         comment: "Add comment here"
     },
@@ -321,7 +412,13 @@ const games = [
         cover: "assets/covers/omori.avif",
         spine: "#FFFF",
 
-        externalLink: "https://store.steampowered.com/app/1150690/OMORI",
+        externalLink: {
+            url: "https://store.steampowered.com/app/1150690/OMORI",
+            color: "#041533",
+            textColor: "#ffffff",
+            icon: "assets/icons/steam_icon.webp",
+            label: "Steam"
+        },
 
         comment: "Add comment here"
     },
@@ -340,7 +437,13 @@ const games = [
         cover: "assets/covers/undertale.avif",
         spine: "#0000",
 
-        externalLink: "https://store.steampowered.com/app/391540/Undertale",
+        externalLink: {
+            url: "https://store.steampowered.com/app/391540/Undertale",
+            color: "#041533",
+            textColor: "#ffffff",
+            icon: "assets/icons/steam_icon.webp",
+            label: "Steam"
+        },
         
         comment: "Add comment here"
     },
@@ -359,7 +462,13 @@ const games = [
         cover: "assets/covers/persona5.avif",
         spine: "#0A0002",
 
-        externalLink: "https://store.steampowered.com/app/1687950/Persona_5_Royal",
+        externalLink: {
+            url: "https://store.steampowered.com/app/1687950/Persona_5_Royal",
+            color: "#041533",
+            textColor: "#ffffff",
+            icon: "assets/icons/steam_icon.webp",
+            label: "Steam"
+        },
 
         comment: "Add comment here"
     },
@@ -378,7 +487,13 @@ const games = [
         cover: "assets/covers/stardewvalley.avif",
         spine: "#034283",
 
-        externalLink: "https://store.steampowered.com/app/413150/Stardew_Valley",
+        externalLink: {
+            url: "https://store.steampowered.com/app/413150/Stardew_Valley",
+            color: "#041533",
+            textColor: "#ffffff",
+            icon: "assets/icons/steam_icon.webp",
+            label: "Steam"
+        },
 
         comment: "Add comment here"
     },
@@ -396,7 +511,13 @@ const games = [
         cover: "assets/covers/thesims3.avif",
         spine: "#FFFF",
 
-        externalLink: "https://store.steampowered.com/app/47890/The_Sims_3",
+        externalLink: {
+            url: "https://store.steampowered.com/app/47890/The_Sims_3",
+            color: "#041533",
+            textColor: "#ffffff",
+            icon: "assets/icons/steam_icon.webp",
+            label: "Steam"
+        },
 
         comment: "Add comment here"
     },
@@ -415,7 +536,13 @@ const games = [
         cover: "assets/covers/thelegendofzeldabreathofthewild.avif",
         spine: "#415E7E",
 
-        externalLink: "https://www.nintendo.com/de-de/Spiele/Nintendo-Switch-Spiele/The-Legend-of-Zelda-Breath-of-the-Wild-1173609.html",
+        externalLink: {
+            url: "https://www.nintendo.com/de-de/Spiele/Nintendo-Switch-Spiele/The-Legend-of-Zelda-Breath-of-the-Wild-1173609.html",
+            color: "#e60012",
+            textColor: "#ffffff",
+            icon: "assets/icons/nintendoswitch_icon.webp",
+            label: "Nintendo"
+        },
 
         comment: "Add comment here"
     }

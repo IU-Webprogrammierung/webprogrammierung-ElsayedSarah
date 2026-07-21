@@ -7,6 +7,7 @@ const detailMediaTitle = document.querySelector("#detail-media-title");
 const selectedMediaImage = document.querySelector("#selected-media-image");
 const selectedMediaAuthor = document.querySelector("#selected-media-author");
 const selectedMediaComment = document.querySelector("#selected-media-comment");
+const externalMediaLink = document.querySelector("#external-media-link");
 
 /* Book category filter */
 const allButton = document.querySelector('[data-filter="all"]');
@@ -148,7 +149,24 @@ function selectShelfItem(shelfItem, media) {
     selectedMediaComment.textContent = media.comment || "";
     selectedMediaImage.src = media.cover;
     selectedMediaImage.alt = media.title + " cover";
-    /* Future enhancement: Display a platform-specific external link (e.g. Goodreads, MyAnimeList, Steam) */
+
+    /* Display platform-specific external link (e.g. Goodreads, MyAnimeList, Steam) */
+    if (media.externalLink) {
+        externalMediaLink.href = media.externalLink.url;
+
+        externalMediaLink.style.backgroundColor = media.externalLink.color;
+        externalMediaLink.style.color = media.externalLink.textColor;
+
+        externalMediaLink.innerHTML = `
+            <img src="${media.externalLink.icon}" alt="" class="external-link-icon">
+            View on ${media.externalLink.label} 
+        `;
+
+        externalMediaLink.classList.remove("hidden");
+    }
+    else {
+        externalMediaLink.classList.add("hidden");
+    }
 
     mediaDetails.style.backgroundImage =
     `url("${selectedMediaImage.src}")`;
