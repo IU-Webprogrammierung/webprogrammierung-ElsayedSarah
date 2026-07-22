@@ -915,9 +915,9 @@ footer {
     position: relative;
     overflow: hidden;
 
-    min-height: 100vh;
+    min-height: calc(100vh - 80px);
+    padding: 24px 16px;
 
-    padding: clamp(24px, 5vh, 48px) 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -939,10 +939,7 @@ footer {
         background-size: cover;
         background-position: center;
 
-        filter:
-            blur(55px)
-            saturate(1.4)
-            brightness(0.55);
+        filter: blur(55px) saturate(1.4) brightness(0.55);
 
         transform: scale(1.12);
         pointer-events: none;
@@ -955,13 +952,14 @@ footer {
     z-index: 2;
 
     display: grid;
-    grid-template-columns: 30% 70%;
-    gap: clamp(28px, 4vw, 64px);
-    
+    grid-template-columns: 30% 1fr;
+    column-gap: 20px;
+
     width: min(1400px, 90vw);
-    height: clamp(420px, 68vh, 620px);
-    margin: 0 auto;
-    padding: clamp(24px, 5vh, 48px) clamp(28px, 5vw, 64px);
+    height: min(70vh, 620px);
+    padding: 24px;
+
+    overflow: hidden;
 
     background-color: #e6adc4;
     border: 3px solid black;
@@ -980,17 +978,22 @@ footer {
 
 /* Cover section inside the ticket */
 .media-details_image {
+    min-width: 0;
+    min-height: 0;
+
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    /* Center cover visually within the ticket section */
-    padding-right: 20%;
+
+    padding-left: 24px;
+    padding-right: 24px;
 
     & img {
-        width: clamp(240px, 24vw, 360px);
+        height: 85%;
         max-width: 100%;
-        display: block;
-        margin: 0 auto;
+        max-height: 90%;
+
+        object-fit: contain;
 
         border: 7px solid #f9fafd;
         box-shadow: 3px 0 8px rgba(0, 0, 0, 0.25);
@@ -999,33 +1002,37 @@ footer {
 
 /* Text content section of the ticket */
 .media-details_content {
-    display: flex;
+    min-width: 0;
     min-height: 0;
+
+    display: flex;
     flex-direction: column;
-    padding: clamp(16px, 2.5vw, 32px);
-    font-size: clamp(1rem, 1vw, 1.125rem);
+    justify-content: center;
+    gap: 0;
+
+    padding-left: 24px;
+    padding-right: 12px;
 }
 
 .media-link_button {
     align-self: flex-start;
 
-    margin-top: auto;
-
-    padding: 12px 24px;
+    margin-top: 24px;
+    margin-bottom: 4px;
+    padding: clamp(8px, 1vh, 12px) clamp(16px, 2vw, 24px);
 
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 
+    font-size: clamp(0.8rem, 1vw, 1rem);
     color: white;
     font-weight: bold;
     text-decoration: none;
 
     border-radius: 999px;
 
-    transition:
-        transform .2s ease,
-        filter .2s ease;
+    transition: transform .2s ease, filter .2s ease;
 
     &:hover,
     &:focus-visible {
@@ -1035,24 +1042,35 @@ footer {
 }
 
 .external-link-icon {
-    width: 32px;
-    height: 32px;
+    width: clamp(18px, 2vw, 32px);
+    height: clamp(18px, 2vw, 32px);
 
     object-fit: contain;
 }
 
-#detail-media-title { margin-bottom: 1px; }
+#detail-media-title { 
+    margin: 0 0 8px;
+    font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+}
 
-#selected-media-author { margin-bottom: 18px; }
+#selected-media-author { 
+    margin: 0 0 16px;
+    font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+}
 
 #selected-media-comment {
     /* Long comments can scroll without breaking the ticket layout */
-    flex: 1;
+    flex: 0 1 auto;
+
     min-height: 0;
+   
+    margin: 12px 0;
 
     overflow-y: auto;
 
     padding-right: 12px;
+
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
 
     line-height: 1.2;
     white-space: pre-line;
@@ -1371,53 +1389,47 @@ footer {
     /* Convert ticket into a vertical layout */
     .media-details_layout {
         grid-template-columns: 1fr;
-        grid-template-rows: 80% 20%;
+        grid-template-rows: 1fr;
         gap: 0;
 
-        width: min(560px, 82vw);
-        height: clamp(660px, 84svh, 820px);
-        min-height: auto;
-        padding: 22px 32px;
+        width: min(560px, 85vw);
+        height: min(720px, 80svh);
+        padding: 22px;
 
         /* Move decorative line below the cover */
         &::before {
-            top: 80%;
-            bottom: auto;
+            top: auto;
+            bottom: 100px;
             left: 0;
             right: 0;
 
             border-left: none;
             border-top: 6px dotted #d4d3d3;
         }
-
-        /* Reposition ticket cutouts to match the horizontal decorative line */
-        &::after {
-            top: 80%;
-            left: -14px;
-
-            transform: translateY(-50%);
-        }
-    }
-
-    .ticket-cutout {
-        top: 80%;
-        bottom: auto;
-        left: auto;
-        right: -14px;
-
-        transform: translateY(-50%);
     }
 
     /* Cover was already visible in the shelf, so the ticket focuses on text */
     .media-details_image { display: none; }
 
     .media-details_content {
-        padding: 12px 12px 0;
+        height: 100%;
+        padding: 16px;
+        justify-content: flex-start;
+
         font-size: 1rem;
     }
 
-    #selected-media-comment { max-height: 80%; }
+    .media-link_button {
+        align-self: center;
+        margin-top: auto;
+        margin-bottom: 0;
+    }
 
+    #selected-media-comment { 
+        flex: 1;
+        margin: 16px 0;
+        overflow-y: auto;
+    }
 }
 
 /* ---- Mobile ---- */
@@ -1490,29 +1502,21 @@ footer {
     .genre-profile { grid-column: auto; } 
 
     /* ---- Media Details Ticket ---- */
-    /* Make the ticket nearly full-width and show the lower area as a small preview */
+    .media-details { padding: 24px 12px; }
+
     .media-details_layout {
-        grid-template-rows: 85% 15%;
+        width: min(92vw, 520px);
+        height: 740px;
+        padding: 18px;
 
-        max-width: 100%;
-        height: clamp(560px, calc(100svh - 32px), 700px);
-
-        /* Move the perforation line and cutouts accordingly */
-        &::before,
-        &::after { top: 85%; }
+        &::before { bottom: 82px; }
     }
 
-    .media-details { padding: 32px 12px; }
+    .media-details_content { padding: 12px 12px 6px; }
 
-    /* Move the perforation line and cutouts accordingly */
-    .ticket-cutout { top: 85%; }
+    #detail-media-title { font-size: clamp(1.4rem, 5vw, 1.6rem); }
 
-    .media-details_content {
-        overflow: hidden;
-        font-size: 0.9375rem;
-    }
-
-    #selected-media-comment { padding-right: 8px; }
+    #selected-media-comment { margin: 12px 0; }
 
     /* ---- Shelf ---- */
     .shelf {
