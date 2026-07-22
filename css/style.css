@@ -10,8 +10,8 @@
     --home-card-main-padding: clamp(30px, 4.5vh, 36px);
     --home-card-image-width: clamp(280px, 28vw, 300px);
     --home-card-title-size: clamp(1.5rem, 1.8vw, 2rem);
-    --home-card-subtitle-size: 1rem;
-    --home-card-tag-size: clamp(0.9rem, 1vw, 1rem);
+    --home-card-subtitle-size: 1.2rem;
+    --home-card-tag-size: clamp(1.1rem, 1.2vw, 1.2rem);
 
     /* Shelf */
     --book-w: clamp(13rem, 17vw, 17.5rem);
@@ -28,7 +28,7 @@
 
     /* Selected media text */
     --shelf-selected-gap: clamp(1.2rem, 2vh, 2rem);
-    --selected-title-size: clamp(1.1rem, 1.1vw, 1.3rem);
+    --selected-title-size: clamp(1.4rem, 1.4vw, 1.6rem);
 }
 
 /* ==========================================================================
@@ -57,10 +57,23 @@ body { margin: 0; }
     Typography 
     ========================================================================== */
 
+@font-face {
+    font-family: "Archivo Black";
+    src: url("../assets/fonts/ArchivoBlack-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Bebas Neue";
+    src: url("../assets/fonts/BebasNeue.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
 body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-h1,
-nav {
+h1 {
     font-family: "Archivo Black", sans-serif;
     text-transform: uppercase;
 }
@@ -107,6 +120,7 @@ header nav { background-color: #000000; }
 
         color: white;
         text-decoration: none;
+        text-transform: uppercase;
         border-radius: 999px;
 
         padding: 14px;
@@ -454,6 +468,7 @@ footer {
     color: black;
 
     text-transform: uppercase;
+    font-weight: bold;
     font-size: var(--home-card-tag-size);
 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 4px 4px 0 #07165d;
@@ -502,7 +517,7 @@ footer {
 
 /* ---- Library Hero ---- */
 .library-hero {
-    min-height: 100vh;
+    min-height: calc(100vh - 80px);
 
     display: flex;
     flex-direction: column;
@@ -548,7 +563,7 @@ footer {
         text-transform: uppercase;
         letter-spacing: 0.08em;
 
-        color: black;
+        color: white;
         background: transparent;
         border: none;
         border-radius: 999px;
@@ -557,10 +572,10 @@ footer {
     
 
         /* Highlight the active media type */
-        &.active { color: white; }
+        &.active { color: black; }
 
          &:focus-visible { 
-            outline: 3px solid white;
+            outline: 3px solid black;
             outline-offset: 3px;
         }
     }
@@ -575,7 +590,7 @@ footer {
 
     height: calc(100% - 12px);
 
-    background: #661e7e;
+    background: #d7c5dc;
     border-radius: 999px;
 
     box-shadow: 0 0 24px rgba(197, 179, 215, 0.45);
@@ -902,8 +917,9 @@ footer {
         margin: 0 0 0.35rem;
     }
     & a { 
-        color: white;
+        color: rgba(255, 255, 255, 0.72);
         font-size: clamp(0.85rem, 0.9vw, 0.95rem); 
+        text-decoration: none;
     }
 }
 
@@ -972,7 +988,7 @@ footer {
         bottom: 0;
         left: 30%;
 
-        border-left: 6px dotted #d4d3d3;
+        border-left: 6px dotted #000000;
     }
 }
 
@@ -1404,7 +1420,7 @@ footer {
             right: 0;
 
             border-left: none;
-            border-top: 6px dotted #d4d3d3;
+            border-top: 6px dotted #000000;
         }
     }
 
