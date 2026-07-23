@@ -31,10 +31,9 @@
 
             <!-- Updated dynamically; books are shown by default -->
             <h1 id="library-title">Books</h1>
-            <p id="library-description">Explore my top 14 favorite books, divided into novels and manga.</p>
 
             <!-- Media type switch -->
-            <div class="library-type-switch" role="group" aria-label="Choose library media type">
+            <div class="library-type-switch glass-toggle" role="group" aria-label="Choose library media type">
                 <span id="library-status" class="hidden" aria-live="polite"></span>
 
                  <!-- Animated indicator that moves beneath the active media type button -->
@@ -43,6 +42,8 @@
                 <button type="button" id="show-books" aria-pressed="true">Books</button>
                 <button type="button" id="show-games" aria-pressed="false">Games</button>
             </div>
+
+            <p id="library-description">Explore my top 14 favorite books, divided into novels and manga.</p>
 
         </section>
 
@@ -55,7 +56,7 @@
                 <button type="button" class="filter-toggle" id="filter-toggle" aria-expanded="false" aria-controls="filter-options">☰ Filter</button>
 
                
-                <div class="filter-options" id="filter-options" role="group" aria-label="Choose book category">
+                <div class="filter-options glass-toggle" id="filter-options" role="group" aria-label="Choose book category">
                     <!-- Animated indicator that moves beneath the active filter button -->
                     <span class="filter-indicator" aria-hidden="true"></span>
                     

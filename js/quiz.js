@@ -105,13 +105,13 @@ function createProgressMarkup(currentStep) {
 
 /* Create the back button */
 function createBackButton() {
-    return ` <button class="quiz-back" id="quiz-back" type="button">← Back</button> `;
+    return ` <button class="quiz-back glass-button" type="button" id="quiz-back" type="button">← Back</button> `;
 }
 
 /* Starting screen for the quiz */
 function showStartScreen () {
     quizGame.innerHTML = `
-        <button id="start-quiz">Start Quiz</button>
+        <button class="start-quiz glass-button" type="button" id="start-quiz">Start Quiz</button>
     `;
 
     document.querySelector("#start-quiz").addEventListener("click", function () {
@@ -266,7 +266,7 @@ function showQuestions() {
     document.querySelector("#quiz-back").addEventListener("click", function () {
         if (currentQuestion > 0) {
             currentQuestion--;
-            
+
             showQuestions();
             return;
         }
@@ -374,7 +374,7 @@ function showQuizResults () {
             }).join("")}
         </div>
 
-        <button id="quiz-restart">Restart</button>
+        <button class="quiz-restart glass-button" type="button" id="quiz-restart">Restart</button>
     `;
 
     document.querySelector("#quiz-restart").addEventListener("click", function (){
