@@ -32,6 +32,92 @@
 }
 
 /* ==========================================================================
+    Reusable Components
+    ========================================================================== */
+
+.glass-toggle {
+    position: relative;
+
+    display: flex;
+    gap: 8px;
+    padding: 6px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+
+    backdrop-filter: blur(14px);
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    & button {
+        position: relative;
+        z-index: 2;
+
+        min-width: 100px;
+        padding: var(--filter-padding-y) var(--filter-padding-x);
+
+        font-size: var(--filter-font-size);
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+
+        background: transparent;
+        border: none;
+        border-radius: 999px;
+
+        cursor: pointer;
+
+        &.active {
+            color: black;
+        }
+    }
+}
+
+/* Reuse the glassmorphism style for standalone buttons (e.g. quiz actions). Unlike .glass-toggle, this component styles a single button instead of a button group. */
+.glass-button {
+    min-width: 180px;
+    padding: .9rem 2rem;
+
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+
+    backdrop-filter: blur(14px);
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    cursor: pointer;
+    transition:
+        background .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.14);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+
+    &:focus-visible {
+        outline: 3px solid white;
+        outline-offset: 3px;
+    }
+}
+
+/* ==========================================================================
     Base Styles
     ========================================================================== */
 
@@ -538,43 +624,10 @@ footer {
 
 /* ---- Media Type Switch ---- */
 .library-type-switch {
-    position: relative;
-    
-    display: flex;
-    gap: 8px;
-    padding: 6px;
-
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 999px;
-
-    backdrop-filter: blur(14px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-
     & button {
-        position: relative;
-        z-index: 2;
-
-        min-width: 100px;
-        padding:  var(--filter-padding-y) var(--filter-padding-x);
-
-        font-size: var(--filter-font-size);
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-
         color: white;
-        background: transparent;
-        border: none;
-        border-radius: 999px;
 
-        cursor: pointer;
-    
-
-        /* Highlight the active media type */
-        &.active { color: black; }
-
-         &:focus-visible { 
+        &:focus-visible {
             outline: 3px solid black;
             outline-offset: 3px;
         }
@@ -687,43 +740,10 @@ footer {
 
 /* Filter container */
 .filter-options {
-    position: relative;
-    
-    display: flex;
-    gap: 8px;
-    padding: 6px;
-
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 999px;
-
-    backdrop-filter: blur(14px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-
     & button {
-        position: relative;
-        z-index: 2;
+        color: rgba(255,255,255,.72);
 
-        min-width: 100px;
-        padding:  var(--filter-padding-y) var(--filter-padding-x);
-
-        font-size: var(--filter-font-size);
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-
-        color: rgba(255, 255, 255, 0.72);
-        background: transparent;
-        border: none;
-        border-radius: 999px;
-
-        cursor: pointer;
-    
-
-        /* Highlight the active filter button */
-        &.active { color: black; }
-        
-        &:focus-visible { 
+        &:focus-visible {
             outline: 3px solid white;
             outline-offset: 3px;
         }
@@ -1169,7 +1189,7 @@ footer {
     width: min(100%, 1000px);
     margin: 0 auto;
 
-    font-size: clamp(2rem, 5vw, 4rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 600;
     line-height: 1;
     text-align: center;
@@ -1180,13 +1200,15 @@ footer {
     width: 100%;
 
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(280px, 420px));
+    justify-content: center;
     gap: 18px;
 }
 
 .quiz-card {
-    min-height: 360px;
-    padding: 28px;
+    width: 100%;
+    min-height: clamp(220px, 32vh, 360px);
+    padding: clamp(18px, 2vw, 28px);
 
     display: flex;
     flex-direction: column;
@@ -1222,7 +1244,7 @@ footer {
     place-items: center;
 
     color: #ff9ac6;
-    font-size: clamp(4rem, 8vw, 6rem);
+    font-size: clamp(3rem, 6vw, 6rem);
     font-weight: bold;
 }
 
@@ -1230,32 +1252,17 @@ footer {
     width: 100%;
     padding-top: 18px;
 
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-size: clamp(1.3rem, 2vw, 2rem);
     font-weight: bold;
     text-transform: capitalize;
 
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-#quiz-restart {
+.quiz-back {
     min-width: 120px;
-    padding: 10px 24px;
-    margin: 0 24px;
-
-    font-weight: bold;
-    text-transform: uppercase;
-
-    color: white;
-    background-color: #000000;
-    border: 4px solid white;
-
-    cursor: pointer;
-
-    &:hover,
-    &:focus {
-        color: #000000;
-        background-color: white;
-    }
+    padding: .65rem 1.25rem;
+    font-size: .9rem;
 }
 
 /* ---- Quiz Result Screen ---- */
@@ -1474,15 +1481,15 @@ footer {
         --sticky-filter-top: 2rem;
         --shelf-selected-gap: 1.25rem;
 
-        --selected-title-size: 1.15rem;
+        --selected-title-size: 1.3rem;
     }
 
     /* ---- Navigation ---- */
-    .navbar { padding: 4px 8px; }
+    .navbar { padding: 6px 12px; }
 
     .desktop-nav { display: none; }
 
-    .logo img { width: 95px; }
+    .logo img { width: 85px; }
 
     .menu-button { display: block; }
 
@@ -1529,6 +1536,17 @@ footer {
     }
 
     .media-details_content { padding: 12px 12px 6px; }
+    
+    .media-link_button {
+        padding: 10px 20px;
+        font-size: .95rem;
+        gap: 8px;
+    }
+
+    .external-link-icon {
+        width: 22px;
+        height: 22px;
+    }
 
     #detail-media-title { font-size: clamp(1.4rem, 5vw, 1.6rem); }
 
@@ -1543,7 +1561,7 @@ footer {
         &::after { display: none; }
     }
 
-    .library-hero { min-height: 90svh; }
+    .library-hero { min-height: 100svh; }
     
     .shelf-item { transform: none; }
 
@@ -1616,22 +1634,22 @@ footer {
 
     /* ----Quiz Page ---- */
     .quiz-page {
-        min-height: calc(100svh - 80px);
-        padding: 20px 16px;
+        min-height: 100svh;
+        padding: 16px 12px;
     }
 
     .quiz-questions {
         width: 100%;
-        gap: 24px;
+        gap: 18px;
 
-        transform: translateY(-10px);
+        transform: none;
     }
 
     .quiz-question {
         width: 100%;
         margin: 0;
 
-        font-size: clamp(1.8rem, 8vw, 2.5rem);
+        font-size: clamp(1.6rem, 7vw, 2.2rem);
         line-height: 1.1;
     }
 
@@ -1643,18 +1661,21 @@ footer {
 
     .quiz-card {
         width: 100%;
-        max-width: 340px; 
-
-        min-height: 180px;
-        padding: 20px;
+        max-width: 320px;
+        min-height: 160px;
+        padding: 16px;
     }
 
-    .quiz-card-icon {
-        font-size: clamp(3rem, 12vw, 4rem);
-    }
+    .quiz-card-icon { font-size: clamp(2.5rem, 10vw, 3.5rem); }
 
     .quiz-card-title {
-        padding-top: 12px;
-        font-size: clamp(1.4rem, 6vw, 1.8rem);
+         padding-top: 10px;
+        font-size: clamp(1.25rem, 5vw, 1.6rem);
+    }
+
+    .quiz-back {
+        min-width: 100px;
+        padding: .55rem 1rem;
+        font-size: .8rem;
     }
 }

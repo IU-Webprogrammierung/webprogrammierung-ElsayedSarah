@@ -73,10 +73,45 @@ let currentQuestion = 0;
 /* Tracks which question set is currently active */
 let activeQuestions = [];
 
+/* Calculate the total number of quiz steps for the selected media type */
+function getTotalSteps() {
+    return activeQuestions.length + (answers.mediaType === "book" ? 2 : 1);
+}
+
+/* Create the progress bar for the current quiz step */
+function createProgressMarkup(currentStep) {
+    const totalSteps = getTotalSteps();
+    const progress = Math.round(
+        (currentStep / totalSteps) * 100
+    );
+
+    return `
+        <div class="quiz-progress">
+            <p>Step ${currentStep} of ${totalSteps}</p>
+
+            <div
+                class="quiz-progress_track"
+                role="progressbar"
+                aria-label="Quiz progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="${progress}"
+            >
+                <div class="quiz-progress_bar" style="width: ${progress}%"></div>
+            </div>
+        </div>
+    `;
+}
+
+/* Create the back button */
+function createBackButton() {
+    return ` <button class="quiz-back glass-button" type="button" id="quiz-back" type="button">← Back</button> `;
+}
+
 /* Starting screen for the quiz */
 function showStartScreen () {
     quizGame.innerHTML = `
-        <button id="start-quiz">Start Quiz</button>
+        <button class="start-quiz glass-button" type="button" id="start-quiz">Start Quiz</button>
     `;
 
     document.querySelector("#start-quiz").addEventListener("click", function () {
@@ -125,6 +160,8 @@ function showMediaTypeQuestions () {
 /* Only shown when Book is selected. Decides whether manga should be included in the recommendation */
 function showMangaInclusionQuestion() {
     quizGame.innerHTML = `
+        ${createProgressMarkup(2)}
+
         <p class="quiz-question">
             Do You Want To Include Manga In Your Book Recommendation?
         </p>
@@ -140,6 +177,8 @@ function showMangaInclusionQuestion() {
                 <span class="quiz-card-title">No</span>
             </button>
         </div>
+
+        ${createBackButton()}
     `;
 
     setupKeyboardNavigation(quizGame, ".quiz-card");
@@ -156,6 +195,16 @@ function showMangaInclusionQuestion() {
         showQuestions();
     });
 
+    /* Return to the previous quiz step */
+    document.querySelector("#quiz-back").addEventListener("click", function () {
+        answers.mediaType = "";
+        answers.includeManga = null;
+        answers.genres = [];
+        activeQuestions = [];
+        currentQuestion = 0;
+
+        showMediaTypeQuestions();
+    });
 }
 
 /* Questions to further specify the book/game recommendation */
@@ -170,8 +219,18 @@ function showQuestions() {
     /* Keep track of current Question */
     const question = activeQuestions[currentQuestion];
 
+    /* Offset the displayed step because books include a manga question */
+    const extraSteps =
+        answers.mediaType === "book"
+            ? 3
+            : 2;
+
+    const currentStep = currentQuestion + extraSteps;
+
     /* Show Question */
     quizGame.innerHTML = `
+        ${createProgressMarkup(currentStep)}
+
         <p class="quiz-question">${question.text}</p>
 
         <div class="quiz-options">
@@ -185,22 +244,45 @@ function showQuestions() {
                 <span class="quiz-card-title">${question.genreB}</span>
             </button>
         </div>
+
+        ${createBackButton()}
     `;
 
     setupKeyboardNavigation(quizGame, ".quiz-card");
 
     document.querySelector("#option-a").addEventListener("click", function () {
-        answers.genres.push(question.genreA);
+        answers.genres[currentQuestion] = question.genreA;
         currentQuestion ++;
         showQuestions();
     });
 
     document.querySelector("#option-b").addEventListener("click", function () {
-        answers.genres.push(question.genreB);
+        answers.genres[currentQuestion] = question.genreB;
         currentQuestion ++;
         showQuestions();
     });
-         
+
+    /* Return to the previous quiz step */
+    document.querySelector("#quiz-back").addEventListener("click", function () {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+
+            showQuestions();
+            return;
+        }
+
+        if (answers.mediaType === "book") {
+            answers.includeManga = null;
+            showMangaInclusionQuestion();
+            return;
+        }
+
+        answers.mediaType = "";
+        answers.genres = [];
+        activeQuestions = [];
+
+        showMediaTypeQuestions();
+    });    
 }
 
 /* 
@@ -292,7 +374,7 @@ function showQuizResults () {
             }).join("")}
         </div>
 
-        <button id="quiz-restart">Restart</button>
+        <button class="quiz-restart glass-button" type="button" id="quiz-restart">Restart</button>
     `;
 
     document.querySelector("#quiz-restart").addEventListener("click", function (){
