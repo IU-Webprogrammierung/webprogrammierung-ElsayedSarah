@@ -2,6 +2,7 @@
 
 /* ---- DOM references ---- */
 const mediaShelf = document.querySelector("#media-shelf");
+const mediaDetailsLayout = document.querySelector(".media-details_layout");
 const selectedMediaTitle = document.querySelector("#selected-media-title");
 const detailMediaTitle = document.querySelector("#detail-media-title");
 const selectedMediaImage = document.querySelector("#selected-media-image");
@@ -142,7 +143,7 @@ function selectShelfItem(shelfItem, media) {
     mediaDetails.classList.remove("hidden");
     moreDetailsLink.classList.remove("hidden");
     
-
+    mediaDetailsLayout.style.setProperty("--ticket-color", media.ticketColor);
     selectedMediaTitle.textContent = media.title;
     detailMediaTitle.textContent = media.title;
     selectedMediaAuthor.textContent = media.author || media.developer || "";

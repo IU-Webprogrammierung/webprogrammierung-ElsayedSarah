@@ -111,7 +111,11 @@ function createBackButton() {
 /* Starting screen for the quiz */
 function showStartScreen () {
     quizGame.innerHTML = `
-        <button class="start-quiz glass-button" type="button" id="start-quiz">Start Quiz</button>
+        <h1>Recommendation Quiz</h1>
+        <p class="quiz-description">Not sure what to read or play next? Answer a few quick questions about your preferences and receive personalized recommendations from our digital media library.</p>
+        
+        <button class="start-quiz glass-button" type="button" id="start-quiz">Start Quiz →</button>
+        <aside>⏱ Takes less than a minute ✦ Personalized recommendations</aside>
     `;
 
     document.querySelector("#start-quiz").addEventListener("click", function () {
@@ -138,6 +142,8 @@ function showMediaTypeQuestions () {
                 <span class="quiz-card-title">Games</span>
             </button>
         </div>
+
+        ${createBackButton()}
     `;
 
     setupKeyboardNavigation(quizGame, ".quiz-card");
@@ -153,6 +159,17 @@ function showMediaTypeQuestions () {
         activeQuestions = gameQuestions;
         currentQuestion = 0;
         showQuestions();
+    });
+
+    /* Return to the start screen */
+    document.querySelector("#quiz-back").addEventListener("click", function () {
+        answers.mediaType = "";
+        answers.includeManga = null;
+        answers.genres = [];
+        activeQuestions = [];
+        currentQuestion = 0;
+
+        showStartScreen();
     });
 
 }
@@ -354,7 +371,7 @@ function showQuizResults () {
 
     /* Render recommendations dynamically */
     quizResults.innerHTML = `
-        <h2>Your Recommendation</h2>
+        <h1>Your Recommendations</h1>
 
         <div class="quiz-results_list">
              ${recommendations.map(function (recommendation) {
@@ -366,7 +383,7 @@ function showQuizResults () {
                         <div>
                             <h3>${recommendation.media.title}</h3>
                             <p>${recommendation.media.author || recommendation.media.developer}</p>
-                            <a href="${mediaUrl}">View Details</a>
+                            <a href="${mediaUrl}">View Details →</a>
                         </div>
                     </article>
                 `;
