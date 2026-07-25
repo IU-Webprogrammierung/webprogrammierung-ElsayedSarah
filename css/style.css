@@ -1452,7 +1452,7 @@ footer {
         gap: 0;
 
         width: min(560px, 85vw);
-        height: min(720px, 80svh);
+        height: min(620px, 70svh);
         padding: 22px;
 
         /* Move decorative line below the cover */
@@ -1599,7 +1599,7 @@ footer {
 
     .media-details_layout {
         width: min(92vw, 520px);
-        height: 740px;
+        height: auto;
         padding: 18px;
     }
 
