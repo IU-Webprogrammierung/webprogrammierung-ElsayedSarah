@@ -4,7 +4,7 @@
 
 :root {
     /* Home library card */
-    --home-card-width: clamp(780px, 80vw, 910px);
+    --home-card-width: clamp(750px, 75vw, 900px);
     --home-card-padding: clamp(12px, 2vh, 16px);
     --home-card-main-gap: clamp(24px, 4vw, 64px);
     --home-card-main-padding: clamp(30px, 4.5vh, 36px);
@@ -357,7 +357,7 @@ footer {
 
     padding: 16px;
 
-    background-image: url("../assets/homebg.png");
+    background-image: url("../assets/homebg.webp");
     background-size: cover;
     background-position: center;
 
@@ -416,7 +416,7 @@ footer {
     justify-content: center;
     
     /* Decorative background only; contains no essential information */
-    background-image: url("../assets/homebg.png");
+    background-image: url("../assets/homebg.webp");
     background-size: cover;
     background-position: center;
 }
@@ -440,13 +440,6 @@ footer {
 
     z-index: 3;
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-
-    &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 26px 55px rgba(16, 1, 39, .58), 0 0 0 6px rgba(244, 200, 223, .4), inset 0 1px 0 rgba(255, 255, 255, .9);
-    }
-
     & h2 {
         font-size: var(--home-card-subtitle-size);
         text-transform: uppercase;
@@ -456,9 +449,7 @@ footer {
 
 .library-card_top {
     display: flex;
-    justify-content: space-between;
     padding: 8px 14px;
-
     border-bottom: 2px dashed #b0698ebc;
 
     & h1 { 
@@ -488,13 +479,11 @@ footer {
 .sticker {
     position: absolute;
 
-    bottom: -50px;
+    bottom: -45px;
     right: 80px;
     width: clamp(80px, 10vw, 120px);
 
-    filter:
-    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))
-    drop-shadow(4px 4px 0 #010149);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) drop-shadow(4px 4px 0 #010149);
 
     z-index: 10;
 
@@ -537,7 +526,7 @@ footer {
     /* Goes across both columns */
     grid-column: 1 / 3;
     padding-top: 16px;
-    border-top: 2px dashed #b0698ebc;
+    border-top: 2px solid #b0698ebc;
 }
 
 .genre-profile_list {
@@ -566,7 +555,7 @@ footer {
     font-size: var(--home-card-tag-size);
 
     background-color: #1d1328;
-    box-shadow: 0 7px 12px rgba(16, 1, 39, 0.479), 3px 4px 0 #07165d, inset 0 1px 0 rgba(255, 255, 255, .55);
+    box-shadow: 0 7px 12px rgba(16, 1, 39, 0.479), 3px 4px 0 #07165d;
     transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 
     &:hover { 
@@ -577,13 +566,13 @@ footer {
 }
 
 /* Alternative tag color variations */
-.tag { background-color:#76acde; }
+.tag { background-color:#a962d8; }
 
-.tag-b { background-color:#f587c9;}
+.tag-b { background-color: #ed3b81;}
 
-.tag-c { background-color:#f3b892; }
+.tag-c { background-color:#050f4d; color: #f0dfed; border-color: #f0dfed; }
 
-.tag-d { background-color: #a962d8; }
+.tag-d { background-color: var(--accent-pink); }
 
 /* ---- Home Page: Description ---- */
 .home-description {
@@ -601,13 +590,6 @@ footer {
     backdrop-filter: blur(14px);
 
     z-index: 1;
-
-    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-
-    &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 22px 45px rgba(16, 1, 39, .56), inset 0 1px 0 rgba(255, 255, 255, .16);
-    }
 }
 
 /* ==========================================================================
@@ -1141,7 +1123,7 @@ footer {
 
     padding: 24px;
 
-    background-image: url("../assets/homebg.png");
+    background-image: url("../assets/homebg.webp");
     background-size: cover;
     background-position: center;
 
@@ -1403,15 +1385,10 @@ footer {
     .home-description {
         width: 100%;
         max-width: 360px;
-        box-sizing: border-box;
         padding: 40px 20px 20px;
     }
 
-    .library-card_top {
-        align-items: center;
-
-        & img { width: 90px; }
-    }
+    .library-card_top { align-items: center; }
 
     .library-card_main {
         flex-direction: column;
@@ -1422,11 +1399,8 @@ footer {
 
     .library-card_content {
         width: 100%;
-        grid-template-columns: 1fr 1fr;
         gap: 24px 16px;
     }
-
-    .genre-profile { grid-column: 1/3; }
 
     .genre-profile_list { justify-content: center; }
 
@@ -1557,11 +1531,7 @@ footer {
     /* ---- Home page: library card ---- */
     /* Reduce image size and stack profile information into a single column */
     
-     .library-card_top {
-        padding: 6px 8px;
-     
-        & img { width: 80px; }
-    }
+    .library-card_top { padding: 6px 8px;}
 
     .library-card_content { 
         grid-template-columns: 1fr; 
@@ -1577,6 +1547,8 @@ footer {
         }
     }
 
+    .sticker { bottom: -25px; }
+
     .genre-profile { grid-column: auto; } 
 
     /* ---- Media Details Ticket ---- */
@@ -1586,8 +1558,6 @@ footer {
         width: min(92vw, 520px);
         height: 740px;
         padding: 18px;
-
-        &::before { bottom: 82px; }
     }
 
     .media-details_content { padding: 12px 12px 6px; }
