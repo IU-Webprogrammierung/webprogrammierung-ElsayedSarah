@@ -105,7 +105,7 @@ function createProgressMarkup(currentStep) {
 
 /* Create the back button */
 function createBackButton() {
-    return ` <button class="quiz-back glass-button" type="button" id="quiz-back" type="button">← Back</button> `;
+    return ` <button class="quiz-back glass-button" type="button" id="quiz-back">← Back</button> `;
 }
 
 /* Starting screen for the quiz */

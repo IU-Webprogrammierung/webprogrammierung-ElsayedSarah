@@ -1258,8 +1258,9 @@ footer {
         border-color: var(--accent-pink);
     }
 
-    &:focus {
-        outline: none;
+    &:focus-visible {
+        outline: 3px solid var(--accent-pink);
+        outline-offset: 4px;
     }
 }
 
