@@ -15,6 +15,9 @@ document.addEventListener("click", function (event) {
     }
 
     mobileMenu.classList.toggle("hidden");
+    
+    const isExpanded = !mobileMenu.classList.contains("hidden");
+    menuButton.setAttribute("aria-expanded", isExpanded);
 });
 
 /* Highlight the current page in the global navigation */
