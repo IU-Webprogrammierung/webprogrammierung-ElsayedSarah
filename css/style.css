@@ -971,6 +971,9 @@ footer {
     justify-content: center;
     align-items: center;
 
+    /* Fallback background while the blurred cover image is loading */
+    background-color: #000000;
+
     /* Offset the snap scroll position for the sticky header */
     scroll-margin-top: 80px;
 
@@ -1010,19 +1013,9 @@ footer {
 
     overflow: hidden;
 
-    background-color: #e6adc4;
-    border: 3px solid rgba(255, 255, 255, .55);
-
-    /* Vertical decorative line separating cover and content */
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 30%;
-
-        border-left: 6px dotted #000000;
-    }
+    /* Dynamic ticket color based on the selected media (mediaShelf.js)*/
+    background: var(--ticket-color);
+    border: 3px solid rgba(235, 218, 238, 0.492);
 }
 
 /* Cover section inside the ticket */
