@@ -182,7 +182,7 @@ Zur Überprüfung der Barrierefreiheit wurden folgende Werkzeuge verwendet:
 - Lighthouse Accessibility Audit
 - Praxistest mit VoiceOver (iOS) zur Überprüfung der Screenreader-Unterstützung dynamischer Inhalte (z. B. Ankündigung neuer Quizfragen über `aria-live`) – [Demonstrationsvideo](docs/voiceoverquiz-demo.mp4)
 
-> **Hinweis:** Da WAVE den durch CSS erzeugten Blur-Hintergrund der Quizseite nicht vollständig berücksichtigt, wird dort ein Kontrast-Hinweis ausgegeben. Zur Verifizierung wurde der tatsächlich dargestellte Hintergrund mit einem Color Picker geprüft. Die ermittelten Farbwerte erfüllen die erforderlichen Kontrastanforderungen. 
+> **Hinweis:** Da WAVE den durch CSS erzeugten Blur-Hintergrund der Quizseite nicht vollständig berücksichtigt, wird dort ein Kontrast-Hinweis ausgegeben. Zur Verifizierung wurde der tatsächlich dargestellte Hintergrund mit einem Color Picker geprüft. Die ermittelten Farbwerte erfüllen die erforderlichen Kontrastanforderungen. ![Vergleich zwischen WAVE und manueller Kontrastprüfung](docs/wave-contrast-check.png)
 
 ---
 ## Performance
