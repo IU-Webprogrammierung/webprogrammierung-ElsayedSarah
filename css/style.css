@@ -1259,7 +1259,7 @@ footer {
 
     &:focus-visible {
         outline: 3px solid var(--accent-pink);
-        outline-offset: 4px;
+        outline-offset: 2px;
     }
 }
 
@@ -1605,6 +1605,7 @@ footer {
     .media-details_content { padding: 12px 12px 6px; }
     
     .media-link_button {
+        margin-top: 16px;
         padding: 10px 20px;
         font-size: .95rem;
         gap: 8px;
@@ -1746,20 +1747,20 @@ footer {
     .quiz-options {
         grid-template-columns: 1fr;
         justify-items: center;
-        gap: 12px;
+        gap: 16px;
     }
 
     .quiz-card {
         width: 100%;
         max-width: 320px;
         min-height: 160px;
-        padding: 16px;
+        padding: 20px;
     }
 
     .quiz-card-icon { font-size: clamp(2.5rem, 10vw, 3.5rem); }
 
     .quiz-card-title {
-         padding-top: 10px;
+        padding-top: 10px;
         font-size: clamp(1.25rem, 5vw, 1.6rem);
     }
 
