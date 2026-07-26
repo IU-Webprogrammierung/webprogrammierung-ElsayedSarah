@@ -1158,7 +1158,7 @@ footer {
         filter:
             blur(55px)
             saturate(1.4)
-            brightness(0.35);
+            brightness(0.55);
 
         transform: scale(1.12);
         pointer-events: none;
