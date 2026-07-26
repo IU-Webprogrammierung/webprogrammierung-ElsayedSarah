@@ -10,6 +10,7 @@ Die Website wird vollständig englischsprachig umgesetzt.
 ## Inhaltsverzeichnis 
 - [Seitenübersicht](#seitenübersicht)
 - [Technologien](#technologien)
+- [Git Workflow](#git-workflow)
 - [Besondere Funktionen](#besondere-funktionen)
 - [Größere Änderungen](#größere-änderungen-während-der-entwicklung)
 - [Responsives Design](#responsives-design)
@@ -49,9 +50,17 @@ Die Website wird vollständig englischsprachig umgesetzt.
 
 ---
 
+## Git Workflow
+
+Die Entwicklung erfolgte auf einem separaten `development`-Branch. Neue Funktionen und Änderungen wurden dort schrittweise mit [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) (z. B. `feat:`, `fix:`, `style:`, `docs:`, `refactor:`) dokumentiert.
+
+Sobald ein funktionsfähiger Zwischenstand erreicht war, wurden die Änderungen in den `main`-Branch zusammengeführt. Dadurch enthielt der `main`-Branch ausschließlich lauffähige Projektstände, während die eigentliche Entwicklung im `development`-Branch stattfand.
+
+--- 
+
 ## Besondere Funktionen
 
-Die folgenden Funktionen gehen über die grundlegenden Projektanforderungen hinaus und stellen die wesentlichen Eigenleistungen dieses Projekts dar.
+Die folgenden Funktionen wurden zusätzlich zu den grundlegenden Projektanforderungen umgesetzt und stellen die wesentlichen Eigenleistungen dieses Projekts dar.
 
 ### Individuelle UI-Komponenten
 
@@ -171,6 +180,9 @@ Zur Überprüfung der Barrierefreiheit wurden folgende Werkzeuge verwendet:
 
 - WAVE Web Accessibility Evaluation Tool
 - Lighthouse Accessibility Audit
+- Praxistest mit VoiceOver (iOS) zur Überprüfung der Screenreader-Unterstützung dynamischer Inhalte (z. B. Ankündigung neuer Quizfragen über `aria-live`) – [Demonstrationsvideo](docs/voiceoverquiz-demo.mp4)
+
+> **Hinweis:** Da WAVE den durch CSS erzeugten Blur-Hintergrund der Quizseite nicht vollständig berücksichtigt, wird dort ein Kontrast-Hinweis ausgegeben. Zur Verifizierung wurde der tatsächlich dargestellte Hintergrund mit einem Color Picker geprüft. Die ermittelten Farbwerte erfüllen die erforderlichen Kontrastanforderungen. 
 
 ---
 ## Performance
