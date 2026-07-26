@@ -454,7 +454,6 @@ footer {
 
     background: var(--card-gradient);
     box-shadow: 0 20px 45px rgba(16, 1, 39, .5), 0 0 0 6px rgba(244, 200, 223, .32), inset 0 1px 0 rgba(255, 255, 255, .9);
-    backdrop-filter: blur(16px);
 
     z-index: 3;
 
@@ -1159,7 +1158,7 @@ footer {
         filter:
             blur(55px)
             saturate(1.4)
-            brightness(0.55);
+            brightness(0.35);
 
         transform: scale(1.12);
         pointer-events: none;
@@ -1192,7 +1191,7 @@ footer {
     & aside {
         margin: 18px 0 32px;
 
-        color: rgba(255, 255, 255, .8);
+        color: rgba(255, 255, 255, 0.859);
         font-size: .95rem;
         font-weight: 500;
         letter-spacing: .02em;
@@ -1260,7 +1259,7 @@ footer {
 
     &:focus-visible {
         outline: 3px solid var(--accent-pink);
-        outline-offset: 4px;
+        outline-offset: 2px;
     }
 }
 
@@ -1606,6 +1605,7 @@ footer {
     .media-details_content { padding: 12px 12px 6px; }
     
     .media-link_button {
+        margin-top: 16px;
         padding: 10px 20px;
         font-size: .95rem;
         gap: 8px;
@@ -1747,20 +1747,20 @@ footer {
     .quiz-options {
         grid-template-columns: 1fr;
         justify-items: center;
-        gap: 12px;
+        gap: 16px;
     }
 
     .quiz-card {
         width: 100%;
         max-width: 320px;
         min-height: 160px;
-        padding: 16px;
+        padding: 20px;
     }
 
     .quiz-card-icon { font-size: clamp(2.5rem, 10vw, 3.5rem); }
 
     .quiz-card-title {
-         padding-top: 10px;
+        padding-top: 10px;
         font-size: clamp(1.25rem, 5vw, 1.6rem);
     }
 
